@@ -10,6 +10,7 @@ import '../../features/recipe/domain/usecases/get_recipes_by_ingredients.dart';
 import '../../features/recipe/presentation/bloc/recipe_bloc.dart';
 import '../../features/ingredients/presentation/bloc/ingredients_bloc.dart';
 import '../network/network_info.dart';
+import '../network/translator.dart';
 
 final getIt = GetIt.instance;
 
@@ -23,10 +24,18 @@ Future<void> initDependencies() async {
   getIt.registerLazySingleton(() => http.Client());
   getIt.registerLazySingleton(() => Connectivity());
 
+  // Core - Translator
+  getIt.registerLazySingleton<Translator>(
+    () => Translator(client: getIt()),
+  );
+
   // Features - Recipe
   // Data sources
   getIt.registerLazySingleton<RecipeRemoteDataSource>(
-    () => RecipeRemoteDataSourceImpl(client: getIt()),
+    () => RecipeRemoteDataSourceImpl(
+      client: getIt(),
+      translator: getIt(),
+    ),
   );
 
   // Repository

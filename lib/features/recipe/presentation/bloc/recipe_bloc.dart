@@ -12,10 +12,10 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
     required this.getRandomRecipe,
     required this.getRecipeByName,
   }) : super(const RecipeState.initial()) {
-    on<RecipeEvent>((event, emit) {
-      event.when(
-        getRandomRecipe: () => _onGetRandomRecipe(emit),
-        getRecipeByName: (name) => _onGetRecipeByName(name, emit),
+    on<RecipeEvent>((event, emit) async {
+      await event.map(
+        getRandomRecipe: (_) async => await _onGetRandomRecipe(emit),
+        getRecipeByName: (e) async => await _onGetRecipeByName(e.name, emit),
       );
     });
   }

@@ -1,7 +1,7 @@
 import 'package:http/http.dart' as http;
-import 'package:html/parser.dart' as html_parser;
-import 'dart:math';
+import 'dart:convert';
 import '../../../../core/error/failures.dart';
+import '../../../../core/network/translator.dart';
 import '../models/recipe_model.dart';
 
 abstract class RecipeRemoteDataSource {
@@ -14,107 +14,35 @@ abstract class RecipeRemoteDataSource {
 
 class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
   final http.Client client;
+  final Translator translator;
+  static const String _baseUrl = 'https://www.themealdb.com/api/json/v1/1';
 
-  RecipeRemoteDataSourceImpl({required this.client});
+  RecipeRemoteDataSourceImpl({
+    required this.client,
+    required this.translator,
+  });
 
   @override
   Future<RecipeModel> getRecipeFromWebsite(String recipeName) async {
     try {
-      // Search for recipe on nefisyemektarifleri.com
       final searchUrl =
-          'https://www.nefisyemektarifleri.com/?s=${Uri.encodeComponent(recipeName)}';
-      final searchResponse = await client.get(Uri.parse(searchUrl));
+          '$_baseUrl/search.php?s=${Uri.encodeComponent(recipeName)}';
+      final response = await client.get(Uri.parse(searchUrl));
 
-      if (searchResponse.statusCode != 200) {
+      if (response.statusCode != 200) {
         throw ServerFailure('Failed to fetch recipe');
       }
 
-      final searchDocument = html_parser.parse(searchResponse.body);
-      final recipeLinks = searchDocument.querySelectorAll('a.entry-title-link');
+      final jsonData = json.decode(response.body) as Map<String, dynamic>;
+      final meals = jsonData['meals'] as List<dynamic>?;
 
-      if (recipeLinks.isEmpty) {
-        throw NotFoundFailure('Recipe not found');
+      if (meals == null || meals.isEmpty) {
+        throw NotFoundFailure('Recipe not found: $recipeName');
       }
 
-      // Get first recipe link
-      final recipeUrl = recipeLinks.first.attributes['href'];
-      if (recipeUrl == null) {
-        throw NotFoundFailure('Recipe URL not found');
-      }
-
-      // Fetch recipe details
-      final recipeResponse = await client.get(Uri.parse(recipeUrl));
-      if (recipeResponse.statusCode != 200) {
-        throw ServerFailure('Failed to fetch recipe details');
-      }
-
-      final recipeDocument = html_parser.parse(recipeResponse.body);
-
-      // Extract recipe data
-      final title =
-          recipeDocument.querySelector('h1.entry-title')?.text ?? recipeName;
-      final description =
-          recipeDocument.querySelector('.entry-content p')?.text ?? '';
-
-      // Extract image
-      final imageElement = recipeDocument.querySelector('.entry-content img');
-      final imageUrl = imageElement?.attributes['src'] ?? '';
-
-      // Extract ingredients
-      final ingredients = <String>[];
-      final ingredientElements = recipeDocument.querySelectorAll(
-        '.malzemeler li, .ingredients li',
-      );
-      for (var element in ingredientElements) {
-        final text = element.text.trim();
-        if (text.isNotEmpty) {
-          ingredients.add(text);
-        }
-      }
-
-      // Extract instructions
-      final instructions = <String>[];
-      final instructionElements = recipeDocument.querySelectorAll(
-        '.tarif li, .instructions li, .yapilis li',
-      );
-      for (var element in instructionElements) {
-        final text = element.text.trim();
-        if (text.isNotEmpty) {
-          instructions.add(text);
-        }
-      }
-
-      // If no structured data found, try to extract from content
-      if (ingredients.isEmpty || instructions.isEmpty) {
-        final content = recipeDocument.querySelector('.entry-content');
-        if (content != null) {
-          final paragraphs = content.querySelectorAll('p');
-          for (var p in paragraphs) {
-            final text = p.text.trim();
-            if (text.toLowerCase().contains('malzeme') ||
-                text.toLowerCase().contains('gerekli')) {
-              // Try to extract ingredients from text
-            } else if (text.toLowerCase().contains('yapılış') ||
-                text.toLowerCase().contains('hazırlanış')) {
-              // Try to extract instructions from text
-            }
-          }
-        }
-      }
-
-      return RecipeModel(
-        id: recipeUrl,
-        name: title,
-        description: description,
-        imageUrl: imageUrl,
-        ingredients: ingredients.isEmpty
-            ? ['Malzeme bilgisi bulunamadı']
-            : ingredients,
-        instructions: instructions.isEmpty
-            ? ['Tarif detayları bulunamadı']
-            : instructions,
-      );
+      return await _parseMealToRecipe(meals.first as Map<String, dynamic>);
     } catch (e) {
+      if (e is Failure) rethrow;
       throw ServerFailure('Error fetching recipe: ${e.toString()}');
     }
   }
@@ -122,53 +50,21 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
   @override
   Future<RecipeModel> getRandomRecipeFromWebsite() async {
     try {
-      // Get popular/trending recipes page
-      final popularUrl = 'https://www.nefisyemektarifleri.com/trend/';
-      final response = await client.get(Uri.parse(popularUrl));
+      final randomUrl = '$_baseUrl/random.php';
+      final response = await client.get(Uri.parse(randomUrl));
 
       if (response.statusCode != 200) {
-        throw ServerFailure('Failed to fetch recipes');
+        throw ServerFailure('Failed to fetch random recipe');
       }
 
-      final document = html_parser.parse(response.body);
-      final recipeLinks = document.querySelectorAll(
-        'a.entry-title-link, a[href*="/tarif/"]',
-      );
+      final jsonData = json.decode(response.body) as Map<String, dynamic>;
+      final meals = jsonData['meals'] as List<dynamic>?;
 
-      if (recipeLinks.isEmpty) {
-        // Fallback: try main page
-        final mainPageResponse = await client.get(
-          Uri.parse('https://www.nefisyemektarifleri.com/'),
-        );
-        if (mainPageResponse.statusCode != 200) {
-          throw ServerFailure('Failed to fetch recipes');
-        }
-        final mainDocument = html_parser.parse(mainPageResponse.body);
-        final mainRecipeLinks = mainDocument.querySelectorAll(
-          'a.entry-title-link, a[href*="/tarif/"]',
-        );
-
-        if (mainRecipeLinks.isEmpty) {
-          throw NotFoundFailure('No recipes found');
-        }
-
-        final randomLink =
-            mainRecipeLinks[Random().nextInt(mainRecipeLinks.length)];
-        final recipeUrl = randomLink.attributes['href'];
-        if (recipeUrl == null) {
-          throw NotFoundFailure('Recipe URL not found');
-        }
-        return await _fetchRecipeDetails(recipeUrl);
+      if (meals == null || meals.isEmpty) {
+        throw NotFoundFailure('No random recipe found');
       }
 
-      // Select random recipe from popular recipes
-      final randomLink = recipeLinks[Random().nextInt(recipeLinks.length)];
-      final recipeUrl = randomLink.attributes['href'];
-      if (recipeUrl == null) {
-        throw NotFoundFailure('Recipe URL not found');
-      }
-
-      return await _fetchRecipeDetails(recipeUrl);
+      return await _parseMealToRecipe(meals.first as Map<String, dynamic>);
     } catch (e) {
       if (e is Failure) rethrow;
       throw ServerFailure('Error fetching random recipe: ${e.toString()}');
@@ -184,42 +80,57 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
         return [];
       }
 
-      // Create search query from ingredients
-      final searchQuery = ingredients.join(' ');
-      final searchUrl =
-          'https://www.nefisyemektarifleri.com/?s=${Uri.encodeComponent(searchQuery)}';
-      final searchResponse = await client.get(Uri.parse(searchUrl));
+      // TheMealDB API accepts one ingredient at a time for filtering
+      // We'll search with the first ingredient and then filter results
+      final firstIngredient = ingredients.first.toLowerCase().replaceAll(
+        ' ',
+        '_',
+      );
+      final filterUrl = '$_baseUrl/filter.php?i=$firstIngredient';
+      final response = await client.get(Uri.parse(filterUrl));
 
-      if (searchResponse.statusCode != 200) {
+      if (response.statusCode != 200) {
         throw ServerFailure('Failed to search recipes');
       }
 
-      final searchDocument = html_parser.parse(searchResponse.body);
-      final recipeLinks = searchDocument.querySelectorAll('a.entry-title-link');
+      final jsonData = json.decode(response.body) as Map<String, dynamic>;
+      final meals = jsonData['meals'] as List<dynamic>?;
 
-      if (recipeLinks.isEmpty) {
+      if (meals == null || meals.isEmpty) {
         return [];
       }
 
-      // Fetch first few recipes (limit to 5 for performance)
+      // Fetch details for each meal and filter by ingredients
       final recipes = <RecipeModel>[];
-      final maxRecipes = recipeLinks.length > 5 ? 5 : recipeLinks.length;
+      final maxRecipes = meals.length > 5 ? 5 : meals.length;
 
       for (var i = 0; i < maxRecipes; i++) {
         try {
-          final recipeUrl = recipeLinks[i].attributes['href'];
-          if (recipeUrl != null) {
-            final recipe = await _fetchRecipeDetails(recipeUrl);
-            // Check if recipe contains at least one of the ingredients
-            final recipeIngredientsLower = recipe.ingredients
-                .map((ing) => ing.toLowerCase())
-                .join(' ');
-            final hasIngredient = ingredients.any(
-              (ing) => recipeIngredientsLower.contains(ing.toLowerCase()),
-            );
+          final mealId = (meals[i] as Map<String, dynamic>)['idMeal'] as String;
+          final detailUrl = '$_baseUrl/lookup.php?i=$mealId';
+          final detailResponse = await client.get(Uri.parse(detailUrl));
 
-            if (hasIngredient) {
-              recipes.add(recipe);
+          if (detailResponse.statusCode == 200) {
+            final detailData =
+                json.decode(detailResponse.body) as Map<String, dynamic>;
+            final detailMeals = detailData['meals'] as List<dynamic>?;
+
+            if (detailMeals != null && detailMeals.isNotEmpty) {
+              final recipe = await _parseMealToRecipe(
+                detailMeals.first as Map<String, dynamic>,
+              );
+
+              // Check if recipe contains at least one of the requested ingredients
+              final recipeIngredientsLower = recipe.ingredients
+                  .map((ing) => ing.toLowerCase())
+                  .join(' ');
+              final hasIngredient = ingredients.any(
+                (ing) => recipeIngredientsLower.contains(ing.toLowerCase()),
+              );
+
+              if (hasIngredient) {
+                recipes.add(recipe);
+              }
             }
           }
         } catch (e) {
@@ -237,110 +148,63 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
     }
   }
 
-  Future<RecipeModel> _fetchRecipeDetails(String recipeUrl) async {
-    // Ensure URL is absolute
-    final fullUrl = recipeUrl.startsWith('http')
-        ? recipeUrl
-        : 'https://www.nefisyemektarifleri.com$recipeUrl';
-
-    final recipeResponse = await client.get(Uri.parse(fullUrl));
-    if (recipeResponse.statusCode != 200) {
-      throw ServerFailure('Failed to fetch recipe details');
-    }
-
-    final recipeDocument = html_parser.parse(recipeResponse.body);
-
-    // Extract recipe data
-    final title =
-        recipeDocument.querySelector('h1.entry-title')?.text ??
-        recipeDocument.querySelector('h1')?.text ??
-        'Tarif';
-    final description =
-        recipeDocument.querySelector('.entry-content p')?.text ??
-        recipeDocument.querySelector('.entry-excerpt')?.text ??
-        '';
-
-    // Extract image
-    final imageElement = recipeDocument.querySelector(
-      '.entry-content img, .recipe-image img, img.wp-post-image',
-    );
-    final imageUrl =
-        imageElement?.attributes['src'] ??
-        imageElement?.attributes['data-src'] ??
-        '';
-
-    // Extract ingredients
+  Future<RecipeModel> _parseMealToRecipe(Map<String, dynamic> meal) async {
+    // Extract ingredients and measures
     final ingredients = <String>[];
-    final ingredientElements = recipeDocument.querySelectorAll(
-      '.malzemeler li, .ingredients li, .recipe-ingredients li, ul.malzemeler li',
-    );
-    for (var element in ingredientElements) {
-      final text = element.text.trim();
-      if (text.isNotEmpty && !text.toLowerCase().contains('malzeme')) {
-        ingredients.add(text);
+    for (var i = 1; i <= 20; i++) {
+      final ingredient = meal['strIngredient$i'] as String?;
+      final measure = meal['strMeasure$i'] as String?;
+
+      if (ingredient != null && ingredient.isNotEmpty) {
+        final ingredientText = measure != null && measure.isNotEmpty
+            ? '$measure $ingredient'
+            : ingredient;
+        ingredients.add(ingredientText.trim());
       }
     }
 
-    // Extract instructions
+    // Extract instructions and split by newlines or numbers
+    final instructionsText = meal['strInstructions'] as String? ?? '';
     final instructions = <String>[];
-    final instructionElements = recipeDocument.querySelectorAll(
-      '.tarif li, .instructions li, .yapilis li, .recipe-steps li, ol.tarif li, ul.tarif li',
+
+    if (instructionsText.isNotEmpty) {
+      // Split by numbered steps or newlines
+      final lines = instructionsText
+          .split(RegExp(r'\n+|\d+\.'))
+          .map((line) => line.trim())
+          .where((line) => line.isNotEmpty)
+          .toList();
+
+      if (lines.isNotEmpty) {
+        instructions.addAll(lines);
+      } else {
+        // If no clear separation, use the whole text
+        instructions.add(instructionsText);
+      }
+    }
+
+    // Translate to Turkish
+    final name = meal['strMeal'] as String? ?? 'Unknown Recipe';
+    final translatedName = await translator.translateToTurkish(name);
+    
+    final category = meal['strCategory'] as String? ?? '';
+    final area = meal['strArea'] as String? ?? '';
+    final description = category.isNotEmpty
+        ? '${await translator.translateToTurkish(category)}${area.isNotEmpty ? ' - ${await translator.translateToTurkish(area)}' : ''}'
+        : '';
+    
+    final translatedIngredients = await translator.translateListToTurkish(ingredients);
+    final translatedInstructions = await translator.translateListToTurkish(
+      instructions.isEmpty ? ['Tarif detayları bulunamadı'] : instructions,
     );
-    for (var element in instructionElements) {
-      final text = element.text.trim();
-      if (text.isNotEmpty && !text.toLowerCase().contains('yapılış')) {
-        instructions.add(text);
-      }
-    }
-
-    // If no structured data found, try to extract from content paragraphs
-    if (ingredients.isEmpty || instructions.isEmpty) {
-      final content = recipeDocument.querySelector('.entry-content');
-      if (content != null) {
-        final paragraphs = content.querySelectorAll('p');
-        bool inIngredientsSection = false;
-        bool inInstructionsSection = false;
-
-        for (var p in paragraphs) {
-          final text = p.text.trim();
-          final lowerText = text.toLowerCase();
-
-          if (lowerText.contains('malzeme') || lowerText.contains('gerekli')) {
-            inIngredientsSection = true;
-            inInstructionsSection = false;
-            continue;
-          } else if (lowerText.contains('yapılış') ||
-              lowerText.contains('hazırlanış') ||
-              lowerText.contains('tarif')) {
-            inIngredientsSection = false;
-            inInstructionsSection = true;
-            continue;
-          }
-
-          if (inIngredientsSection &&
-              text.isNotEmpty &&
-              ingredients.length < 20) {
-            ingredients.add(text);
-          } else if (inInstructionsSection &&
-              text.isNotEmpty &&
-              instructions.length < 20) {
-            instructions.add(text);
-          }
-        }
-      }
-    }
 
     return RecipeModel(
-      id: fullUrl,
-      name: title,
+      id: meal['idMeal'] as String? ?? '',
+      name: translatedName,
       description: description,
-      imageUrl: imageUrl,
-      ingredients: ingredients.isEmpty
-          ? ['Malzeme bilgisi bulunamadı']
-          : ingredients,
-      instructions: instructions.isEmpty
-          ? ['Tarif detayları bulunamadı']
-          : instructions,
+      imageUrl: meal['strMealThumb'] as String? ?? '',
+      ingredients: translatedIngredients,
+      instructions: translatedInstructions,
     );
   }
 }
