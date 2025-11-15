@@ -9,9 +9,10 @@ flutter_*.png
 # Generated plugin registrant
 lib/generated_plugin_registrant.dart
 
-# IntelliJ / Android Studio
+# IDE specific
 *.iml
 .idea/
+.cursor/
 *.ipr
 *.iws
 
