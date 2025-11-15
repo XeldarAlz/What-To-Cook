@@ -12,11 +12,9 @@ class IngredientCategory {
 
 class IngredientItem {
   final String turkishName;
-  final String englishName; // For TheMealDB API
 
   const IngredientItem({
     required this.turkishName,
-    required this.englishName,
   });
 }
 

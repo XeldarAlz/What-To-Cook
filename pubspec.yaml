@@ -47,13 +47,6 @@ dependencies:
   # Dependency Injection
   get_it: ^7.7.0
   
-  # Network
-  http: ^1.2.2
-  connectivity_plus: ^6.1.0
-  
-  # HTML Parsing (for scraping recipes)
-  html: ^0.15.4
-  
   # Cached Network Image
   cached_network_image: ^3.3.1
 
