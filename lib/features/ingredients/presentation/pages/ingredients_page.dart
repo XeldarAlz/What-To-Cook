@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/injection/injection.dart';
+import '../../../../core/utils/category_utils.dart';
 import '../../../../core/error/failures.dart';
 import '../bloc/ingredients_bloc.dart';
 import '../bloc/ingredients_state.dart';
@@ -59,19 +60,6 @@ class IngredientsPage extends StatelessWidget {
     );
   }
 
-  String _getCategoryName(RecipeCategory? category) {
-    if (category == null) return 'Tümü';
-    switch (category) {
-      case RecipeCategory.kahvalti:
-        return 'Kahvaltı';
-      case RecipeCategory.ogleYemegi:
-        return 'Öğle Yemeği';
-      case RecipeCategory.aksamYemegi:
-        return 'Akşam Yemeği';
-      case RecipeCategory.tatli:
-        return 'Tatlı';
-    }
-  }
 
   Widget _buildIngredientsSelectionView(
     BuildContext context,
@@ -202,7 +190,7 @@ class IngredientsPage extends StatelessWidget {
                                     final isSelected = selectedCategory == category;
                                     return FilterChip(
                                       selected: isSelected,
-                                      label: Text(_getCategoryName(category)),
+                                      label: Text(CategoryUtils.getCategoryName(category)),
                                       onSelected: (selected) {
                                         context.read<IngredientsBloc>().add(
                                           IngredientsEvent.selectCategory(selected ? category : null),

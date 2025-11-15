@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/constants/app_constants.dart';
 import '../../../../core/injection/injection.dart';
+import '../../../../core/utils/category_utils.dart';
 import '../../../../core/error/failures.dart';
 import '../../domain/entities/recipe.dart';
 import '../bloc/recipe_bloc.dart';
@@ -19,6 +21,7 @@ class RandomRecipePage extends StatefulWidget {
 class _RandomRecipePageState extends State<RandomRecipePage> {
   RecipeCategory? _selectedCategory;
   final ScrollController _scrollController = ScrollController();
+  bool _isGoingBack = false;
 
   @override
   void dispose() {
@@ -26,82 +29,161 @@ class _RandomRecipePageState extends State<RandomRecipePage> {
     super.dispose();
   }
 
-  String _getCategoryName(RecipeCategory category) {
-    switch (category) {
-      case RecipeCategory.kahvalti:
-        return 'Kahvaltı';
-      case RecipeCategory.ogleYemegi:
-        return 'Öğle Yemeği';
-      case RecipeCategory.aksamYemegi:
-        return 'Akşam Yemeği';
-      case RecipeCategory.tatli:
-        return 'Tatlı';
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => getIt<RecipeBloc>(),
-      child: Scaffold(
-        body: SafeArea(
-          child: BlocListener<RecipeBloc, RecipeState>(
-            listener: (context, state) {
-              // When a new recipe is loaded, scroll to top smoothly
-              state.maybeWhen(
-                loaded: (_) {
-                  if (_scrollController.hasClients) {
-                    _scrollController.animateTo(
-                      0,
-                      duration: const Duration(milliseconds: 300),
-                      curve: Curves.easeInOut,
-                    );
-                  }
-                },
-                orElse: () {},
-              );
-            },
-            child: BlocBuilder<RecipeBloc, RecipeState>(
-              builder: (context, state) {
-                return state.maybeWhen(
-                  initial: () => _buildInitialView(context),
-                  loading: () => const LoadingAnimationWidget(),
-                  loaded: (recipe) => RecipeDetailWidget(
-                    recipe: recipe,
-                    scrollController: _scrollController,
-                    onRefresh: () {
-                      if (_selectedCategory != null) {
-                        final bloc = context.read<RecipeBloc>();
-                        // Scroll to top smoothly before loading new recipe
+      child: BlocBuilder<RecipeBloc, RecipeState>(
+        builder: (context, state) {
+          return Scaffold(
+            appBar: state.maybeWhen(
+              loaded: (_) => AppBar(
+                leading: IconButton(
+                  icon: const Icon(Icons.arrow_back),
+                  onPressed: () {
+                    final bloc = context.read<RecipeBloc>();
+                    // Set flag to indicate we're going back
+                    setState(() {
+                      _isGoingBack = true;
+                    });
+                    // Scroll to top first for smooth transition
+                    if (_scrollController.hasClients) {
+                      _scrollController.animateTo(
+                        0,
+                        duration: AppConstants.scrollAnimationDuration,
+                        curve: Curves.easeInOut,
+                      );
+                    }
+                    // Then reset after a short delay for smooth animation
+                    Future.delayed(AppConstants.resetAfterScrollDelay, () {
+                      if (mounted) {
+                        bloc.add(
+                          const RecipeEvent.reset(),
+                        );
+                      }
+                    });
+                  },
+                  tooltip: 'Geri',
+                ),
+                title: const Text('Tarif'),
+                elevation: 0,
+              ),
+              orElse: () => AppBar(
+                title: const Text('Bugün Ne Pişirsek?'),
+                elevation: 0,
+                centerTitle: true,
+              ),
+            ),
+            body: SafeArea(
+              child: BlocListener<RecipeBloc, RecipeState>(
+                listener: (context, state) {
+                  // When a new recipe is loaded, scroll to top smoothly
+                  state.maybeWhen(
+                    loaded: (_) {
+                      if (_scrollController.hasClients) {
                         _scrollController.animateTo(
                           0,
                           duration: const Duration(milliseconds: 300),
                           curve: Curves.easeInOut,
                         );
-                        // Wait a bit for scroll animation, then load new recipe
-                        Future.delayed(const Duration(milliseconds: 100), () {
+                      }
+                    },
+                    orElse: () {},
+                  );
+                },
+                child: AnimatedSwitcher(
+                  duration: AppConstants.stateTransitionDuration,
+                  switchInCurve: Curves.easeOut,
+                  switchOutCurve: Curves.easeIn,
+                  transitionBuilder: (child, animation) {
+                    return FadeTransition(
+                      opacity: CurvedAnimation(
+                        parent: animation,
+                        curve: Curves.easeInOut,
+                      ),
+                      child: SlideTransition(
+                        position: Tween<Offset>(
+                          begin: _isGoingBack 
+                              ? const Offset(1.0, 0.0) // Slide from right when going back
+                              : const Offset(0.0, 0.05), // Slide from bottom when going forward
+                          end: Offset.zero,
+                        ).animate(
+                          CurvedAnimation(
+                            parent: animation,
+                            curve: Curves.easeOutCubic,
+                          ),
+                        ),
+                        child: child,
+                      ),
+                    );
+                  },
+                  child: state.maybeWhen(
+                    initial: () {
+                      // Reset flag when we reach initial state
+                      if (_isGoingBack) {
+                        WidgetsBinding.instance.addPostFrameCallback((_) {
                           if (mounted) {
-                            bloc.add(
-                              RecipeEvent.getRandomRecipe(_selectedCategory),
-                            );
+                            setState(() {
+                              _isGoingBack = false;
+                            });
                           }
                         });
                       }
+                      return _buildInitialView(context);
                     },
+                    loading: () {
+                      // Reset flag when loading starts (going forward)
+                      if (_isGoingBack) {
+                        WidgetsBinding.instance.addPostFrameCallback((_) {
+                          if (mounted) {
+                            setState(() {
+                              _isGoingBack = false;
+                            });
+                          }
+                        });
+                      }
+                      return const LoadingAnimationWidget(key: ValueKey('loading'));
+                    },
+                    loaded: (recipe) => RecipeDetailWidget(
+                      key: ValueKey(recipe.id),
+                      recipe: recipe,
+                      scrollController: _scrollController,
+                      onRefresh: () {
+                        if (_selectedCategory != null) {
+                          final bloc = context.read<RecipeBloc>();
+                          // Scroll to top smoothly before loading new recipe
+                          _scrollController.animateTo(
+                            0,
+                            duration: AppConstants.scrollAnimationDuration,
+                            curve: Curves.easeInOut,
+                          );
+                          // Wait a bit for scroll animation, then load new recipe
+                          Future.delayed(AppConstants.loadRecipeAfterScrollDelay, () {
+                            if (mounted) {
+                              bloc.add(
+                                RecipeEvent.getRandomRecipe(_selectedCategory),
+                              );
+                            }
+                          });
+                        }
+                      },
+                    ),
+                    error: (failure) => _buildErrorView(context, failure, key: ValueKey('error')),
+                    orElse: () => _buildInitialView(context, key: const ValueKey('initial')),
                   ),
-                  error: (failure) => _buildErrorView(context, failure),
-                  orElse: () => _buildInitialView(context),
-                );
-              },
+                ),
+              ),
             ),
-          ),
-        ),
+          );
+        },
       ),
     );
   }
 
-  Widget _buildInitialView(BuildContext context) {
+  Widget _buildInitialView(BuildContext context, {Key? key}) {
     return Center(
+      key: key,
       child: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 32.0),
@@ -187,7 +269,7 @@ class _RandomRecipePageState extends State<RandomRecipePage> {
                           label: Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 8),
                             child: Text(
-                              _getCategoryName(category),
+                              CategoryUtils.getCategoryName(category),
                               style: TextStyle(
                                 fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
                               ),
@@ -240,8 +322,9 @@ class _RandomRecipePageState extends State<RandomRecipePage> {
     );
   }
 
-  Widget _buildErrorView(BuildContext context, Failure failure) {
+  Widget _buildErrorView(BuildContext context, Failure failure, {Key? key}) {
     return Center(
+      key: key,
       child: Padding(
         padding: const EdgeInsets.all(24.0),
         child: Column(

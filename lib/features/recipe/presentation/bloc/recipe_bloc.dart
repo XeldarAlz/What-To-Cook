@@ -17,6 +17,7 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
       await event.map(
         getRandomRecipe: (e) async => await _onGetRandomRecipe(e.category, emit),
         getRecipeByName: (e) async => await _onGetRecipeByName(e.name, emit),
+        reset: (_) async => emit(const RecipeState.initial()),
       );
     });
   }

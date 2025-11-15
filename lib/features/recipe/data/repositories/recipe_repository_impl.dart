@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import '../../../../core/constants/app_constants.dart';
 import '../../../../core/error/failures.dart';
 import '../../domain/entities/recipe.dart';
 import '../../domain/repositories/recipe_repository.dart';
@@ -22,6 +23,12 @@ class RecipeRepositoryImpl implements RecipeRepository {
         return const Left(ValidationFailure('Kategori seçmelisiniz'));
       }
 
+      // Add fake delay for better UX (1-2 seconds)
+      await Future.delayed(Duration(
+        milliseconds: AppConstants.recipeFetchBaseDelayMs +
+            (DateTime.now().millisecond % AppConstants.recipeFetchRandomDelayMs),
+      ));
+
       final shownIds = _shownRecipeIds[category] ?? [];
       final recipe = localDataSource.getRandomRecipeByCategory(category, shownIds);
       
@@ -31,8 +38,8 @@ class RecipeRepositoryImpl implements RecipeRepository {
       }
       _shownRecipeIds[category]!.add(recipe.id);
       
-      // Keep last 15 shown recipes per category
-      if (_shownRecipeIds[category]!.length > 15) {
+      // Keep last N shown recipes per category
+      if (_shownRecipeIds[category]!.length > AppConstants.maxShownRecipesPerCategory) {
         _shownRecipeIds[category]!.removeAt(0);
       }
 

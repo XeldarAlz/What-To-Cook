@@ -7,5 +7,6 @@ part 'recipe_event.freezed.dart';
 class RecipeEvent with _$RecipeEvent {
   const factory RecipeEvent.getRandomRecipe(RecipeCategory? category) = _GetRandomRecipe;
   const factory RecipeEvent.getRecipeByName(String name) = _GetRecipeByName;
+  const factory RecipeEvent.reset() = _Reset;
 }
 
