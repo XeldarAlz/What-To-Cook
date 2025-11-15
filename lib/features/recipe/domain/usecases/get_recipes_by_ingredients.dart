@@ -8,8 +8,11 @@ class GetRecipesByIngredients {
 
   GetRecipesByIngredients(this.repository);
 
-  Future<Either<Failure, List<Recipe>>> call(List<String> ingredients) async {
-    return await repository.getRecipesByIngredients(ingredients);
+  Future<Either<Failure, List<Recipe>>> call(
+    List<String> ingredients,
+    RecipeCategory? category,
+  ) async {
+    return await repository.getRecipesByIngredients(ingredients, category);
   }
 }
 

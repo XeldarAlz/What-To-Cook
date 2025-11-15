@@ -8,8 +8,8 @@ class GetRandomRecipe {
 
   GetRandomRecipe(this.repository);
 
-  Future<Either<Failure, Recipe>> call() async {
-    return await repository.getRandomRecipe();
+  Future<Either<Failure, Recipe>> call(RecipeCategory? category) async {
+    return await repository.getRandomRecipe(category);
   }
 }
 
