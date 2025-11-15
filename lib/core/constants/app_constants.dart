@@ -40,7 +40,17 @@ class AppConstants {
   static const double dotAlphaMin = 0.3;
   static const double dotAlphaMax = 0.7;
   
-  static const String recipesJsonUrl = 'https://raw.githubusercontent.com/XeldarAlz/What-To-Cook/main/data/recipes.json';
+  static const String recipesBaseUrl = 'https://raw.githubusercontent.com/XeldarAlz/What-To-Cook/main/data';
+  static const String recipesKahvaltiUrl = '$recipesBaseUrl/recipes_kahvalti.json';
+  static const String recipesOgleUrl = '$recipesBaseUrl/recipes_ogle.json';
+  static const String recipesAksamUrl = '$recipesBaseUrl/recipes_aksam.json';
+  static const String recipesTatliUrl = '$recipesBaseUrl/recipes_tatli.json';
+  static const List<String> recipesJsonUrls = [
+    recipesKahvaltiUrl,
+    recipesOgleUrl,
+    recipesAksamUrl,
+    recipesTatliUrl,
+  ];
   static const String recipesCacheKey = 'recipes_cache';
   static const String recipesCacheTimestampKey = 'recipes_cache_timestamp';
   static const Duration recipesCacheDuration = Duration(hours: 24);
