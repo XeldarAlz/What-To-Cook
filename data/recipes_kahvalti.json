@@ -3,7 +3,7 @@
     "id": "kahvalti_1",
     "name": "Menemen",
     "description": "Klasik Türk kahvaltısı",
-    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "imageUrl": "https://cdn.yemek.com/mnresize/1250/833/uploads/2023/10/soganli-menemen-yemekcom.jpg",
     "ingredients": [
       "4 adet yumurta",
       "2 adet domates",
@@ -33,7 +33,7 @@
     "id": "kahvalti_2",
     "name": "Sucuklu Yumurta",
     "description": "Lezzetli kahvaltı seçeneği",
-    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "imageUrl": "https://cdn.yemek.com/mncrop/600/315/uploads/2015/01/sucuklu-yumurta-asama-1.jpg",
     "ingredients": [
       "4 adet yumurta",
       "100 gram sucuk",
@@ -57,7 +57,7 @@
     "id": "kahvalti_3",
     "name": "Peynirli Omlet",
     "description": "Kahvaltı için pratik omlet",
-    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "imageUrl": "https://cdn.yemek.com/mncrop/600/315/uploads/2018/08/peynirli-omlet-asama-9.jpg",
     "ingredients": [
       "3 adet yumurta",
       "50 gram beyaz peynir",
@@ -83,7 +83,7 @@
     "id": "kahvalti_4",
     "name": "Kaşarlı Tost",
     "description": "Klasik Türk tostu",
-    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "imageUrl": "https://cdn.yemek.com/mncrop/940/625/uploads/2020/02/pahali-tost-yemekcom.jpg",
     "ingredients": [
       "4 dilim ekmek",
       "100 gram kaşar peyniri",
@@ -107,7 +107,7 @@
     "id": "kahvalti_5",
     "name": "Beyaz Peynirli Börek",
     "description": "Kahvaltı için börek",
-    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "imageUrl": "https://cdn.yemek.com/mncrop/940/625/uploads/2020/01/peynirli-borek-yemekcom.jpg",
     "ingredients": [
       "4 yufka",
       "300 gram beyaz peynir",
@@ -133,7 +133,7 @@
     "id": "kahvalti_6",
     "name": "Simit",
     "description": "Klasik Türk simidi",
-    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "imageUrl": "https://cdn.yemek.com/mnresize/1250/833/uploads/2017/11/ev-yapimi-sokak-simidi-yemekcom.jpg",
     "ingredients": [
       "500 gram un",
       "1 paket maya",
@@ -160,7 +160,7 @@
     "id": "kahvalti_7",
     "name": "Peynirli Poğaça",
     "description": "Kahvaltı için poğaça",
-    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "imageUrl": "https://cdn.yemek.com/mnresize/1250/833/uploads/2020/11/peynirli-pogaca-zehra.jpg",
     "ingredients": [
       "500 gram un",
       "1 paket maya",
@@ -187,7 +187,7 @@
     "id": "kahvalti_8",
     "name": "Zeytinli Ekmek",
     "description": "Kahvaltı için zeytinli ekmek",
-    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "imageUrl": "https://cdn.yemek.com/mnresize/1250/833/uploads/2024/01/zeytinli-ekmek-yemekcom.jpg",
     "ingredients": [
       "500 gram un",
       "1 paket maya",
@@ -211,59 +211,10 @@
     "servings": 8
   },
   {
-    "id": "kahvalti_9",
-    "name": "Bal Kaymak",
-    "description": "Klasik Türk kahvaltısı",
-    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
-    "ingredients": [
-      "200 gram kaymak",
-      "100 gram bal",
-      "Ekmek"
-    ],
-    "instructions": [
-      "200 gram kaymağı servis tabağına veya küçük kaselere alın. Kaymak buzdolabından çıkarıldıktan sonra 10 dakika oda sıcaklığında bekletilirse daha yumuşak olur.",
-      "Kaymağın üzerine 100 gram balı dökün. Balı kaymağın üzerine güzel bir şekilde yayın.",
-      "Taze ekmek dilimlerini hazırlayın. Ekmekler çok sıcak olmamalı, ılık olmalı.",
-      "Ekmek dilimlerini kaymak ve balın yanına koyun. İsterseniz kaymağı ekmeğin üzerine sürüp balı da üzerine dökebilirsiniz.",
-      "Hemen servis edin. Yanında çay ile harika olur."
-    ],
-    "category": "kahvalti",
-    "prepTime": 2,
-    "cookTime": 0,
-    "servings": 2
-  },
-  {
-    "id": "kahvalti_10",
-    "name": "Çılbır",
-    "description": "Yoğurtlu yumurta",
-    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
-    "ingredients": [
-      "4 adet yumurta",
-      "200 gram yoğurt",
-      "2 diş sarımsak",
-      "2 yemek kaşığı tereyağı",
-      "Kırmızı biber",
-      "Tuz"
-    ],
-    "instructions": [
-      "200 gram yoğurdu bir kaseye alın. 2 diş sarımsağı ezin veya rendeleyin ve yoğurda ekleyin.",
-      "Yoğurda tuz ekleyin ve iyice karıştırın. Sarımsaklı yoğurt hazır olana kadar bekleyin.",
-      "4 adet yumurtayı kaynar suya koyun ve 6-7 dakika haşlayın. Yumurtaların sarısı hafif akışkan kalmalı.",
-      "Haşlanan yumurtaları soğuk suya alın ve soğutun. Sonra kabuklarını soyun.",
-      "Geniş bir tavada 2 yemek kaşığı tereyağını eritin. Tereyağı eridikten sonra kırmızı biber ekleyin ve 30 saniye kavurun.",
-      "Yoğurdu servis tabaklarına paylaştırın. Her tabağa 2 yumurta yerleştirin.",
-      "Tereyağlı kırmızı biberi yumurtaların üzerine dökün. Sıcak servis edin. Yanında taze ekmek ile harika olur."
-    ],
-    "category": "kahvalti",
-    "prepTime": 10,
-    "cookTime": 10,
-    "servings": 2
-  },
-  {
     "id": "kahvalti_11",
     "name": "Patatesli Börek",
     "description": "Kahvaltı için patatesli börek",
-    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "imageUrl": "https://cdn.yemek.com/mncrop/940/625/uploads/2015/01/patatesli-borek-tarif-son.jpg",
     "ingredients": [
       "4 yufka",
       "3 adet patates",
@@ -290,7 +241,7 @@
     "id": "kahvalti_12",
     "name": "Krep",
     "description": "Kahvaltı için krep",
-    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "imageUrl": "https://cdn.yemek.com/mncrop/940/625/uploads/2015/10/krep-yemekcom.jpg",
     "ingredients": [
       "2 su bardağı un",
       "2 yumurta",
@@ -317,7 +268,7 @@
     "id": "kahvalti_13",
     "name": "Peynirli Gözleme",
     "description": "Klasik gözleme",
-    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "imageUrl": "https://cdn.yemek.com/mncrop/940/625/uploads/2017/12/peynirli-gozleme-buyuk.jpg",
     "ingredients": [
       "500 gram un",
       "200 gram beyaz peynir",
@@ -343,7 +294,7 @@
     "id": "kahvalti_14",
     "name": "Sucuklu Börek",
     "description": "Kahvaltı için sucuklu börek",
-    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "imageUrl": "https://cdn.yemek.com/mnresize/1250/833/uploads/2020/12/sucuklu-borek-tarifi.jpg",
     "ingredients": [
       "4 yufka",
       "200 gram sucuk",
@@ -368,7 +319,7 @@
     "id": "kahvalti_15",
     "name": "Mercimek Köftesi",
     "description": "Kahvaltı için mercimek köftesi",
-    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "imageUrl": "https://cdn.yemek.com/mncrop/940/625/uploads/2014/06/mercimek-koftesi-yeni-ytk.jpg",
     "ingredients": [
       "1 su bardağı kırmızı mercimek",
       "1 adet soğan",
@@ -395,7 +346,7 @@
     "id": "kahvalti_16",
     "name": "Peynirli Muffin",
     "description": "Kahvaltı için peynirli muffin",
-    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "imageUrl": "https://cdn.yemek.com/mncrop/940/625/uploads/2021/02/peynirli-muffin-ayten.jpg",
     "ingredients": [
       "2 su bardağı un",
       "2 yumurta",
@@ -422,7 +373,7 @@
     "id": "kahvalti_17",
     "name": "Zeytin Ezmesi",
     "description": "Kahvaltı için zeytin ezmesi",
-    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "imageUrl": "https://cdn.yemek.com/mncrop/940/625/uploads/2019/01/zeytin-ezmesi-tarifi.jpg",
     "ingredients": [
       "200 gram siyah zeytin",
       "2 diş sarımsak",
@@ -446,7 +397,7 @@
     "id": "kahvalti_18",
     "name": "Peynirli Omlet Sandviç",
     "description": "Kahvaltı için omlet sandviç",
-    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "imageUrl": "https://cdn.yemek.com/mnresize/1250/833/uploads/2021/06/sandvic-omlet-tarifi-1.jpg",
     "ingredients": [
       "4 dilim ekmek",
       "3 yumurta",
@@ -468,32 +419,10 @@
     "servings": 2
   },
   {
-    "id": "kahvalti_19",
-    "name": "Tereyağlı Yumurta",
-    "description": "Klasik tereyağlı yumurta",
-    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
-    "ingredients": [
-      "4 adet yumurta",
-      "2 yemek kaşığı tereyağı",
-      "Tuz, karabiber"
-    ],
-    "instructions": [
-      "Geniş bir tavaya 2 yemek kaşığı tereyağını koyun ve orta-düşük ateşte eritin. Tereyağı erirken köpürmeye başlayacaktır.",
-      "4 adet yumurtayı bir kaseye kırın. Yumurtaları çırpmadan doğrudan tavaya kırabilirsiniz veya önce kaseye kırıp sonra tavaya dökebilirsiniz.",
-      "Yumurtaları tavaya kırın. Yumurtaların sarısının dağılmamasına dikkat edin. Tereyağı yumurtaların etrafına yayılmalı.",
-      "Yumurtaların beyazı pişmeye başladığında, tuz ve karabiber ekleyin. Yumurtaların sarısını istediğiniz kıvamda pişirin - akışkan veya katı.",
-      "Yumurtalar piştiğinde, tavayı ocaktan alın ve tabağa alın. Sıcak servis edin. Yanında taze ekmek ve çay ile harika olur."
-    ],
-    "category": "kahvalti",
-    "prepTime": 3,
-    "cookTime": 5,
-    "servings": 2
-  },
-  {
     "id": "kahvalti_20",
     "name": "Peynirli Krep",
     "description": "Kahvaltı için peynirli krep",
-    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "imageUrl": "https://cdn.yemek.com/mnresize/1250/833/uploads/2014/12/peynirli-krep-yeni-one-cikan.jpg",
     "ingredients": [
       "2 su bardağı un",
       "2 yumurta",
