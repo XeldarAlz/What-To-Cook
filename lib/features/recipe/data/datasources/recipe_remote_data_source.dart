@@ -81,32 +81,46 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
       }
 
       // TheMealDB API accepts one ingredient at a time for filtering
-      // We'll search with the first ingredient and then filter results
-      final firstIngredient = ingredients.first.toLowerCase().replaceAll(
-        ' ',
-        '_',
-      );
-      final filterUrl = '$_baseUrl/filter.php?i=$firstIngredient';
-      final response = await client.get(Uri.parse(filterUrl));
+      // Try multiple ingredients and combine results
+      final allMealIds = <String>{};
+      
+      // Search with each ingredient and collect meal IDs
+      for (final ingredient in ingredients.take(3)) {
+        // Limit to first 3 ingredients to avoid too many API calls
+        try {
+          final ingredientFormatted = ingredient.toLowerCase().replaceAll(' ', '_');
+          final filterUrl = '$_baseUrl/filter.php?i=$ingredientFormatted';
+          final response = await client.get(Uri.parse(filterUrl));
 
-      if (response.statusCode != 200) {
-        throw ServerFailure('Failed to search recipes');
+          if (response.statusCode == 200) {
+            final jsonData = json.decode(response.body) as Map<String, dynamic>;
+            final meals = jsonData['meals'] as List<dynamic>?;
+
+            if (meals != null && meals.isNotEmpty) {
+              for (final meal in meals) {
+                final mealId = (meal as Map<String, dynamic>)['idMeal'] as String;
+                allMealIds.add(mealId);
+              }
+            }
+          }
+        } catch (e) {
+          // Continue with next ingredient if one fails
+          continue;
+        }
       }
 
-      final jsonData = json.decode(response.body) as Map<String, dynamic>;
-      final meals = jsonData['meals'] as List<dynamic>?;
-
-      if (meals == null || meals.isEmpty) {
+      if (allMealIds.isEmpty) {
         return [];
       }
 
-      // Fetch details for each meal and filter by ingredients
+      // Fetch details for meals and filter by all ingredients
       final recipes = <RecipeModel>[];
-      final maxRecipes = meals.length > 5 ? 5 : meals.length;
+      final mealIdsList = allMealIds.toList();
+      final maxRecipes = mealIdsList.length > 10 ? 10 : mealIdsList.length;
 
       for (var i = 0; i < maxRecipes; i++) {
         try {
-          final mealId = (meals[i] as Map<String, dynamic>)['idMeal'] as String;
+          final mealId = mealIdsList[i];
           final detailUrl = '$_baseUrl/lookup.php?i=$mealId';
           final detailResponse = await client.get(Uri.parse(detailUrl));
 
@@ -116,20 +130,31 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
             final detailMeals = detailData['meals'] as List<dynamic>?;
 
             if (detailMeals != null && detailMeals.isNotEmpty) {
-              final recipe = await _parseMealToRecipe(
-                detailMeals.first as Map<String, dynamic>,
-              );
+              final mealData = detailMeals.first as Map<String, dynamic>;
+              
+              // Check if meal contains any of the requested ingredients
+              bool containsIngredient = false;
+              for (var j = 1; j <= 20; j++) {
+                final mealIngredient = mealData['strIngredient$j'] as String?;
+                if (mealIngredient != null && mealIngredient.isNotEmpty) {
+                  final mealIngredientLower = mealIngredient.toLowerCase();
+                  if (ingredients.any((ing) => 
+                      mealIngredientLower.contains(ing.toLowerCase()) ||
+                      ing.toLowerCase().contains(mealIngredientLower))) {
+                    containsIngredient = true;
+                    break;
+                  }
+                }
+              }
 
-              // Check if recipe contains at least one of the requested ingredients
-              final recipeIngredientsLower = recipe.ingredients
-                  .map((ing) => ing.toLowerCase())
-                  .join(' ');
-              final hasIngredient = ingredients.any(
-                (ing) => recipeIngredientsLower.contains(ing.toLowerCase()),
-              );
-
-              if (hasIngredient) {
+              if (containsIngredient) {
+                final recipe = await _parseMealToRecipe(mealData);
                 recipes.add(recipe);
+                
+                // Limit to 5 recipes for performance
+                if (recipes.length >= 5) {
+                  break;
+                }
               }
             }
           }
@@ -183,20 +208,51 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
       }
     }
 
-    // Translate to Turkish
+    // Translate to Turkish in parallel for better performance
     final name = meal['strMeal'] as String? ?? 'Unknown Recipe';
-    final translatedName = await translator.translateToTurkish(name);
-    
     final category = meal['strCategory'] as String? ?? '';
     final area = meal['strArea'] as String? ?? '';
+    
+    // Translate name, category, and area in parallel
+    final nameCategoryAreaTranslations = await Future.wait([
+      translator.translateToTurkish(name),
+      category.isNotEmpty ? translator.translateToTurkish(category) : Future.value(''),
+      area.isNotEmpty ? translator.translateToTurkish(area) : Future.value(''),
+    ]);
+    
+    final translatedName = nameCategoryAreaTranslations[0];
+    final translatedCategory = nameCategoryAreaTranslations[1];
+    final translatedArea = nameCategoryAreaTranslations[2];
+    
     final description = category.isNotEmpty
-        ? '${await translator.translateToTurkish(category)}${area.isNotEmpty ? ' - ${await translator.translateToTurkish(area)}' : ''}'
+        ? '$translatedCategory${area.isNotEmpty ? ' - $translatedArea' : ''}'
         : '';
     
+    // Optimize instruction translation: if instructions are long, 
+    // translate as a single text for better performance
+    final List<String> translatedInstructions;
+    if (instructions.isEmpty) {
+      translatedInstructions = ['Tarif detayları bulunamadı'];
+    } else if (instructions.length <= 3) {
+      // Short instructions: translate individually for better quality
+      translatedInstructions = await translator.translateListToTurkish(instructions);
+    } else {
+      // Long instructions: join and translate as one text for speed
+      final joinedInstructions = instructions.join('\n');
+      final translatedText = await translator.translateToTurkish(joinedInstructions);
+      // Split back by newlines or periods
+      final splitInstructions = translatedText
+          .split(RegExp(r'\n+|\.\s+'))
+          .map((line) => line.trim())
+          .where((line) => line.isNotEmpty)
+          .toList();
+      translatedInstructions = splitInstructions.isEmpty 
+          ? [translatedText] 
+          : splitInstructions;
+    }
+    
+    // Translate ingredients in parallel with instructions
     final translatedIngredients = await translator.translateListToTurkish(ingredients);
-    final translatedInstructions = await translator.translateListToTurkish(
-      instructions.isEmpty ? ['Tarif detayları bulunamadı'] : instructions,
-    );
 
     return RecipeModel(
       id: meal['idMeal'] as String? ?? '',

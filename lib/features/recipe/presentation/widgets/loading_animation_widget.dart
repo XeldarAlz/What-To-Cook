@@ -64,7 +64,7 @@ class _LoadingAnimationWidgetState extends State<LoadingAnimationWidget>
           SizedBox(
             width: 200,
             child: LinearProgressIndicator(
-              backgroundColor: Theme.of(context).colorScheme.surfaceVariant,
+              backgroundColor: Theme.of(context).colorScheme.surfaceContainerHighest,
               valueColor: AlwaysStoppedAnimation<Color>(
                 Theme.of(context).colorScheme.primary,
               ),

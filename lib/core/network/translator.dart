@@ -37,15 +37,39 @@ class Translator {
   Future<List<String>> translateListToTurkish(List<String> items) async {
     if (items.isEmpty) return items;
     
+    // Translate in parallel batches to improve performance
+    // Process in larger batches (10) for better performance
     final translated = <String>[];
-    for (final item in items) {
-      final translatedItem = await translateToTurkish(item);
-      translated.add(translatedItem);
-      // Small delay to avoid rate limiting
-      await Future.delayed(const Duration(milliseconds: 100));
+    const batchSize = 10;
+    
+    for (var i = 0; i < items.length; i += batchSize) {
+      final batch = items.skip(i).take(batchSize).toList();
+      final batchTranslations = await Future.wait(
+        batch.map((item) => translateToTurkish(item)),
+      );
+      translated.addAll(batchTranslations);
+      
+      // Minimal delay between batches to avoid rate limiting
+      if (i + batchSize < items.length) {
+        await Future.delayed(const Duration(milliseconds: 100));
+      }
     }
     
     return translated;
+  }
+
+  Future<String> translateBatchToTurkish(List<String> texts) async {
+    if (texts.isEmpty) return '';
+    if (texts.length == 1) return await translateToTurkish(texts.first);
+    
+    // Try to translate multiple texts at once by joining them
+    // Some APIs support this, but MyMemory might not
+    // For now, translate in parallel
+    final translated = await Future.wait(
+      texts.map((text) => translateToTurkish(text)),
+    );
+    
+    return translated.join(' ');
   }
 }
 

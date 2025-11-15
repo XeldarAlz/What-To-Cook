@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/error/failures.dart';
 import '../../../recipe/domain/usecases/get_recipes_by_ingredients.dart';
+import '../../data/datasources/ingredients_data_source.dart';
 import 'ingredients_event.dart';
 import 'ingredients_state.dart';
 import 'dart:math';
@@ -10,32 +11,12 @@ class IngredientsBloc extends Bloc<IngredientsEvent, IngredientsState> {
   final Random _random = Random();
 
   // Available ingredients list
-  static const List<String> _availableIngredients = [
-    'patlıcan',
-    'kıyma',
-    'domates',
-    'soğan',
-    'sarımsak',
-    'biber',
-    'zeytinyağı',
-    'kabak',
-    'yumurta',
-    'un',
-    'peynir',
-    'makarna',
-    'yufka',
-    'karnabahar',
-    'pırasa',
-    'yoğurt',
-    'tereyağı',
-    'maydanoz',
-    'fesleğen',
-    'ekmek içi',
-  ];
+  static final List<String> _availableIngredients = 
+      IngredientsDataSource.getAllTurkishNames();
 
   IngredientsBloc({required this.getRecipesByIngredients})
     : super(
-        const IngredientsState.initial(
+        IngredientsState.initial(
           availableIngredients: _availableIngredients,
         ),
       ) {
@@ -122,7 +103,23 @@ class IngredientsBloc extends Bloc<IngredientsEvent, IngredientsState> {
       ),
     );
 
-    final result = await getRecipesByIngredients(selected);
+    // Convert Turkish ingredient names to English for TheMealDB API
+    final englishIngredients = IngredientsDataSource.getEnglishNames(selected);
+    
+    if (englishIngredients.isEmpty) {
+      emit(
+        IngredientsState.error(
+          failure: const ValidationFailure(
+            'Seçilen malzemeler API\'de bulunamadı. Lütfen farklı malzemeler seçin.',
+          ),
+          selectedIngredients: selected,
+          availableIngredients: availableIngredients,
+        ),
+      );
+      return;
+    }
+
+    final result = await getRecipesByIngredients(englishIngredients);
     result.fold(
       (failure) => emit(
         IngredientsState.error(
@@ -159,7 +156,7 @@ class IngredientsBloc extends Bloc<IngredientsEvent, IngredientsState> {
 
   void _onClearSelection(Emitter<IngredientsState> emit) {
     emit(
-      const IngredientsState.initial(
+      IngredientsState.initial(
         availableIngredients: _availableIngredients,
       ),
     );

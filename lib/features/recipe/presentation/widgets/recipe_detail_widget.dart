@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../domain/entities/recipe.dart';
-import '../bloc/recipe_bloc.dart';
-import '../bloc/recipe_state.dart';
-import '../bloc/recipe_event.dart';
 
 class RecipeDetailWidget extends StatelessWidget {
   final Recipe recipe;
+  final VoidCallback? onRefresh;
 
   const RecipeDetailWidget({
     super.key,
     required this.recipe,
+    this.onRefresh,
   });
 
   @override
@@ -175,30 +173,25 @@ class RecipeDetailWidget extends StatelessWidget {
 
           const SizedBox(height: 32),
 
-          // Try Another Button (only show if in random recipe page)
-          BlocBuilder<RecipeBloc, RecipeState>(
-            builder: (context, state) {
-              return Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: ElevatedButton.icon(
-                  onPressed: () {
-                    context.read<RecipeBloc>().add(const RecipeEvent.getRandomRecipe());
-                  },
-                  icon: const Icon(Icons.refresh),
-                  label: const Text(
-                    'Başka Bir Tarif Dene',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
+          // Try Another Button (only show if onRefresh callback is provided)
+          if (onRefresh != null)
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: ElevatedButton.icon(
+                onPressed: onRefresh,
+                icon: const Icon(Icons.refresh),
+                label: const Text(
+                  'Başka Bir Tarif Dene',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+                style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
                   ),
                 ),
-              );
-            },
-          ),
+              ),
+            ),
         ],
       ),
     );
@@ -208,7 +201,7 @@ class RecipeDetailWidget extends StatelessWidget {
     return Chip(
       avatar: Icon(icon, size: 18),
       label: Text(text),
-      backgroundColor: Theme.of(context).colorScheme.surfaceVariant,
+      backgroundColor: Theme.of(context).colorScheme.surfaceContainerHighest,
     );
   }
 }

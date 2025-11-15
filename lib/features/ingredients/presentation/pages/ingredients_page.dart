@@ -7,6 +7,9 @@ import '../bloc/ingredients_state.dart';
 import '../bloc/ingredients_event.dart';
 import '../../../recipe/presentation/widgets/recipe_detail_widget.dart';
 import '../../../recipe/presentation/widgets/loading_animation_widget.dart';
+import '../../../recipe/domain/entities/recipe.dart';
+import '../../data/datasources/ingredients_data_source.dart';
+import '../../data/models/ingredient_category.dart';
 
 class IngredientsPage extends StatelessWidget {
   const IngredientsPage({super.key});
@@ -25,27 +28,23 @@ class IngredientsPage extends StatelessWidget {
                   selected,
                   available,
                 ),
-                loading: (selected, available) => Column(
-                  children: [
-                    _buildIngredientsSelectionView(context, selected, available),
-                    const Expanded(child: LoadingAnimationWidget()),
-                  ],
+                loading: (selected, available) => _buildIngredientsSelectionView(
+                  context,
+                  selected,
+                  available,
+                  showLoading: true,
                 ),
-                loaded: (recipe, selected, available) => Column(
-                  children: [
-                    _buildIngredientsSelectionView(context, selected, available),
-                    Expanded(
-                      child: RecipeDetailWidget(recipe: recipe),
-                    ),
-                  ],
+                loaded: (recipe, selected, available) => _buildIngredientsSelectionView(
+                  context,
+                  selected,
+                  available,
+                  recipe: recipe,
                 ),
-                error: (failure, selected, available) => Column(
-                  children: [
-                    _buildIngredientsSelectionView(context, selected, available),
-                    Expanded(
-                      child: _buildErrorView(context, failure),
-                    ),
-                  ],
+                error: (failure, selected, available) => _buildIngredientsSelectionView(
+                  context,
+                  selected,
+                  available,
+                  error: failure,
                 ),
                 orElse: () => _buildIngredientsSelectionView(context, [], []),
               );
@@ -59,86 +58,223 @@ class IngredientsPage extends StatelessWidget {
   Widget _buildIngredientsSelectionView(
     BuildContext context,
     List<String> selectedIngredients,
-    List<String> availableIngredients,
-  ) {
-    return Container(
-      padding: const EdgeInsets.all(16.0),
-      decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surface,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            blurRadius: 4,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Evdeki Malzemeler',
-            style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
-          ),
-          const SizedBox(height: 16),
-          Wrap(
-            spacing: 8,
-            runSpacing: 8,
-            children: availableIngredients.map((ingredient) {
-              final isSelected = selectedIngredients.contains(ingredient);
-              return FilterChip(
-                label: Text(ingredient),
-                selected: isSelected,
-                onSelected: (selected) {
-                  context.read<IngredientsBloc>().add(
-                        IngredientsEvent.toggleIngredient(ingredient),
-                      );
-                },
-                selectedColor: Theme.of(context).colorScheme.primaryContainer,
-                checkmarkColor: Theme.of(context).colorScheme.onPrimaryContainer,
-              );
-            }).toList(),
-          ),
-          const SizedBox(height: 16),
-          Row(
-            children: [
-              Expanded(
-                child: ElevatedButton.icon(
-                  onPressed: selectedIngredients.isEmpty
-                      ? null
-                      : () {
-                          context.read<IngredientsBloc>().add(
-                                const IngredientsEvent.getRecipeByIngredients(),
-                              );
-                        },
-                  icon: const Icon(Icons.search),
-                  label: const Text(
-                    'Ne Pişirsem?',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                ),
-              ),
-              if (selectedIngredients.isNotEmpty) ...[
-                const SizedBox(width: 8),
-                IconButton(
-                  onPressed: () {
-                    context.read<IngredientsBloc>().add(
-                          const IngredientsEvent.clearSelection(),
-                        );
-                  },
-                  icon: const Icon(Icons.clear),
-                  tooltip: 'Temizle',
+    List<String> availableIngredients, {
+    Recipe? recipe,
+    Failure? error,
+    bool showLoading = false,
+  }) {
+    final categories = IngredientsDataSource.getCategories();
+
+    return Column(
+      children: [
+        // Selected ingredients section
+        if (selectedIngredients.isNotEmpty)
+          Container(
+            padding: const EdgeInsets.all(16.0),
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.primaryContainer,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withValues(alpha: 0.05),
+                  blurRadius: 4,
+                  offset: const Offset(0, 2),
                 ),
               ],
-            ],
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Icon(
+                      Icons.check_circle,
+                      color: Theme.of(context).colorScheme.primary,
+                      size: 20,
+                    ),
+                    const SizedBox(width: 8),
+                    Text(
+                      'Seçilen Malzemeler (${selectedIngredients.length})',
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                            fontWeight: FontWeight.bold,
+                            color: Theme.of(context).colorScheme.onPrimaryContainer,
+                          ),
+                    ),
+                    const Spacer(),
+                    TextButton.icon(
+                      onPressed: () {
+                        context.read<IngredientsBloc>().add(
+                              const IngredientsEvent.clearSelection(),
+                            );
+                      },
+                      icon: const Icon(Icons.clear, size: 18),
+                      label: const Text('Temizle'),
+                      style: TextButton.styleFrom(
+                        foregroundColor: Theme.of(context).colorScheme.onPrimaryContainer,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 12),
+                Wrap(
+                  spacing: 8,
+                  runSpacing: 8,
+                  children: selectedIngredients.map((ingredient) {
+                    return Chip(
+                      label: Text(ingredient),
+                      avatar: const Icon(Icons.check, size: 18),
+                      backgroundColor: Theme.of(context).colorScheme.primary,
+                      labelStyle: TextStyle(
+                        color: Theme.of(context).colorScheme.onPrimary,
+                        fontWeight: FontWeight.w600,
+                      ),
+                      deleteIcon: Icon(
+                        Icons.close,
+                        size: 18,
+                        color: Theme.of(context).colorScheme.onPrimary,
+                      ),
+                      onDeleted: () {
+                        context.read<IngredientsBloc>().add(
+                              IngredientsEvent.toggleIngredient(ingredient),
+                            );
+                      },
+                    );
+                  }).toList(),
+                ),
+              ],
+            ),
+          ),
+
+        // Content area (recipe, loading, error, or ingredients list)
+        Expanded(
+          child: recipe != null
+              ? RecipeDetailWidget(recipe: recipe)
+              : showLoading
+                  ? const LoadingAnimationWidget()
+                  : error != null
+                      ? _buildErrorView(context, error)
+                      : Container(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Malzemeleri Seçin',
+                                style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                              ),
+                              const SizedBox(height: 16),
+                              Expanded(
+                                child: ListView.builder(
+                                  itemCount: categories.length,
+                                  itemBuilder: (context, index) {
+                                    final category = categories[index];
+                                    return _buildCategoryCard(
+                                      context,
+                                      category,
+                                      selectedIngredients,
+                                    );
+                                  },
+                                ),
+                              ),
+                              const SizedBox(height: 16),
+                              SizedBox(
+                                width: double.infinity,
+                                child: ElevatedButton.icon(
+                                  onPressed: selectedIngredients.isEmpty
+                                      ? null
+                                      : () {
+                                          context.read<IngredientsBloc>().add(
+                                                const IngredientsEvent.getRecipeByIngredients(),
+                                              );
+                                        },
+                                  icon: const Icon(Icons.search, size: 24),
+                                  label: Text(
+                                    selectedIngredients.isEmpty
+                                        ? 'Malzeme Seçin'
+                                        : 'Ne Pişirsem? (${selectedIngredients.length})',
+                                    style: const TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  style: ElevatedButton.styleFrom(
+                                    padding: const EdgeInsets.symmetric(vertical: 18),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(16),
+                                    ),
+                                    elevation: 2,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildCategoryCard(
+    BuildContext context,
+    IngredientCategory category,
+    List<String> selectedIngredients,
+  ) {
+    return Card(
+      margin: const EdgeInsets.only(bottom: 16),
+      elevation: 2,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: ExpansionTile(
+        leading: Text(
+          category.icon,
+          style: const TextStyle(fontSize: 28),
+        ),
+        title: Text(
+          category.name,
+          style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
+        ),
+        subtitle: Text(
+          '${category.items.length} malzeme',
+          style: Theme.of(context).textTheme.bodySmall,
+        ),
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Wrap(
+              spacing: 8,
+              runSpacing: 8,
+              children: category.items.map((item) {
+                final isSelected = selectedIngredients.contains(item.turkishName);
+                return FilterChip(
+                  label: Text(item.turkishName),
+                  selected: isSelected,
+                  onSelected: (selected) {
+                    context.read<IngredientsBloc>().add(
+                          IngredientsEvent.toggleIngredient(item.turkishName),
+                        );
+                  },
+                  selectedColor: Theme.of(context).colorScheme.primaryContainer,
+                  checkmarkColor: Theme.of(context).colorScheme.primary,
+                  labelStyle: TextStyle(
+                    fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
+                    color: isSelected
+                        ? Theme.of(context).colorScheme.onPrimaryContainer
+                        : null,
+                  ),
+                  avatar: isSelected
+                      ? Icon(
+                          Icons.check_circle,
+                          size: 18,
+                          color: Theme.of(context).colorScheme.primary,
+                        )
+                      : null,
+                );
+              }).toList(),
+            ),
           ),
         ],
       ),
@@ -159,7 +295,7 @@ class IngredientsPage extends StatelessWidget {
             ),
             const SizedBox(height: 24),
             Text(
-              'Bir hata oluştu',
+              'Tarif Bulunamadı',
               style: Theme.of(context).textTheme.headlineSmall,
             ),
             const SizedBox(height: 8),
@@ -168,10 +304,19 @@ class IngredientsPage extends StatelessWidget {
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.bodyMedium,
             ),
+            const SizedBox(height: 24),
+            ElevatedButton.icon(
+              onPressed: () {
+                context.read<IngredientsBloc>().add(
+                      const IngredientsEvent.clearSelection(),
+                    );
+              },
+              icon: const Icon(Icons.refresh),
+              label: const Text('Farklı Malzemeler Dene'),
+            ),
           ],
         ),
       ),
     );
   }
 }
-

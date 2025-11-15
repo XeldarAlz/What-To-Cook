@@ -22,7 +22,12 @@ class RandomRecipePage extends StatelessWidget {
               return state.maybeWhen(
                 initial: () => _buildInitialView(context),
                 loading: () => const LoadingAnimationWidget(),
-                loaded: (recipe) => RecipeDetailWidget(recipe: recipe),
+                loaded: (recipe) => RecipeDetailWidget(
+                  recipe: recipe,
+                  onRefresh: () {
+                    context.read<RecipeBloc>().add(const RecipeEvent.getRandomRecipe());
+                  },
+                ),
                 error: (failure) => _buildErrorView(context, failure),
                 orElse: () => _buildInitialView(context),
               );
