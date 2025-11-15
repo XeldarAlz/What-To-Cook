@@ -16,20 +16,34 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
   @override
   Future<List<RecipeModel>> getRecipesFromRemote() async {
     try {
-      final response = await client.get(
-        Uri.parse(AppConstants.recipesJsonUrl),
-      ).timeout(
-        const Duration(seconds: 10),
-      );
+      final List<RecipeModel> allRecipes = [];
+      
+      for (final url in AppConstants.recipesJsonUrls) {
+        try {
+          final response = await client.get(
+            Uri.parse(url),
+          ).timeout(
+            const Duration(seconds: 10),
+          );
 
-      if (response.statusCode == 200) {
-        final List<dynamic> jsonList = json.decode(response.body);
-        return jsonList
-            .map((json) => RecipeModel.fromJson(json as Map<String, dynamic>))
-            .toList();
-      } else {
-        throw ServerFailure('Failed to load recipes: ${response.statusCode}');
+          if (response.statusCode == 200) {
+            final List<dynamic> jsonList = json.decode(response.body);
+            final recipes = jsonList
+                .map((json) => RecipeModel.fromJson(json as Map<String, dynamic>))
+                .toList();
+            allRecipes.addAll(recipes);
+          } else {
+            throw ServerFailure('Failed to load recipes from $url: ${response.statusCode}');
+          }
+        } catch (e) {
+          if (e is Failure) {
+            rethrow;
+          }
+          throw ServerFailure('Error fetching recipes from $url: ${e.toString()}');
+        }
       }
+      
+      return allRecipes;
     } catch (e) {
       if (e is Failure) {
         rethrow;
