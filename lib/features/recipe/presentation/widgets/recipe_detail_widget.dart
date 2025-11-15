@@ -5,16 +5,19 @@ import '../../domain/entities/recipe.dart';
 class RecipeDetailWidget extends StatelessWidget {
   final Recipe recipe;
   final VoidCallback? onRefresh;
+  final ScrollController? scrollController;
 
   const RecipeDetailWidget({
     super.key,
     required this.recipe,
     this.onRefresh,
+    this.scrollController,
   });
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+      controller: scrollController,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
