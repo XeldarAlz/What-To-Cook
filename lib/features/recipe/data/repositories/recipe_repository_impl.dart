@@ -22,21 +22,9 @@ class RecipeRepositoryImpl implements RecipeRepository {
     required this.cacheDataSource,
   });
 
-  Future<List<RecipeModel>> _getAllRecipes() async {
-    if (_cachedRecipes != null) {
-      return _cachedRecipes!;
-    }
-
-    try {
-      final isCacheValid = await cacheDataSource.isCacheValid();
-      if (isCacheValid) {
-        final cachedRecipes = await cacheDataSource.getCachedRecipes();
-        if (cachedRecipes != null && cachedRecipes.isNotEmpty) {
-          _cachedRecipes = cachedRecipes;
-          return cachedRecipes;
-        }
-      }
-    } catch (e) {
+  Future<List<RecipeModel>> _getAllRecipes({bool forceRefresh = false}) async {
+    if (forceRefresh) {
+      _cachedRecipes = null;
     }
 
     try {
@@ -45,6 +33,23 @@ class RecipeRepositoryImpl implements RecipeRepository {
         await cacheDataSource.cacheRecipes(remoteRecipes);
         _cachedRecipes = remoteRecipes;
         return remoteRecipes;
+      }
+    } catch (e) {
+    }
+
+    if (_cachedRecipes != null) {
+      return _cachedRecipes!;
+    }
+
+    List<RecipeModel>? cachedRecipes;
+    try {
+      final isCacheValid = await cacheDataSource.isCacheValid();
+      if (isCacheValid) {
+        cachedRecipes = await cacheDataSource.getCachedRecipes();
+        if (cachedRecipes != null && cachedRecipes.isNotEmpty) {
+          _cachedRecipes = cachedRecipes;
+          return cachedRecipes;
+        }
       }
     } catch (e) {
     }
@@ -176,6 +181,20 @@ class RecipeRepositoryImpl implements RecipeRepository {
         return Left(e);
       }
       return const Left(ServerFailure('Tarif isimleri alınırken hata oluştu'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> refreshRecipes() async {
+    try {
+      _cachedRecipes = null;
+      await cacheDataSource.clearCache();
+      return const Right(null);
+    } catch (e) {
+      if (e is Failure) {
+        return Left(e);
+      }
+      return Left(CacheFailure('Cache temizlenirken hata oluştu: ${e.toString()}'));
     }
   }
 }

@@ -7,5 +7,6 @@ abstract class RecipeRepository {
   Future<Either<Failure, Recipe>> getRecipeByName(String name);
   Future<Either<Failure, List<Recipe>>> getRecipesByIngredients(List<String> ingredients, RecipeCategory? category);
   Future<Either<Failure, List<String>>> getAllRecipeNames();
+  Future<Either<Failure, void>> refreshRecipes();
 }
 
