@@ -36,135 +36,107 @@ class _RandomRecipePageState extends State<RandomRecipePage> {
       create: (context) => getIt<RecipeBloc>(),
       child: BlocBuilder<RecipeBloc, RecipeState>(
         builder: (context, state) {
+          final showAppBar = state.maybeWhen(
+            loaded: (_) => true,
+            orElse: () => false,
+          );
+          
           return Scaffold(
-            appBar: state.maybeWhen(
-              loaded: (_) => AppBar(
-                leading: IconButton(
-                  icon: const Icon(Icons.arrow_back),
-                  onPressed: () {
-                    final bloc = context.read<RecipeBloc>();
-                    setState(() {
-                      _isGoingBack = true;
-                    });
-                    if (_scrollController.hasClients) {
-                      _scrollController.animateTo(
-                        0,
-                        duration: AppConstants.scrollAnimationDuration,
-                        curve: Curves.easeInOut,
-                      );
-                    }
-                    Future.delayed(AppConstants.resetAfterScrollDelay, () {
-                      if (mounted) {
-                        bloc.add(
-                          const RecipeEvent.reset(),
-                        );
-                      }
-                    });
-                  },
-                  tooltip: 'Geri',
-                ),
-                title: const Text('Tarif'),
-                elevation: 0,
-              ),
-              orElse: () => AppBar(
-                elevation: 0,
-                automaticallyImplyLeading: false,
-              ),
-            ),
+            appBar: showAppBar ? _buildModernAppBar(context, state) : null,
             body: SafeArea(
               child: BlocListener<RecipeBloc, RecipeState>(
-                listener: (context, state) {
-                  state.maybeWhen(
-                    loaded: (_) {
-                      if (_scrollController.hasClients) {
-                        _scrollController.animateTo(
-                          0,
-                          duration: const Duration(milliseconds: 300),
-                          curve: Curves.easeInOut,
-                        );
-                      }
+                    listener: (context, state) {
+                      state.maybeWhen(
+                        loaded: (_) {
+                          if (_scrollController.hasClients) {
+                            _scrollController.animateTo(
+                              0,
+                              duration: const Duration(milliseconds: 300),
+                              curve: Curves.easeInOut,
+                            );
+                          }
+                        },
+                        orElse: () {},
+                      );
                     },
-                    orElse: () {},
-                  );
-                },
-                child: AnimatedSwitcher(
-                  duration: AppConstants.stateTransitionDuration,
-                  switchInCurve: Curves.easeOut,
-                  switchOutCurve: Curves.easeIn,
-                  transitionBuilder: (child, animation) {
-                    return FadeTransition(
-                      opacity: CurvedAnimation(
-                        parent: animation,
-                        curve: Curves.easeInOut,
-                      ),
-                      child: SlideTransition(
-                        position: Tween<Offset>(
-                          begin: _isGoingBack 
-                              ? const Offset(1.0, 0.0)
-                              : const Offset(0.0, 0.05),
-                          end: Offset.zero,
-                        ).animate(
-                          CurvedAnimation(
+                    child: AnimatedSwitcher(
+                      duration: AppConstants.stateTransitionDuration,
+                      switchInCurve: Curves.easeOut,
+                      switchOutCurve: Curves.easeIn,
+                      transitionBuilder: (child, animation) {
+                        return FadeTransition(
+                          opacity: CurvedAnimation(
                             parent: animation,
-                            curve: Curves.easeOutCubic,
-                          ),
-                        ),
-                        child: child,
-                      ),
-                    );
-                  },
-                  child: state.maybeWhen(
-                    initial: () {
-                      if (_isGoingBack) {
-                        WidgetsBinding.instance.addPostFrameCallback((_) {
-                          if (mounted) {
-                            setState(() {
-                              _isGoingBack = false;
-                            });
-                          }
-                        });
-                      }
-                      return _buildInitialView(context);
-                    },
-                    loading: () {
-                      if (_isGoingBack) {
-                        WidgetsBinding.instance.addPostFrameCallback((_) {
-                          if (mounted) {
-                            setState(() {
-                              _isGoingBack = false;
-                            });
-                          }
-                        });
-                      }
-                      return const LoadingAnimationWidget(key: ValueKey('loading'));
-                    },
-                    loaded: (recipe) => RecipeDetailWidget(
-                      key: ValueKey(recipe.id),
-                      recipe: recipe,
-                      scrollController: _scrollController,
-                      onRefresh: () {
-                        if (_selectedCategory != null) {
-                          final bloc = context.read<RecipeBloc>();
-                          _scrollController.animateTo(
-                            0,
-                            duration: AppConstants.scrollAnimationDuration,
                             curve: Curves.easeInOut,
-                          );
-                          Future.delayed(AppConstants.loadRecipeAfterScrollDelay, () {
-                            if (mounted) {
-                              bloc.add(
-                                RecipeEvent.getRandomRecipe(_selectedCategory),
-                              );
-                            }
-                          });
-                        }
+                          ),
+                          child: SlideTransition(
+                            position: Tween<Offset>(
+                              begin: _isGoingBack 
+                                  ? const Offset(1.0, 0.0)
+                                  : const Offset(0.0, 0.05),
+                              end: Offset.zero,
+                            ).animate(
+                              CurvedAnimation(
+                                parent: animation,
+                                curve: Curves.easeOutCubic,
+                              ),
+                            ),
+                            child: child,
+                          ),
+                        );
                       },
+                      child: state.maybeWhen(
+                        initial: () {
+                          if (_isGoingBack) {
+                            WidgetsBinding.instance.addPostFrameCallback((_) {
+                              if (mounted) {
+                                setState(() {
+                                  _isGoingBack = false;
+                                });
+                              }
+                            });
+                          }
+                          return _buildInitialView(context);
+                        },
+                        loading: () {
+                          if (_isGoingBack) {
+                            WidgetsBinding.instance.addPostFrameCallback((_) {
+                              if (mounted) {
+                                setState(() {
+                                  _isGoingBack = false;
+                                });
+                              }
+                            });
+                          }
+                          return const LoadingAnimationWidget(key: ValueKey('loading'));
+                        },
+                        loaded: (recipe) => RecipeDetailWidget(
+                          key: ValueKey(recipe.id),
+                          recipe: recipe,
+                          scrollController: _scrollController,
+                          onRefresh: () {
+                            if (_selectedCategory != null) {
+                              final bloc = context.read<RecipeBloc>();
+                              _scrollController.animateTo(
+                                0,
+                                duration: AppConstants.scrollAnimationDuration,
+                                curve: Curves.easeInOut,
+                              );
+                              Future.delayed(AppConstants.loadRecipeAfterScrollDelay, () {
+                                if (mounted) {
+                                  bloc.add(
+                                    RecipeEvent.getRandomRecipe(_selectedCategory),
+                                  );
+                                }
+                              });
+                            }
+                          },
+                        ),
+                        error: (failure) => _buildErrorView(context, failure, key: ValueKey('error')),
+                        orElse: () => _buildInitialView(context, key: const ValueKey('initial')),
+                      ),
                     ),
-                    error: (failure) => _buildErrorView(context, failure, key: ValueKey('error')),
-                    orElse: () => _buildInitialView(context, key: const ValueKey('initial')),
                   ),
-                ),
-              ),
             ),
           );
         },
@@ -339,6 +311,40 @@ class _RandomRecipePageState extends State<RandomRecipePage> {
           ],
         ),
       ),
+    );
+  }
+
+  PreferredSizeWidget? _buildModernAppBar(BuildContext context, RecipeState state) {
+    return AppBar(
+      leading: IconButton(
+        icon: const Icon(Icons.arrow_back),
+        onPressed: () {
+          final bloc = context.read<RecipeBloc>();
+          setState(() {
+            _isGoingBack = true;
+          });
+          if (_scrollController.hasClients) {
+            _scrollController.animateTo(
+              0,
+              duration: AppConstants.scrollAnimationDuration,
+              curve: Curves.easeInOut,
+            );
+          }
+          Future.delayed(AppConstants.resetAfterScrollDelay, () {
+            if (mounted) {
+              bloc.add(
+                const RecipeEvent.reset(),
+              );
+            }
+          });
+        },
+        tooltip: 'Geri',
+      ),
+      title: const Text('Tarif'),
+      centerTitle: false,
+      elevation: 0,
+      scrolledUnderElevation: 1,
+      surfaceTintColor: Theme.of(context).colorScheme.surfaceContainerHighest,
     );
   }
 }
