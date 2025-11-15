@@ -4,16 +4,55 @@ import '../../../../core/error/failures.dart';
 import '../../domain/entities/recipe.dart';
 import '../../domain/repositories/recipe_repository.dart';
 import '../datasources/recipe_local_data_source.dart';
+import '../datasources/recipe_remote_data_source.dart';
+import '../datasources/recipe_cache_data_source.dart';
 import '../models/recipe_model.dart';
 
 class RecipeRepositoryImpl implements RecipeRepository {
   final RecipeLocalDataSource localDataSource;
+  final RecipeRemoteDataSource remoteDataSource;
+  final RecipeCacheDataSource cacheDataSource;
   
   final Map<RecipeCategory, List<String>> _shownRecipeIds = {};
+  List<RecipeModel>? _cachedRecipes;
 
   RecipeRepositoryImpl({
     required this.localDataSource,
+    required this.remoteDataSource,
+    required this.cacheDataSource,
   });
+
+  Future<List<RecipeModel>> _getAllRecipes() async {
+    if (_cachedRecipes != null) {
+      return _cachedRecipes!;
+    }
+
+    try {
+      final isCacheValid = await cacheDataSource.isCacheValid();
+      if (isCacheValid) {
+        final cachedRecipes = await cacheDataSource.getCachedRecipes();
+        if (cachedRecipes != null && cachedRecipes.isNotEmpty) {
+          _cachedRecipes = cachedRecipes;
+          return cachedRecipes;
+        }
+      }
+    } catch (e) {
+    }
+
+    try {
+      final remoteRecipes = await remoteDataSource.getRecipesFromRemote();
+      if (remoteRecipes.isNotEmpty) {
+        await cacheDataSource.cacheRecipes(remoteRecipes);
+        _cachedRecipes = remoteRecipes;
+        return remoteRecipes;
+      }
+    } catch (e) {
+    }
+
+    final localRecipes = localDataSource.getAllRecipes();
+    _cachedRecipes = localRecipes;
+    return localRecipes;
+  }
 
   @override
   Future<Either<Failure, Recipe>> getRandomRecipe(RecipeCategory? category) async {
@@ -27,8 +66,20 @@ class RecipeRepositoryImpl implements RecipeRepository {
             (DateTime.now().millisecond % AppConstants.recipeFetchRandomDelayMs),
       ));
 
+      final allRecipes = await _getAllRecipes();
+      final categoryRecipes = allRecipes.where((r) => r.category == category).toList();
+      
       final shownIds = _shownRecipeIds[category] ?? [];
-      final recipe = localDataSource.getRandomRecipeByCategory(category, shownIds);
+      final availableRecipes = categoryRecipes
+          .where((recipe) => !shownIds.contains(recipe.id))
+          .toList();
+      
+      RecipeModel recipe;
+      if (availableRecipes.isEmpty) {
+        recipe = categoryRecipes[DateTime.now().millisecond % categoryRecipes.length];
+      } else {
+        recipe = availableRecipes[DateTime.now().millisecond % availableRecipes.length];
+      }
       
       if (!_shownRecipeIds.containsKey(category)) {
         _shownRecipeIds[category] = [];
@@ -51,7 +102,7 @@ class RecipeRepositoryImpl implements RecipeRepository {
   @override
   Future<Either<Failure, Recipe>> getRecipeByName(String name) async {
     try {
-      final allRecipes = localDataSource.getAllRecipes();
+      final allRecipes = await _getAllRecipes();
       final recipe = allRecipes.firstWhere(
         (r) => r.name.toLowerCase().contains(name.toLowerCase()),
         orElse: () => allRecipes.first,
@@ -80,11 +131,12 @@ class RecipeRepositoryImpl implements RecipeRepository {
             (DateTime.now().millisecond % AppConstants.recipeFetchRandomDelayMs),
       ));
 
+      final allRecipes = await _getAllRecipes();
       List<RecipeModel> recipes;
       if (category != null) {
-        recipes = localDataSource.getRecipesByCategory(category);
+        recipes = allRecipes.where((r) => r.category == category).toList();
       } else {
-        recipes = localDataSource.getAllRecipes();
+        recipes = allRecipes;
       }
 
       final normalizedSelectedIngredients = ingredients
@@ -117,7 +169,7 @@ class RecipeRepositoryImpl implements RecipeRepository {
   @override
   Future<Either<Failure, List<String>>> getAllRecipeNames() async {
     try {
-      final recipes = localDataSource.getAllRecipes();
+      final recipes = await _getAllRecipes();
       return Right(recipes.map((r) => r.name).toList());
     } catch (e) {
       if (e is Failure) {

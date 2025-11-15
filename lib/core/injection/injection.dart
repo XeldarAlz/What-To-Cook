@@ -1,5 +1,9 @@
 import 'package:get_it/get_it.dart';
+import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../features/recipe/data/datasources/recipe_local_data_source.dart';
+import '../../features/recipe/data/datasources/recipe_remote_data_source.dart';
+import '../../features/recipe/data/datasources/recipe_cache_data_source.dart';
 import '../../features/recipe/data/repositories/recipe_repository_impl.dart';
 import '../../features/recipe/domain/repositories/recipe_repository.dart';
 import '../../features/recipe/domain/usecases/get_random_recipe.dart';
@@ -11,13 +15,28 @@ import '../../features/ingredients/presentation/bloc/ingredients_bloc.dart';
 final getIt = GetIt.instance;
 
 Future<void> initDependencies() async {
+  final sharedPreferences = await SharedPreferences.getInstance();
+  
+  getIt.registerLazySingleton<http.Client>(() => http.Client());
+  getIt.registerLazySingleton<SharedPreferences>(() => sharedPreferences);
+  
   getIt.registerLazySingleton<RecipeLocalDataSource>(
     () => RecipeLocalDataSourceImpl(),
+  );
+  
+  getIt.registerLazySingleton<RecipeRemoteDataSource>(
+    () => RecipeRemoteDataSourceImpl(client: getIt()),
+  );
+  
+  getIt.registerLazySingleton<RecipeCacheDataSource>(
+    () => RecipeCacheDataSourceImpl(sharedPreferences: getIt()),
   );
 
   getIt.registerLazySingleton<RecipeRepository>(
     () => RecipeRepositoryImpl(
       localDataSource: getIt(),
+      remoteDataSource: getIt(),
+      cacheDataSource: getIt(),
     ),
   );
 
