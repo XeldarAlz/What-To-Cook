@@ -30,13 +30,7 @@ class IngredientsPage extends StatelessWidget {
                   available,
                   selectedCategory: category,
                 ),
-                loading: (selected, available, category) => _buildIngredientsSelectionView(
-                  context,
-                  selected,
-                  available,
-                  selectedCategory: category,
-                  showLoading: true,
-                ),
+                loading: (selected, available, category) => const LoadingAnimationWidget(),
                 loaded: (recipe, selected, available, category) => _buildIngredientsSelectionView(
                   context,
                   selected,
@@ -67,7 +61,6 @@ class IngredientsPage extends StatelessWidget {
     List<String> availableIngredients, {
     Recipe? recipe,
     Failure? error,
-    bool showLoading = false,
     RecipeCategory? selectedCategory,
   }) {
     final categories = IngredientsDataSource.getCategories();
@@ -151,15 +144,13 @@ class IngredientsPage extends StatelessWidget {
             ),
           ),
 
-        // Content area (recipe, loading, error, or ingredients list)
+        // Content area (recipe, error, or ingredients list)
         Expanded(
           child: recipe != null
               ? RecipeDetailWidget(recipe: recipe)
-              : showLoading
-                  ? const LoadingAnimationWidget()
-                  : error != null
-                      ? _buildErrorView(context, error)
-                      : Container(
+              : error != null
+                  ? _buildErrorView(context, error)
+                  : Container(
                           padding: const EdgeInsets.all(16.0),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
