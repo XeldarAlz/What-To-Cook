@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../domain/entities/recipe.dart';
 
-class RecipeDetailWidget extends StatelessWidget {
+class RecipeDetailWidget extends StatefulWidget {
   final Recipe recipe;
   final VoidCallback? onRefresh;
   final ScrollController? scrollController;
@@ -15,12 +15,30 @@ class RecipeDetailWidget extends StatelessWidget {
   });
 
   @override
+  State<RecipeDetailWidget> createState() => _RecipeDetailWidgetState();
+}
+
+class _RecipeDetailWidgetState extends State<RecipeDetailWidget> {
+  // Track completed steps
+  final Set<int> _completedSteps = {};
+
+  void _toggleStep(int index) {
+    setState(() {
+      if (_completedSteps.contains(index)) {
+        _completedSteps.remove(index);
+      } else {
+        _completedSteps.add(index);
+      }
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final isSmallScreen = screenWidth < 400;
     
     return SingleChildScrollView(
-      controller: scrollController,
+      controller: widget.scrollController,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -28,7 +46,7 @@ class RecipeDetailWidget extends StatelessWidget {
           SizedBox(
             height: isSmallScreen ? 250 : 300,
             child: CachedNetworkImage(
-              imageUrl: recipe.imageUrl,
+              imageUrl: widget.recipe.imageUrl,
               fit: BoxFit.cover,
               placeholder: (context, url) => Container(
                 color: Colors.grey[300],
@@ -53,7 +71,7 @@ class RecipeDetailWidget extends StatelessWidget {
               ),
             ),
             child: Text(
-              recipe.name,
+              widget.recipe.name,
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                     fontWeight: FontWeight.bold,
@@ -66,30 +84,30 @@ class RecipeDetailWidget extends StatelessWidget {
           ),
 
           // Recipe Info (Time, Servings)
-          if (recipe.prepTime != null || recipe.cookTime != null || recipe.servings != null)
+          if (widget.recipe.prepTime != null || widget.recipe.cookTime != null || widget.recipe.servings != null)
             Padding(
               padding: EdgeInsets.symmetric(horizontal: isSmallScreen ? 12.0 : 16.0),
               child: Wrap(
                 spacing: 8,
                 runSpacing: 8,
                 children: [
-                  if (recipe.prepTime != null)
+                  if (widget.recipe.prepTime != null)
                     _buildInfoChip(
                       context,
                       Icons.timer_outlined,
-                      '${recipe.prepTime} dk',
+                      '${widget.recipe.prepTime} dk',
                     ),
-                  if (recipe.cookTime != null)
+                  if (widget.recipe.cookTime != null)
                     _buildInfoChip(
                       context,
                       Icons.restaurant,
-                      '${recipe.cookTime} dk',
+                      '${widget.recipe.cookTime} dk',
                     ),
-                  if (recipe.servings != null)
+                  if (widget.recipe.servings != null)
                     _buildInfoChip(
                       context,
                       Icons.people_outline,
-                      '${recipe.servings} kişi',
+                      '${widget.recipe.servings} kişi',
                     ),
                 ],
               ),
@@ -111,7 +129,7 @@ class RecipeDetailWidget extends StatelessWidget {
                       ),
                 ),
                 const SizedBox(height: 12),
-                ...recipe.ingredients.map((ingredient) {
+                ...widget.recipe.ingredients.map((ingredient) {
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 8.0),
                     child: Row(
@@ -154,42 +172,91 @@ class RecipeDetailWidget extends StatelessWidget {
                       ),
                 ),
                 const SizedBox(height: 12),
-                ...recipe.instructions.asMap().entries.map((entry) {
-                  final index = entry.key + 1;
+                ...widget.recipe.instructions.asMap().entries.map((entry) {
+                  final index = entry.key;
                   final instruction = entry.value;
-                  return Padding(
-                    padding: const EdgeInsets.only(bottom: 16.0),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          width: isSmallScreen ? 28 : 32,
-                          height: isSmallScreen ? 28 : 32,
-                          decoration: BoxDecoration(
-                            color: Theme.of(context).colorScheme.primary,
-                            shape: BoxShape.circle,
-                          ),
-                          child: Center(
-                            child: Text(
-                              '$index',
-                              style: TextStyle(
-                                color: Theme.of(context).colorScheme.onPrimary,
-                                fontWeight: FontWeight.bold,
-                                fontSize: isSmallScreen ? 14 : null,
+                  final isCompleted = _completedSteps.contains(index);
+                  return InkWell(
+                    onTap: () => _toggleStep(index),
+                    borderRadius: BorderRadius.circular(12),
+                    child: Padding(
+                      padding: const EdgeInsets.only(bottom: 16.0),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          // Checkbox/Step indicator
+                          Container(
+                            width: isSmallScreen ? 32 : 36,
+                            height: isSmallScreen ? 32 : 36,
+                            decoration: BoxDecoration(
+                              color: isCompleted
+                                  ? Theme.of(context).colorScheme.primary
+                                  : Theme.of(context).colorScheme.surfaceContainerHighest,
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                color: isCompleted
+                                    ? Theme.of(context).colorScheme.primary
+                                    : Theme.of(context).colorScheme.outline.withValues(alpha: 0.3),
+                                width: 2,
                               ),
                             ),
+                            child: Center(
+                              child: isCompleted
+                                  ? Icon(
+                                      Icons.check,
+                                      color: Theme.of(context).colorScheme.onPrimary,
+                                      size: isSmallScreen ? 18 : 20,
+                                    )
+                                  : Text(
+                                      '${index + 1}',
+                                      style: TextStyle(
+                                        color: Theme.of(context).colorScheme.onSurface,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: isSmallScreen ? 14 : 16,
+                                      ),
+                                    ),
+                            ),
                           ),
-                        ),
-                        const SizedBox(width: 12),
-                        Expanded(
-                          child: Text(
-                            instruction,
-                            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                                  fontSize: isSmallScreen ? 14 : null,
+                          const SizedBox(width: 12),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  instruction,
+                                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                        fontSize: isSmallScreen ? 14 : null,
+                                        decoration: isCompleted ? TextDecoration.lineThrough : null,
+                                        color: isCompleted
+                                            ? Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.6)
+                                            : Theme.of(context).colorScheme.onSurface,
+                                      ),
                                 ),
+                                if (isCompleted) ...[
+                                  const SizedBox(height: 4),
+                                  Row(
+                                    children: [
+                                      Icon(
+                                        Icons.check_circle,
+                                        size: 14,
+                                        color: Theme.of(context).colorScheme.primary,
+                                      ),
+                                      const SizedBox(width: 4),
+                                      Text(
+                                        'Tamamlandı',
+                                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                                              color: Theme.of(context).colorScheme.primary,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   );
                 }),
@@ -200,11 +267,11 @@ class RecipeDetailWidget extends StatelessWidget {
           SizedBox(height: isSmallScreen ? 24 : 32),
 
           // Try Another Button
-          if (onRefresh != null)
+          if (widget.onRefresh != null)
             Padding(
               padding: EdgeInsets.all(isSmallScreen ? 12.0 : 16.0),
               child: ElevatedButton.icon(
-                onPressed: onRefresh,
+                onPressed: widget.onRefresh,
                 icon: const Icon(Icons.refresh),
                 label: Text(
                   'Başka Bir Tarif Dene',
