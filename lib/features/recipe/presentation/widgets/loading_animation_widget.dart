@@ -22,19 +22,16 @@ class _LoadingAnimationWidgetState extends State<LoadingAnimationWidget>
   void initState() {
     super.initState();
     
-    // Rotation animation for icon
     _rotationController = AnimationController(
       duration: AppConstants.loadingRotationDuration,
       vsync: this,
     )..repeat();
 
-    // Pulse animation for container
     _pulseController = AnimationController(
       duration: AppConstants.loadingPulseDuration,
       vsync: this,
     )..repeat(reverse: true);
 
-    // Shimmer animation for text
     _shimmerController = AnimationController(
       duration: AppConstants.loadingShimmerDuration,
       vsync: this,
@@ -69,14 +66,13 @@ class _LoadingAnimationWidgetState extends State<LoadingAnimationWidget>
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          // Animated icon container
           AnimatedBuilder(
             animation: Listenable.merge([_rotationAnimation, _pulseAnimation]),
             builder: (context, child) {
               return Transform.scale(
                 scale: _pulseAnimation.value,
                 child: Transform.rotate(
-                  angle: _rotationAnimation.value * 0.1, // Subtle rotation
+                  angle: _rotationAnimation.value * 0.1,
                   child: Container(
                     padding: const EdgeInsets.all(32),
                     decoration: BoxDecoration(
@@ -101,7 +97,6 @@ class _LoadingAnimationWidgetState extends State<LoadingAnimationWidget>
             },
           ),
           const SizedBox(height: 48),
-          // Animated text with shimmer effect
           AnimatedBuilder(
             animation: _shimmerAnimation,
             builder: (context, child) {
@@ -133,7 +128,6 @@ class _LoadingAnimationWidgetState extends State<LoadingAnimationWidget>
             },
           ),
           const SizedBox(height: 32),
-          // Modern progress indicator
           SizedBox(
             width: 250,
             child: ClipRRect(
@@ -148,7 +142,6 @@ class _LoadingAnimationWidgetState extends State<LoadingAnimationWidget>
             ),
           ),
           const SizedBox(height: 16),
-          // Dots animation
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: List.generate(3, (index) {

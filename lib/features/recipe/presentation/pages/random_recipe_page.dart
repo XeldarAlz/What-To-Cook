@@ -43,11 +43,9 @@ class _RandomRecipePageState extends State<RandomRecipePage> {
                   icon: const Icon(Icons.arrow_back),
                   onPressed: () {
                     final bloc = context.read<RecipeBloc>();
-                    // Set flag to indicate we're going back
                     setState(() {
                       _isGoingBack = true;
                     });
-                    // Scroll to top first for smooth transition
                     if (_scrollController.hasClients) {
                       _scrollController.animateTo(
                         0,
@@ -55,7 +53,6 @@ class _RandomRecipePageState extends State<RandomRecipePage> {
                         curve: Curves.easeInOut,
                       );
                     }
-                    // Then reset after a short delay for smooth animation
                     Future.delayed(AppConstants.resetAfterScrollDelay, () {
                       if (mounted) {
                         bloc.add(
@@ -77,7 +74,6 @@ class _RandomRecipePageState extends State<RandomRecipePage> {
             body: SafeArea(
               child: BlocListener<RecipeBloc, RecipeState>(
                 listener: (context, state) {
-                  // When a new recipe is loaded, scroll to top smoothly
                   state.maybeWhen(
                     loaded: (_) {
                       if (_scrollController.hasClients) {
@@ -104,8 +100,8 @@ class _RandomRecipePageState extends State<RandomRecipePage> {
                       child: SlideTransition(
                         position: Tween<Offset>(
                           begin: _isGoingBack 
-                              ? const Offset(1.0, 0.0) // Slide from right when going back
-                              : const Offset(0.0, 0.05), // Slide from bottom when going forward
+                              ? const Offset(1.0, 0.0)
+                              : const Offset(0.0, 0.05),
                           end: Offset.zero,
                         ).animate(
                           CurvedAnimation(
@@ -119,7 +115,6 @@ class _RandomRecipePageState extends State<RandomRecipePage> {
                   },
                   child: state.maybeWhen(
                     initial: () {
-                      // Reset flag when we reach initial state
                       if (_isGoingBack) {
                         WidgetsBinding.instance.addPostFrameCallback((_) {
                           if (mounted) {
@@ -132,7 +127,6 @@ class _RandomRecipePageState extends State<RandomRecipePage> {
                       return _buildInitialView(context);
                     },
                     loading: () {
-                      // Reset flag when loading starts (going forward)
                       if (_isGoingBack) {
                         WidgetsBinding.instance.addPostFrameCallback((_) {
                           if (mounted) {
@@ -151,13 +145,11 @@ class _RandomRecipePageState extends State<RandomRecipePage> {
                       onRefresh: () {
                         if (_selectedCategory != null) {
                           final bloc = context.read<RecipeBloc>();
-                          // Scroll to top smoothly before loading new recipe
                           _scrollController.animateTo(
                             0,
                             duration: AppConstants.scrollAnimationDuration,
                             curve: Curves.easeInOut,
                           );
-                          // Wait a bit for scroll animation, then load new recipe
                           Future.delayed(AppConstants.loadRecipeAfterScrollDelay, () {
                             if (mounted) {
                               bloc.add(
@@ -190,7 +182,6 @@ class _RandomRecipePageState extends State<RandomRecipePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // Icon with background
               Container(
                 padding: const EdgeInsets.all(24),
                 decoration: BoxDecoration(
@@ -204,7 +195,6 @@ class _RandomRecipePageState extends State<RandomRecipePage> {
                 ),
               ),
               const SizedBox(height: 32),
-              // Title
               Text(
                 'Bugün Ne Pişirsek?',
                 textAlign: TextAlign.center,
@@ -214,7 +204,6 @@ class _RandomRecipePageState extends State<RandomRecipePage> {
                     ),
               ),
               const SizedBox(height: 48),
-              // Category selection card
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.all(24),
@@ -281,7 +270,6 @@ class _RandomRecipePageState extends State<RandomRecipePage> {
                 ),
               ),
               const SizedBox(height: 32),
-              // Action button
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton.icon(

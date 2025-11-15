@@ -21,13 +21,8 @@ class RecipeDetailWidget extends StatefulWidget {
 }
 
 class _RecipeDetailWidgetState extends State<RecipeDetailWidget> {
-  // Track completed steps
   final Set<int> _completedSteps = {};
-  
-  // Confetti controller
   late ConfettiController _confettiController;
-  
-  // Track if confetti has been shown for this recipe
   bool _confettiShown = false;
 
   @override
@@ -51,7 +46,6 @@ class _RecipeDetailWidgetState extends State<RecipeDetailWidget> {
       }
     });
     
-    // Check if all steps are completed
     _checkAllStepsCompleted();
   }
 
@@ -59,13 +53,8 @@ class _RecipeDetailWidgetState extends State<RecipeDetailWidget> {
     final allStepsCompleted = _completedSteps.length == widget.recipe.instructions.length;
     
     if (allStepsCompleted && !_confettiShown) {
-      // Trigger haptic feedback (light)
       HapticFeedback.lightImpact();
-      
-      // Show confetti animation
       _confettiController.play();
-      
-      // Mark confetti as shown for this recipe
       _confettiShown = true;
     }
   }
@@ -73,7 +62,6 @@ class _RecipeDetailWidgetState extends State<RecipeDetailWidget> {
   @override
   void didUpdateWidget(RecipeDetailWidget oldWidget) {
     super.didUpdateWidget(oldWidget);
-    // Reset confetti flag when recipe changes
     if (oldWidget.recipe.id != widget.recipe.id) {
       _confettiShown = false;
       _completedSteps.clear();
@@ -93,7 +81,6 @@ class _RecipeDetailWidgetState extends State<RecipeDetailWidget> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          // Recipe Image
           SizedBox(
             height: isSmallScreen ? 250 : 300,
             child: CachedNetworkImage(
@@ -110,7 +97,6 @@ class _RecipeDetailWidgetState extends State<RecipeDetailWidget> {
             ),
           ),
           
-          // Recipe Name - Prominent and Large
           Container(
             width: double.infinity,
             padding: EdgeInsets.all(isSmallScreen ? 16.0 : 24.0),
@@ -134,7 +120,6 @@ class _RecipeDetailWidgetState extends State<RecipeDetailWidget> {
             ),
           ),
 
-          // Recipe Info (Time, Servings) - Centered and Modern
           if (widget.recipe.prepTime != null || widget.recipe.cookTime != null || widget.recipe.servings != null)
             Padding(
               padding: EdgeInsets.symmetric(horizontal: isSmallScreen ? 12.0 : 16.0, vertical: isSmallScreen ? 12 : 16),
@@ -202,7 +187,6 @@ class _RecipeDetailWidgetState extends State<RecipeDetailWidget> {
 
           SizedBox(height: isSmallScreen ? 12 : 16),
 
-          // Ingredients Section
           Padding(
             padding: EdgeInsets.symmetric(horizontal: isSmallScreen ? 12.0 : 16.0),
             child: Column(
@@ -245,7 +229,6 @@ class _RecipeDetailWidgetState extends State<RecipeDetailWidget> {
 
           SizedBox(height: isSmallScreen ? 20 : 24),
 
-          // Instructions Section
           Padding(
             padding: EdgeInsets.symmetric(horizontal: isSmallScreen ? 12.0 : 16.0),
             child: Column(
@@ -271,7 +254,6 @@ class _RecipeDetailWidgetState extends State<RecipeDetailWidget> {
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          // Checkbox/Step indicator
                           Container(
                             width: isSmallScreen ? 32 : 36,
                             height: isSmallScreen ? 32 : 36,
@@ -353,7 +335,6 @@ class _RecipeDetailWidgetState extends State<RecipeDetailWidget> {
 
           SizedBox(height: isSmallScreen ? 24 : 32),
 
-          // Try Another Button
           if (widget.onRefresh != null)
             Padding(
               padding: EdgeInsets.all(isSmallScreen ? 12.0 : 16.0),
@@ -381,12 +362,11 @@ class _RecipeDetailWidgetState extends State<RecipeDetailWidget> {
         ],
       ),
     ),
-        // Confetti widget - positioned at the top center
         Align(
           alignment: Alignment.topCenter,
           child: ConfettiWidget(
             confettiController: _confettiController,
-            blastDirection: 1.5708, // 90 degrees (downward)
+            blastDirection: 1.5708,
             maxBlastForce: 5,
             minBlastForce: 2,
             emissionFrequency: 0.05,
