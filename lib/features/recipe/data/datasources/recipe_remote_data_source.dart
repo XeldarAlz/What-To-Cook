@@ -228,27 +228,14 @@ class RecipeRemoteDataSourceImpl implements RecipeRemoteDataSource {
         ? '$translatedCategory${area.isNotEmpty ? ' - $translatedArea' : ''}'
         : '';
     
-    // Optimize instruction translation: if instructions are long, 
-    // translate as a single text for better performance
+    // Translate instructions - translator handles length limits automatically
     final List<String> translatedInstructions;
     if (instructions.isEmpty) {
       translatedInstructions = ['Tarif detayları bulunamadı'];
-    } else if (instructions.length <= 3) {
-      // Short instructions: translate individually for better quality
-      translatedInstructions = await translator.translateListToTurkish(instructions);
     } else {
-      // Long instructions: join and translate as one text for speed
-      final joinedInstructions = instructions.join('\n');
-      final translatedText = await translator.translateToTurkish(joinedInstructions);
-      // Split back by newlines or periods
-      final splitInstructions = translatedText
-          .split(RegExp(r'\n+|\.\s+'))
-          .map((line) => line.trim())
-          .where((line) => line.isNotEmpty)
-          .toList();
-      translatedInstructions = splitInstructions.isEmpty 
-          ? [translatedText] 
-          : splitInstructions;
+      // Translate each instruction individually to avoid length limits
+      // The translator will handle long texts by splitting them
+      translatedInstructions = await translator.translateListToTurkish(instructions);
     }
     
     // Translate ingredients in parallel with instructions
