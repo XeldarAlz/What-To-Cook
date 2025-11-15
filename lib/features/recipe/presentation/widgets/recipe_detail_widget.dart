@@ -41,14 +41,26 @@ class RecipeDetailWidget extends StatelessWidget {
             ),
           ),
           
-          // Recipe Name
-          Padding(
-            padding: EdgeInsets.all(isSmallScreen ? 12.0 : 16.0),
+          // Recipe Name - Prominent and Large
+          Container(
+            width: double.infinity,
+            padding: EdgeInsets.all(isSmallScreen ? 16.0 : 24.0),
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.primaryContainer.withValues(alpha: 0.3),
+              borderRadius: const BorderRadius.only(
+                bottomLeft: Radius.circular(24),
+                bottomRight: Radius.circular(24),
+              ),
+            ),
             child: Text(
               recipe.name,
-              style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                     fontWeight: FontWeight.bold,
-                    fontSize: isSmallScreen ? 22 : null,
+                    fontSize: isSmallScreen ? 28 : 36,
+                    color: Theme.of(context).colorScheme.onSurface,
+                    letterSpacing: 0.5,
+                    height: 1.2,
                   ),
             ),
           ),
