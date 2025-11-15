@@ -1,5 +1,12 @@
 import 'package:equatable/equatable.dart';
 
+enum RecipeCategory {
+  kahvalti,
+  ogleYemegi,
+  aksamYemegi,
+  tatli,
+}
+
 class Recipe extends Equatable {
   final String id;
   final String name;
@@ -7,6 +14,7 @@ class Recipe extends Equatable {
   final String imageUrl;
   final List<String> ingredients;
   final List<String> instructions;
+  final RecipeCategory category;
   final int? prepTime;
   final int? cookTime;
   final int? servings;
@@ -18,6 +26,7 @@ class Recipe extends Equatable {
     required this.imageUrl,
     required this.ingredients,
     required this.instructions,
+    required this.category,
     this.prepTime,
     this.cookTime,
     this.servings,
@@ -31,6 +40,7 @@ class Recipe extends Equatable {
         imageUrl,
         ingredients,
         instructions,
+        category,
         prepTime,
         cookTime,
         servings,
