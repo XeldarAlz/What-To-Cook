@@ -40,7 +40,6 @@ class RecipeLocalDataSourceImpl implements RecipeLocalDataSource {
         .toList();
     
     if (availableRecipes.isEmpty) {
-      // If all recipes shown, reset and return random
       final allRecipes = getRecipesByCategory(category);
       return allRecipes[DateTime.now().millisecond % allRecipes.length];
     }

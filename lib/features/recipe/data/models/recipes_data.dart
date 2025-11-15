@@ -1,19 +1,14 @@
 import '../../domain/entities/recipe.dart';
 import 'recipe_model.dart';
 
-/// All recipe data
-///
-/// This file contains all hardcoded recipe data.
-/// Modify recipes here to update the app's recipe database.
 class RecipesData {
-  RecipesData._(); // Private constructor to prevent instantiation
+  RecipesData._();
 
   static List<RecipeModel> getAllRecipes() {
     return List.unmodifiable(_recipes);
   }
 
   static final List<RecipeModel> _recipes = [
-    // KAHVALTI - 20 tarif
     RecipeModel(
       id: 'kahvalti_1',
       name: 'Menemen',
@@ -547,7 +542,6 @@ class RecipesData {
       cookTime: 15,
       servings: 4,
     ),
-    // ÖĞLE YEMEĞİ - 20 tarif
     RecipeModel(
       id: 'ogle_1',
       name: 'Köfte',
@@ -1105,7 +1099,6 @@ class RecipesData {
       cookTime: 30,
       servings: 4,
     ),
-    // AKŞAM YEMEĞİ - 20 tarif
     RecipeModel(
       id: 'aksam_1',
       name: 'Kebap',
@@ -1671,7 +1664,6 @@ class RecipesData {
       cookTime: 30,
       servings: 4,
     ),
-    // TATLI - 20 tarif
     RecipeModel(
       id: 'tatli_1',
       name: 'Baklava',

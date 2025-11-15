@@ -9,7 +9,6 @@ import '../models/recipe_model.dart';
 class RecipeRepositoryImpl implements RecipeRepository {
   final RecipeLocalDataSource localDataSource;
   
-  // For smart randomization - track shown recipes by category
   final Map<RecipeCategory, List<String>> _shownRecipeIds = {};
 
   RecipeRepositoryImpl({
@@ -23,7 +22,6 @@ class RecipeRepositoryImpl implements RecipeRepository {
         return const Left(ValidationFailure('Kategori seçmelisiniz'));
       }
 
-      // Add fake delay for better UX (1-2 seconds)
       await Future.delayed(Duration(
         milliseconds: AppConstants.recipeFetchBaseDelayMs +
             (DateTime.now().millisecond % AppConstants.recipeFetchRandomDelayMs),
@@ -32,13 +30,11 @@ class RecipeRepositoryImpl implements RecipeRepository {
       final shownIds = _shownRecipeIds[category] ?? [];
       final recipe = localDataSource.getRandomRecipeByCategory(category, shownIds);
       
-      // Track shown recipe
       if (!_shownRecipeIds.containsKey(category)) {
         _shownRecipeIds[category] = [];
       }
       _shownRecipeIds[category]!.add(recipe.id);
       
-      // Keep last N shown recipes per category
       if (_shownRecipeIds[category]!.length > AppConstants.maxShownRecipesPerCategory) {
         _shownRecipeIds[category]!.removeAt(0);
       }
@@ -79,7 +75,6 @@ class RecipeRepositoryImpl implements RecipeRepository {
         return const Left(ValidationFailure('En az bir malzeme seçmelisiniz'));
       }
 
-      // Add fake delay for better UX (1-2 seconds) - same as random recipe
       await Future.delayed(Duration(
         milliseconds: AppConstants.recipeFetchBaseDelayMs +
             (DateTime.now().millisecond % AppConstants.recipeFetchRandomDelayMs),
@@ -92,21 +87,16 @@ class RecipeRepositoryImpl implements RecipeRepository {
         recipes = localDataSource.getAllRecipes();
       }
 
-      // Normalize selected ingredients (lowercase, trim)
       final normalizedSelectedIngredients = ingredients
           .map((ing) => ing.toLowerCase().trim())
           .toList();
 
-      // Filter recipes that contain ALL selected ingredients
       final filteredRecipes = recipes.where((recipe) {
-        // Normalize recipe ingredients and join them
         final recipeIngredientsText = recipe.ingredients
             .map((ing) => ing.toLowerCase().trim())
             .join(' ');
         
-        // Check if ALL selected ingredients are present in the recipe
         return normalizedSelectedIngredients.every((selectedIng) {
-          // Check if the ingredient name appears in any of the recipe ingredients
           return recipeIngredientsText.contains(selectedIng);
         });
       }).toList();
