@@ -23,36 +23,54 @@ class IngredientsPage extends StatelessWidget {
           child: BlocBuilder<IngredientsBloc, IngredientsState>(
             builder: (context, state) {
               return state.maybeWhen(
-                initial: (selected, available) => _buildIngredientsSelectionView(
+                initial: (selected, available, category) => _buildIngredientsSelectionView(
                   context,
                   selected,
                   available,
+                  selectedCategory: category,
                 ),
-                loading: (selected, available) => _buildIngredientsSelectionView(
+                loading: (selected, available, category) => _buildIngredientsSelectionView(
                   context,
                   selected,
                   available,
+                  selectedCategory: category,
                   showLoading: true,
                 ),
-                loaded: (recipe, selected, available) => _buildIngredientsSelectionView(
+                loaded: (recipe, selected, available, category) => _buildIngredientsSelectionView(
                   context,
                   selected,
                   available,
+                  selectedCategory: category,
                   recipe: recipe,
                 ),
-                error: (failure, selected, available) => _buildIngredientsSelectionView(
+                error: (failure, selected, available, category) => _buildIngredientsSelectionView(
                   context,
                   selected,
                   available,
+                  selectedCategory: category,
                   error: failure,
                 ),
-                orElse: () => _buildIngredientsSelectionView(context, [], []),
+                orElse: () => _buildIngredientsSelectionView(context, [], [], selectedCategory: null),
               );
             },
           ),
         ),
       ),
     );
+  }
+
+  String _getCategoryName(RecipeCategory? category) {
+    if (category == null) return 'Tümü';
+    switch (category) {
+      case RecipeCategory.kahvalti:
+        return 'Kahvaltı';
+      case RecipeCategory.ogleYemegi:
+        return 'Öğle Yemeği';
+      case RecipeCategory.aksamYemegi:
+        return 'Akşam Yemeği';
+      case RecipeCategory.tatli:
+        return 'Tatlı';
+    }
   }
 
   Widget _buildIngredientsSelectionView(
@@ -62,6 +80,7 @@ class IngredientsPage extends StatelessWidget {
     Recipe? recipe,
     Failure? error,
     bool showLoading = false,
+    RecipeCategory? selectedCategory,
   }) {
     final categories = IngredientsDataSource.getCategories();
 
@@ -157,6 +176,45 @@ class IngredientsPage extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
+                              Text(
+                                'Kategori Seçin',
+                                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                              ),
+                              const SizedBox(height: 12),
+                              Wrap(
+                                spacing: 8,
+                                runSpacing: 8,
+                                children: [
+                                  FilterChip(
+                                    selected: selectedCategory == null,
+                                    label: const Text('Tümü'),
+                                    onSelected: (selected) {
+                                      context.read<IngredientsBloc>().add(
+                                        IngredientsEvent.selectCategory(null),
+                                      );
+                                    },
+                                    selectedColor: Theme.of(context).colorScheme.primaryContainer,
+                                    checkmarkColor: Theme.of(context).colorScheme.onPrimaryContainer,
+                                  ),
+                                  ...RecipeCategory.values.map((category) {
+                                    final isSelected = selectedCategory == category;
+                                    return FilterChip(
+                                      selected: isSelected,
+                                      label: Text(_getCategoryName(category)),
+                                      onSelected: (selected) {
+                                        context.read<IngredientsBloc>().add(
+                                          IngredientsEvent.selectCategory(selected ? category : null),
+                                        );
+                                      },
+                                      selectedColor: Theme.of(context).colorScheme.primaryContainer,
+                                      checkmarkColor: Theme.of(context).colorScheme.onPrimaryContainer,
+                                    );
+                                  }),
+                                ],
+                              ),
+                              const SizedBox(height: 24),
                               Text(
                                 'Malzemeleri Seçin',
                                 style: Theme.of(context).textTheme.titleLarge?.copyWith(
