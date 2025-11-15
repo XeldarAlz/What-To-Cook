@@ -1,12 +1,8 @@
 import '../../features/recipe/domain/entities/recipe.dart';
 
-/// Category utility functions
-/// 
-/// This file contains helper functions for working with recipe categories.
 class CategoryUtils {
-  CategoryUtils._(); // Private constructor to prevent instantiation
+  CategoryUtils._();
 
-  /// Get display name for a recipe category
   static String getCategoryName(RecipeCategory? category) {
     if (category == null) return 'Tümü';
     
@@ -22,7 +18,6 @@ class CategoryUtils {
     }
   }
 
-  /// Get all available categories
   static List<RecipeCategory> getAllCategories() {
     return RecipeCategory.values;
   }

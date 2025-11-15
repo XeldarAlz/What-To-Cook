@@ -11,25 +11,20 @@ import '../../features/ingredients/presentation/bloc/ingredients_bloc.dart';
 final getIt = GetIt.instance;
 
 Future<void> initDependencies() async {
-  // Features - Recipe
-  // Data sources
   getIt.registerLazySingleton<RecipeLocalDataSource>(
     () => RecipeLocalDataSourceImpl(),
   );
 
-  // Repository
   getIt.registerLazySingleton<RecipeRepository>(
     () => RecipeRepositoryImpl(
       localDataSource: getIt(),
     ),
   );
 
-  // Use cases
   getIt.registerLazySingleton<GetRandomRecipe>(() => GetRandomRecipe(getIt()));
   getIt.registerLazySingleton<GetRecipeByName>(() => GetRecipeByName(getIt()));
   getIt.registerLazySingleton<GetRecipesByIngredients>(() => GetRecipesByIngredients(getIt()));
 
-  // Bloc
   getIt.registerFactory(
     () => RecipeBloc(
       getRandomRecipe: getIt(),
