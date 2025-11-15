@@ -43,11 +43,9 @@ class _IngredientsPageState extends State<IngredientsPage> {
                   icon: const Icon(Icons.arrow_back),
                   onPressed: () {
                     final bloc = context.read<IngredientsBloc>();
-                    // Set flag to indicate we're going back
                     setState(() {
                       _isGoingBack = true;
                     });
-                    // Scroll to top first for smooth transition
                     if (_scrollController.hasClients) {
                       _scrollController.animateTo(
                         0,
@@ -55,7 +53,6 @@ class _IngredientsPageState extends State<IngredientsPage> {
                         curve: Curves.easeInOut,
                       );
                     }
-                    // Then reset after a short delay for smooth animation
                     Future.delayed(AppConstants.resetAfterScrollDelay, () {
                       if (mounted) {
                         bloc.add(
@@ -77,7 +74,6 @@ class _IngredientsPageState extends State<IngredientsPage> {
             body: SafeArea(
               child: BlocListener<IngredientsBloc, IngredientsState>(
                 listener: (context, state) {
-                  // When a new recipe is loaded, scroll to top smoothly
                   state.maybeWhen(
                     loaded: (_, __, ___, ____) {
                       if (_scrollController.hasClients) {
@@ -104,8 +100,8 @@ class _IngredientsPageState extends State<IngredientsPage> {
                       child: SlideTransition(
                         position: Tween<Offset>(
                           begin: _isGoingBack 
-                              ? const Offset(1.0, 0.0) // Slide from right when going back
-                              : const Offset(0.0, 0.05), // Slide from bottom when going forward
+                              ? const Offset(1.0, 0.0)
+                              : const Offset(0.0, 0.05),
                           end: Offset.zero,
                         ).animate(
                           CurvedAnimation(
@@ -119,7 +115,6 @@ class _IngredientsPageState extends State<IngredientsPage> {
                   },
                   child: state.maybeWhen(
                     initial: (selected, available, category) {
-                      // Reset flag when we reach initial state
                       if (_isGoingBack) {
                         WidgetsBinding.instance.addPostFrameCallback((_) {
                           if (mounted) {
@@ -138,7 +133,6 @@ class _IngredientsPageState extends State<IngredientsPage> {
                       );
                     },
                     loading: (selected, available, category) {
-                      // Reset flag when loading starts (going forward)
                       if (_isGoingBack) {
                         WidgetsBinding.instance.addPostFrameCallback((_) {
                           if (mounted) {
@@ -198,7 +192,6 @@ class _IngredientsPageState extends State<IngredientsPage> {
     return Column(
       key: key,
       children: [
-        // Selected ingredients section
         if (selectedIngredients.isNotEmpty)
           Container(
             padding: const EdgeInsets.all(16.0),
@@ -275,14 +268,12 @@ class _IngredientsPageState extends State<IngredientsPage> {
             ),
           ),
 
-        // Content area (recipe, error, or ingredients list)
         Expanded(
           child: recipe != null
               ? RecipeDetailWidget(
                   recipe: recipe,
                   scrollController: _scrollController,
                   onRefresh: () {
-                    // Scroll to top smoothly before loading new recipe
                     if (_scrollController.hasClients) {
                       _scrollController.animateTo(
                         0,
@@ -290,7 +281,6 @@ class _IngredientsPageState extends State<IngredientsPage> {
                         curve: Curves.easeInOut,
                       );
                     }
-                    // Wait a bit for scroll animation, then load new recipe
                     Future.delayed(AppConstants.loadRecipeAfterScrollDelay, () {
                       if (mounted) {
                         context.read<IngredientsBloc>().add(

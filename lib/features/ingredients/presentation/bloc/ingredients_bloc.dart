@@ -11,7 +11,6 @@ class IngredientsBloc extends Bloc<IngredientsEvent, IngredientsState> {
   final GetRecipesByIngredients getRecipesByIngredients;
   final Random _random = Random();
 
-  // Available ingredients list
   static final List<String> _availableIngredients = 
       IngredientsDataSource.getAllTurkishNames();
 
@@ -154,7 +153,6 @@ class IngredientsBloc extends Bloc<IngredientsEvent, IngredientsState> {
       ),
     );
 
-    // Use Turkish ingredient names directly (no API conversion needed)
     final result = await getRecipesByIngredients(selected, selectedCategory);
     result.fold(
       (failure) => emit(
@@ -178,7 +176,6 @@ class IngredientsBloc extends Bloc<IngredientsEvent, IngredientsState> {
             ),
           );
         } else {
-          // Select random recipe from matching recipes
           final selectedRecipe = recipes[_random.nextInt(recipes.length)];
           emit(
             IngredientsState.loaded(
