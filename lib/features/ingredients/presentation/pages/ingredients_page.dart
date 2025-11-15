@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/constants/app_constants.dart';
 import '../../../../core/injection/injection.dart';
 import '../../../../core/utils/category_utils.dart';
 import '../../../../core/error/failures.dart';
@@ -12,8 +13,22 @@ import '../../../recipe/domain/entities/recipe.dart';
 import '../../data/datasources/ingredients_data_source.dart';
 import '../../data/models/ingredient_category.dart';
 
-class IngredientsPage extends StatelessWidget {
+class IngredientsPage extends StatefulWidget {
   const IngredientsPage({super.key});
+
+  @override
+  State<IngredientsPage> createState() => _IngredientsPageState();
+}
+
+class _IngredientsPageState extends State<IngredientsPage> {
+  final ScrollController _scrollController = ScrollController();
+  bool _isGoingBack = false;
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,33 +36,110 @@ class IngredientsPage extends StatelessWidget {
       create: (context) => getIt<IngredientsBloc>(),
       child: Scaffold(
         body: SafeArea(
-          child: BlocBuilder<IngredientsBloc, IngredientsState>(
-            builder: (context, state) {
-              return state.maybeWhen(
-                initial: (selected, available, category) => _buildIngredientsSelectionView(
-                  context,
-                  selected,
-                  available,
-                  selectedCategory: category,
-                ),
-                loading: (selected, available, category) => const LoadingAnimationWidget(),
-                loaded: (recipe, selected, available, category) => _buildIngredientsSelectionView(
-                  context,
-                  selected,
-                  available,
-                  selectedCategory: category,
-                  recipe: recipe,
-                ),
-                error: (failure, selected, available, category) => _buildIngredientsSelectionView(
-                  context,
-                  selected,
-                  available,
-                  selectedCategory: category,
-                  error: failure,
-                ),
-                orElse: () => _buildIngredientsSelectionView(context, [], [], selectedCategory: null),
+          child: BlocListener<IngredientsBloc, IngredientsState>(
+            listener: (context, state) {
+              // When a new recipe is loaded, scroll to top smoothly
+              state.maybeWhen(
+                loaded: (_, __, ___, ____) {
+                  if (_scrollController.hasClients) {
+                    _scrollController.animateTo(
+                      0,
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeInOut,
+                    );
+                  }
+                },
+                orElse: () {},
               );
             },
+            child: BlocBuilder<IngredientsBloc, IngredientsState>(
+              builder: (context, state) {
+                return AnimatedSwitcher(
+                  duration: AppConstants.stateTransitionDuration,
+                  switchInCurve: Curves.easeOut,
+                  switchOutCurve: Curves.easeIn,
+                  transitionBuilder: (child, animation) {
+                    return FadeTransition(
+                      opacity: CurvedAnimation(
+                        parent: animation,
+                        curve: Curves.easeInOut,
+                      ),
+                      child: SlideTransition(
+                        position: Tween<Offset>(
+                          begin: _isGoingBack 
+                              ? const Offset(1.0, 0.0) // Slide from right when going back
+                              : const Offset(0.0, 0.05), // Slide from bottom when going forward
+                          end: Offset.zero,
+                        ).animate(
+                          CurvedAnimation(
+                            parent: animation,
+                            curve: Curves.easeOutCubic,
+                          ),
+                        ),
+                        child: child,
+                      ),
+                    );
+                  },
+                  child: state.maybeWhen(
+                    initial: (selected, available, category) {
+                      // Reset flag when we reach initial state
+                      if (_isGoingBack) {
+                        WidgetsBinding.instance.addPostFrameCallback((_) {
+                          if (mounted) {
+                            setState(() {
+                              _isGoingBack = false;
+                            });
+                          }
+                        });
+                      }
+                      return _buildIngredientsSelectionView(
+                        context,
+                        selected,
+                        available,
+                        selectedCategory: category,
+                        key: const ValueKey('initial'),
+                      );
+                    },
+                    loading: (selected, available, category) {
+                      // Reset flag when loading starts (going forward)
+                      if (_isGoingBack) {
+                        WidgetsBinding.instance.addPostFrameCallback((_) {
+                          if (mounted) {
+                            setState(() {
+                              _isGoingBack = false;
+                            });
+                          }
+                        });
+                      }
+                      return const LoadingAnimationWidget(key: ValueKey('loading'));
+                    },
+                    loaded: (recipe, selected, available, category) => _buildIngredientsSelectionView(
+                      context,
+                      selected,
+                      available,
+                      selectedCategory: category,
+                      recipe: recipe,
+                      key: ValueKey(recipe.id),
+                    ),
+                    error: (failure, selected, available, category) => _buildIngredientsSelectionView(
+                      context,
+                      selected,
+                      available,
+                      selectedCategory: category,
+                      error: failure,
+                      key: const ValueKey('error'),
+                    ),
+                    orElse: () => _buildIngredientsSelectionView(
+                      context,
+                      [],
+                      [],
+                      selectedCategory: null,
+                      key: const ValueKey('initial'),
+                    ),
+                  ),
+                );
+              },
+            ),
           ),
         ),
       ),
@@ -62,10 +154,12 @@ class IngredientsPage extends StatelessWidget {
     Recipe? recipe,
     Failure? error,
     RecipeCategory? selectedCategory,
+    Key? key,
   }) {
     final categories = IngredientsDataSource.getCategories();
 
     return Column(
+      key: key,
       children: [
         // Selected ingredients section
         if (selectedIngredients.isNotEmpty)
@@ -149,10 +243,24 @@ class IngredientsPage extends StatelessWidget {
           child: recipe != null
               ? RecipeDetailWidget(
                   recipe: recipe,
+                  scrollController: _scrollController,
                   onRefresh: () {
-                    context.read<IngredientsBloc>().add(
-                          const IngredientsEvent.getRecipeByIngredients(),
-                        );
+                    // Scroll to top smoothly before loading new recipe
+                    if (_scrollController.hasClients) {
+                      _scrollController.animateTo(
+                        0,
+                        duration: AppConstants.scrollAnimationDuration,
+                        curve: Curves.easeInOut,
+                      );
+                    }
+                    // Wait a bit for scroll animation, then load new recipe
+                    Future.delayed(AppConstants.loadRecipeAfterScrollDelay, () {
+                      if (mounted) {
+                        context.read<IngredientsBloc>().add(
+                              const IngredientsEvent.getRecipeByIngredients(),
+                            );
+                      }
+                    });
                   },
                 )
               : error != null
