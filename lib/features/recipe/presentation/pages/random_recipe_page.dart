@@ -70,9 +70,8 @@ class _RandomRecipePageState extends State<RandomRecipePage> {
                 elevation: 0,
               ),
               orElse: () => AppBar(
-                title: const Text('Bugün Ne Pişirsek?'),
                 elevation: 0,
-                centerTitle: true,
+                automaticallyImplyLeading: false,
               ),
             ),
             body: SafeArea(
@@ -212,14 +211,6 @@ class _RandomRecipePageState extends State<RandomRecipePage> {
                 style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                       fontWeight: FontWeight.bold,
                       color: Theme.of(context).colorScheme.onSurface,
-                    ),
-              ),
-              const SizedBox(height: 8),
-              Text(
-                'Kategori seçerek rastgele bir tarif alın',
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
                     ),
               ),
               const SizedBox(height: 48),
