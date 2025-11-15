@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:confetti/confetti.dart';
 import '../../domain/entities/recipe.dart';
 
 class RecipeDetailWidget extends StatefulWidget {
@@ -21,6 +23,24 @@ class RecipeDetailWidget extends StatefulWidget {
 class _RecipeDetailWidgetState extends State<RecipeDetailWidget> {
   // Track completed steps
   final Set<int> _completedSteps = {};
+  
+  // Confetti controller
+  late ConfettiController _confettiController;
+  
+  // Track if confetti has been shown for this recipe
+  bool _confettiShown = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _confettiController = ConfettiController(duration: const Duration(seconds: 3));
+  }
+
+  @override
+  void dispose() {
+    _confettiController.dispose();
+    super.dispose();
+  }
 
   void _toggleStep(int index) {
     setState(() {
@@ -30,6 +50,35 @@ class _RecipeDetailWidgetState extends State<RecipeDetailWidget> {
         _completedSteps.add(index);
       }
     });
+    
+    // Check if all steps are completed
+    _checkAllStepsCompleted();
+  }
+
+  void _checkAllStepsCompleted() {
+    final allStepsCompleted = _completedSteps.length == widget.recipe.instructions.length;
+    
+    if (allStepsCompleted && !_confettiShown) {
+      // Trigger haptic feedback (light)
+      HapticFeedback.lightImpact();
+      
+      // Show confetti animation
+      _confettiController.play();
+      
+      // Mark confetti as shown for this recipe
+      _confettiShown = true;
+    }
+  }
+
+  @override
+  void didUpdateWidget(RecipeDetailWidget oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    // Reset confetti flag when recipe changes
+    if (oldWidget.recipe.id != widget.recipe.id) {
+      _confettiShown = false;
+      _completedSteps.clear();
+      _confettiController.stop();
+    }
   }
 
   @override
@@ -37,7 +86,9 @@ class _RecipeDetailWidgetState extends State<RecipeDetailWidget> {
     final screenWidth = MediaQuery.of(context).size.width;
     final isSmallScreen = screenWidth < 400;
     
-    return SingleChildScrollView(
+    return Stack(
+      children: [
+        SingleChildScrollView(
       controller: widget.scrollController,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -293,6 +344,31 @@ class _RecipeDetailWidgetState extends State<RecipeDetailWidget> {
             ),
         ],
       ),
+    ),
+        // Confetti widget - positioned at the top center
+        Align(
+          alignment: Alignment.topCenter,
+          child: ConfettiWidget(
+            confettiController: _confettiController,
+            blastDirection: 1.5708, // 90 degrees (downward)
+            maxBlastForce: 5,
+            minBlastForce: 2,
+            emissionFrequency: 0.05,
+            numberOfParticles: 50,
+            gravity: 0.1,
+            shouldLoop: false,
+            colors: const [
+              Colors.green,
+              Colors.blue,
+              Colors.pink,
+              Colors.orange,
+              Colors.purple,
+              Colors.red,
+              Colors.yellow,
+            ],
+          ),
+        ),
+      ],
     );
   }
 
