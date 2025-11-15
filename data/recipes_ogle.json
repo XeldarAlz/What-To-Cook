@@ -1,0 +1,550 @@
+[
+  {
+    "id": "ogle_1",
+    "name": "Köfte",
+    "description": "Klasik Türk köftesi",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "500 gram kıyma",
+      "1 adet soğan",
+      "2 diş sarımsak",
+      "1 yumurta",
+      "Ekmek içi",
+      "Tuz, karabiber, kimyon"
+    ],
+    "instructions": [
+      "1 adet soğanı rendeleyin veya çok ince doğrayın. Soğanın suyunu sıkın ki köfte hamuru çok sulu olmasın.",
+      "500 gram kıymayı geniş bir kaseye alın. Rendelemiş soğan, 2 diş ezilmiş sarımsak, 1 yumurta ve ıslatılmış ekmek içi ekleyin.",
+      "Tuz, karabiber ve kimyon ekleyin. Tüm malzemeleri iyice karıştırın ve yaklaşık 5 dakika yoğurun. Hamur yumuşak ve homojen olmalı.",
+      "Köfte hamurunu buzdolabında 30 dakika bekletin. Bu süre köftelerin daha iyi şekil almasını sağlar.",
+      "Hamurdan ceviz büyüklüğünde parçalar alın ve elinizle köfte şekli verin. Köfteleri düz bir tepsiye dizin.",
+      "Izgarayı veya tavayı ısıtın. Köfteleri ızgaraya yerleştirin ve her iki tarafını da pişirin, yaklaşık 8-10 dakika.",
+      "Köfteler piştiğinde ızgaradan çıkarın ve sıcak servis edin. Yanında pilav, salata ve yoğurt ile harika olur."
+    ],
+    "category": "ogleYemegi",
+    "prepTime": 30,
+    "cookTime": 20,
+    "servings": 4
+  },
+  {
+    "id": "ogle_2",
+    "name": "Pilav",
+    "description": "Klasik Türk pilavı",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "2 su bardağı pirinç",
+      "3 su bardağı su",
+      "2 yemek kaşığı tereyağı",
+      "Tuz"
+    ],
+    "instructions": [
+      "2 su bardağı pirinci bir kaseye alın ve soğuk su ile 3-4 kez yıkayın. Su berrak olana kadar yıkamaya devam edin.",
+      "Yıkanan pirinci süzün ve 30 dakika suda bekletin. Bu süre pirincin daha iyi pişmesini sağlar.",
+      "Geniş bir tencereye 2 yemek kaşığı tereyağını koyun ve orta ateşte eritin. Tereyağı eridikten sonra süzülmüş pirinci ekleyin.",
+      "Pirinci sürekli karıştırarak kavurun. Pirinçler şeffaf görünmeye ve hafifçe kızarmaya başladığında hazırdır, yaklaşık 5 dakika.",
+      "3 su bardağı kaynar su ve 1 çay kaşığı tuz ekleyin. Karıştırın ve kaynamaya başladığında kapağı kapatın.",
+      "Ateşi kısık seviyeye alın ve 15-20 dakika pişirin. Suyunu çekene kadar pişirmeye devam edin.",
+      "Pilav piştiğinde ocaktan alın ve 10 dakika dinlendirin. Kapağı açmadan bekleyin ki buhar çıkmasın.",
+      "Pilavı bir kaşık ile karıştırarak servis edin. Yanında köfte, tavuk veya et yemeği ile harika olur."
+    ],
+    "category": "ogleYemegi",
+    "prepTime": 10,
+    "cookTime": 20,
+    "servings": 4
+  },
+  {
+    "id": "ogle_3",
+    "name": "Mantı",
+    "description": "Klasik Türk mantısı",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "500 gram un",
+      "300 gram kıyma",
+      "1 adet soğan",
+      "Yoğurt",
+      "Sarımsak",
+      "Tereyağı"
+    ],
+    "instructions": [
+      "500 gram unu geniş bir kaba alın, ortasına 1 çay kaşığı tuz ekleyin. Yavaş yavaş ılık su ekleyerek hamur yoğurun.",
+      "Hamur yumuşak ama ele yapışmayacak kıvamda olmalı, yaklaşık 10 dakika yoğurun. Hamuru bir kaseye koyun, üzerini örtün ve 30 dakika dinlendirin.",
+      "300 gram kıymayı geniş bir kaseye alın. 1 adet rendelenmiş soğan, tuz, karabiber ve kimyon ekleyin. İyice karıştırın.",
+      "Dinlenen hamuru açın ve ince yufka haline getirin. Yufkayı küçük kareler halinde kesin, yaklaşık 3x3 cm.",
+      "Her karenin ortasına küçük bir miktar kıyma koyun ve kenarlarını birleştirerek mantı şekli verin. Kenarları sıkıca kapatın.",
+      "Geniş bir tencereye su koyun ve kaynatın. Kaynar suya mantıları atın ve yaklaşık 15-20 dakika haşlayın. Mantılar su yüzeyine çıktığında hazırdır.",
+      "Haşlanan mantıları süzün ve servis tabaklarına paylaştırın. Üzerine sarımsaklı yoğurt dökün.",
+      "Bir tavada tereyağını eritin ve kırmızı biber ekleyin. Tereyağlı biberi mantıların üzerine dökün ve sıcak servis edin."
+    ],
+    "category": "ogleYemegi",
+    "prepTime": 60,
+    "cookTime": 30,
+    "servings": 4
+  },
+  {
+    "id": "ogle_4",
+    "name": "Döner",
+    "description": "Klasik Türk döneri",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "500 gram dana eti",
+      "Soğan",
+      "Domates",
+      "Marul",
+      "Lavaş ekmeği",
+      "Yoğurt sosu"
+    ],
+    "instructions": [
+      "500 gram dana etini ince dilimler halinde kesin. Eti bir kaseye alın ve üzerine tuz, karabiber, kimyon, kekik ve zeytinyağı ekleyin.",
+      "Eti marine edin. Tüm baharatları iyice karıştırın ve buzdolabında en az 2 saat bekletin. Ne kadar uzun bekletirseniz o kadar lezzetli olur.",
+      "Marine edilmiş eti döner makinesine yerleştirin veya şişe geçirin. Döner makinesinde yaklaşık 1 saat pişirin, etin dışı kızarmalı.",
+      "Pişen döner etini ince ince kesin. Et sıcak olmalı.",
+      "Lavaş ekmeğini hafifçe ısıtın. Üzerine kesilmiş döner etini yayın.",
+      "Soğan, domates ve marul gibi sebzeleri doğrayın ve döner etinin üzerine ekleyin.",
+      "Yoğurt sosu hazırlayın: Yoğurda sarımsak, tuz ve biraz limon suyu ekleyin. Sosu dönerin üzerine sürün.",
+      "Lavaş ekmeğini rulo yaparak sarın ve servis edin. Yanında turşu ve acı sos ile harika olur."
+    ],
+    "category": "ogleYemegi",
+    "prepTime": 120,
+    "cookTime": 60,
+    "servings": 4
+  },
+  {
+    "id": "ogle_5",
+    "name": "Lahmacun",
+    "description": "Klasik Türk lahmacunu",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "500 gram un",
+      "300 gram kıyma",
+      "2 adet domates",
+      "2 adet biber",
+      "Soğan",
+      "Maydanoz"
+    ],
+    "instructions": [
+      "500 gram unu geniş bir kaba alın, ortasına 1 çay kaşığı tuz ekleyin. Yavaş yavaş ılık su ekleyerek hamur yoğurun.",
+      "Hamur yumuşak ama ele yapışmayacak kıvamda olmalı, yaklaşık 10 dakika yoğurun. Hamuru bir kaseye koyun, üzerini örtün ve 30 dakika dinlendirin.",
+      "300 gram kıymayı geniş bir kaseye alın. 2 adet rendelenmiş domates, 2 adet ince doğranmış biber, rendelenmiş soğan ve kıyılmış maydanoz ekleyin.",
+      "Kıyma karışımına tuz, karabiber, kimyon ve biraz salça ekleyin. Tüm malzemeleri iyice karıştırın ve 15 dakika bekletin.",
+      "Dinlenen hamuru 6 eşit parçaya bölün. Her parçayı oklava ile ince açın, yaklaşık 20 cm çapında olmalı.",
+      "Açılan hamurun üzerine kıyma karışımını yayın. Kenarlardan 1 cm boşluk bırakın ve kıyma karışımını eşit şekilde dağıtın.",
+      "Lahmacunları yağlı kağıt serili fırın tepsisine yerleştirin. Önceden ısıtılmış 250°C fırında yaklaşık 10-12 dakika pişirin.",
+      "Lahmacunlar piştiğinde fırından çıkarın ve sıcak servis edin. İsterseniz üzerine limon sıkın ve rulo yaparak yiyin."
+    ],
+    "category": "ogleYemegi",
+    "prepTime": 30,
+    "cookTime": 15,
+    "servings": 6
+  },
+  {
+    "id": "ogle_6",
+    "name": "İskender",
+    "description": "Bursa usulü İskender",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "500 gram döner eti",
+      "Pide ekmeği",
+      "Yoğurt",
+      "Tereyağı",
+      "Domates sosu"
+    ],
+    "instructions": [
+      "Pide ekmeğini küp küp doğrayın. Ekmekler yaklaşık 2x2 cm boyutunda olmalı.",
+      "Ekmekleri geniş bir servis tabağına veya porsiyon tabaklarına yerleştirin.",
+      "500 gram döner etini ince ince kesin. Et sıcak olmalı. Kesilmiş döner etini ekmeklerin üzerine yayın.",
+      "Domates sosu hazırlayın: Domates salçasını biraz su ile karıştırın ve tuz ekleyin. Sosu döner etinin üzerine dökün.",
+      "Yoğurdu bir kaseye alın ve biraz tuz ekleyin. Yoğurdu döner etinin üzerine yayın.",
+      "Bir tavada tereyağını eritin ve kırmızı biber ekleyin. Tereyağlı biberi döner etinin üzerine dökün.",
+      "İskenderi sıcak servis edin. Yanında turşu ve acı sos ile harika olur."
+    ],
+    "category": "ogleYemegi",
+    "prepTime": 15,
+    "cookTime": 10,
+    "servings": 4
+  },
+  {
+    "id": "ogle_7",
+    "name": "Karnıyarık",
+    "description": "Patlıcanlı karnıyarık",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "4 adet patlıcan",
+      "300 gram kıyma",
+      "2 adet domates",
+      "1 adet soğan",
+      "Sarımsak",
+      "Salça"
+    ],
+    "instructions": [
+      "4 adet patlıcanı yıkayın ve saplarını kesin. Patlıcanları uzunlamasına çizgiler halinde soyun veya alacalı soyun.",
+      "Patlıcanları geniş bir tavada kızartın. Her iki tarafını da altın sarısı olana kadar kızartın, yaklaşık 5-7 dakika.",
+      "Kızartılan patlıcanları kağıt havlu üzerine alın ve fazla yağını çıkarın.",
+      "300 gram kıymayı geniş bir tavada kavurun. Kıyma suyunu çektikten sonra 1 adet rendelenmiş soğan ve ezilmiş sarımsak ekleyin.",
+      "Soğanlar şeffaf görünmeye başladığında, salça ekleyin ve 2 dakika daha kavurun. Tuz ve karabiber ekleyin.",
+      "Kızartılan patlıcanları uzunlamasına yarın. İçlerine kıyma karışımını doldurun ve dikkatli bir şekilde kapatın.",
+      "Doldurulmuş patlıcanları fırın tepsisine dizin. Üzerlerine doğranmış domates ve biraz daha salça ekleyin.",
+      "Önceden ısıtılmış 180°C fırında yaklaşık 30-40 dakika pişirin. Patlıcanlar yumuşak ve üzerleri kızarmış olmalı. Sıcak servis edin."
+    ],
+    "category": "ogleYemegi",
+    "prepTime": 30,
+    "cookTime": 40,
+    "servings": 4
+  },
+  {
+    "id": "ogle_8",
+    "name": "Mücver",
+    "description": "Kabak mücveri",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "3 adet kabak",
+      "2 yumurta",
+      "1 su bardağı un",
+      "Yarım demet maydanoz",
+      "Kaşar peyniri",
+      "Tuz, karabiber"
+    ],
+    "instructions": [
+      "3 adet kabağı yıkayın ve kabuklarını soyun. Kabakları rendeleyin veya çok ince doğrayın.",
+      "Rendelenmiş kabakları bir kaseye alın ve tuz ekleyin. 15 dakika bekletin ki suyunu çıkarsın.",
+      "Kabakların suyunu sıkın ve kaseye geri alın. Yarım demet maydanozu ince ince kıyın ve ekleyin.",
+      "2 yumurta kırın, 1 su bardağı un, rendelenmiş kaşar peyniri, tuz ve karabiber ekleyin. Tüm malzemeleri iyice karıştırın.",
+      "Karışımın kıvamı koyu olmalı, çok suluysa biraz daha un ekleyin. Hamur hazır olmalı.",
+      "Geniş bir tavaya sıvı yağ koyun ve ısıtın. Yağ kızgın olmalı.",
+      "Hamurdan kaşık kaşık alın ve tavaya dökün. Her iki tarafını da altın sarısı olana kadar kızartın, yaklaşık 3-4 dakika.",
+      "Mücverler piştiğinde kağıt havlu üzerine alın ve fazla yağını çıkarın. Sıcak servis edin. Yanında yoğurt ile harika olur."
+    ],
+    "category": "ogleYemegi",
+    "prepTime": 20,
+    "cookTime": 15,
+    "servings": 4
+  },
+  {
+    "id": "ogle_9",
+    "name": "Kuru Fasulye",
+    "description": "Klasik kuru fasulye",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "2 su bardağı kuru fasulye",
+      "1 adet soğan",
+      "2 yemek kaşığı salça",
+      "Tuz, karabiber"
+    ],
+    "instructions": [
+      "2 su bardağı kuru fasulyeyi akşamdan soğuk suda ıslatın. Fasulyeler en az 8 saat suda beklemeli, suyunu çekmeli.",
+      "Islatılan fasulyeyi süzün ve yeni su ile yıkayın. Geniş bir tencereye alın ve üzerini 2 parmak geçecek kadar su ekleyin.",
+      "Fasulyeyi kaynatın ve yaklaşık 30-40 dakika haşlayın. Fasulyeler yumuşak ama dağılmamış olmalı.",
+      "1 adet soğanı küp küp doğrayın. Geniş bir tavada biraz yağ ile kavurun, şeffaf görünmeye başladığında hazırdır.",
+      "Kavrulmuş soğana 2 yemek kaşığı salça ekleyin ve 2 dakika daha kavurun. Salça kokusu çıkmalı.",
+      "Haşlanan fasulyeyi süzün ve salçalı soğana ekleyin. Üzerini geçecek kadar sıcak su ekleyin.",
+      "Tuz ve karabiber ekleyin. Kapağı kapatın ve kısık ateşte yaklaşık 30 dakika pişirin. Fasulyeler yumuşak ve suyu koyu olmalı.",
+      "Fasulye piştiğinde ocaktan alın ve 10 dakika dinlendirin. Sıcak servis edin. Yanında pilav ve turşu ile harika olur."
+    ],
+    "category": "ogleYemegi",
+    "prepTime": 480,
+    "cookTime": 60,
+    "servings": 6
+  },
+  {
+    "id": "ogle_10",
+    "name": "Pilav Üstü Tavuk",
+    "description": "Pilav üstü tavuk",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "500 gram tavuk göğsü",
+      "2 su bardağı pirinç",
+      "Soğan",
+      "Salça",
+      "Tuz, karabiber"
+    ],
+    "instructions": [
+      "500 gram tavuk göğsünü küp küp doğrayın. Eti bir kaseye alın ve üzerine tuz, karabiber, zeytinyağı ve biraz limon suyu ekleyin.",
+      "Tavuğu marine edin. Tüm baharatları iyice karıştırın ve buzdolabında en az 30 dakika bekletin.",
+      "Geniş bir tavada biraz yağ ile marine edilmiş tavuğu kavurun. Tavuklar pişmeye başladığında 1 adet rendelenmiş soğan ekleyin.",
+      "Soğanlar şeffaf görünmeye başladığında, salça ekleyin ve 2 dakika daha kavurun. Tavuklar tamamen pişmeli.",
+      "2 su bardağı pirinci yıkayın ve süzün. Geniş bir tencereye 2 yemek kaşığı tereyağı koyun ve eritin.",
+      "Pirinci tereyağında kavurun. Pirinçler şeffaf görünmeye başladığında, 3 su bardağı kaynar su ve tuz ekleyin.",
+      "Pilavı kısık ateşte 15-20 dakika pişirin. Suyunu çekene kadar pişirmeye devam edin.",
+      "Pilav piştiğinde ocaktan alın ve 10 dakika dinlendirin. Pişmiş tavuğu pilavın üzerine koyun ve sıcak servis edin."
+    ],
+    "category": "ogleYemegi",
+    "prepTime": 30,
+    "cookTime": 30,
+    "servings": 4
+  },
+  {
+    "id": "ogle_11",
+    "name": "Etli Nohut",
+    "description": "Etli nohut yemeği",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "2 su bardağı nohut",
+      "300 gram kuşbaşı et",
+      "1 adet soğan",
+      "Salça",
+      "Tuz, karabiber"
+    ],
+    "instructions": [
+      "2 su bardağı nohutu akşamdan soğuk suda ıslatın. Nohutlar en az 8 saat suda beklemeli, suyunu çekmeli.",
+      "Islatılan nohutu süzün ve yeni su ile yıkayın. Geniş bir tencereye alın ve üzerini 2 parmak geçecek kadar su ekleyin.",
+      "Nohutu kaynatın ve yaklaşık 30-40 dakika haşlayın. Nohutlar yumuşak ama dağılmamış olmalı.",
+      "300 gram kuşbaşı eti geniş bir tavada kavurun. Etler suyunu çektikten sonra 1 adet rendelenmiş soğan ekleyin.",
+      "Soğanlar şeffaf görünmeye başladığında, salça ekleyin ve 2 dakika daha kavurun. Salça kokusu çıkmalı.",
+      "Haşlanan nohutu süzün ve etli soğana ekleyin. Üzerini geçecek kadar sıcak su ekleyin.",
+      "Tuz ve karabiber ekleyin. Kapağı kapatın ve kısık ateşte yaklaşık 45-60 dakika pişirin. Nohutlar yumuşak ve suyu koyu olmalı.",
+      "Nohut piştiğinde ocaktan alın ve 10 dakika dinlendirin. Sıcak servis edin. Yanında pilav ve turşu ile harika olur."
+    ],
+    "category": "ogleYemegi",
+    "prepTime": 480,
+    "cookTime": 90,
+    "servings": 6
+  },
+  {
+    "id": "ogle_12",
+    "name": "Tavuk Sote",
+    "description": "Tavuk sote",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "500 gram tavuk göğsü",
+      "2 adet biber",
+      "2 adet domates",
+      "1 adet soğan",
+      "Sarımsak",
+      "Salça"
+    ],
+    "instructions": [
+      "500 gram tavuk göğsünü küp küp doğrayın. Parçalar yaklaşık 2x2 cm boyutunda olmalı.",
+      "2 adet biberi yıkayın, çekirdeklerini çıkarın ve küp küp doğrayın. 2 adet domatesi küp küp doğrayın.",
+      "1 adet soğanı küp küp doğrayın. 2 diş sarımsağı ezin veya doğrayın.",
+      "Geniş bir tavada biraz yağ ile tavuğu kavurun. Tavuklar pişmeye başladığında tuz ve karabiber ekleyin.",
+      "Tavuklar yarı piştiğinde, doğradığınız soğanı ekleyin ve 2 dakika kavurun. Soğanlar şeffaf görünmeye başlamalı.",
+      "Ezilmiş sarımsak ve salça ekleyin, 1 dakika daha kavurun. Sonra doğradığınız biberleri ekleyin.",
+      "Biberler yumuşamaya başladığında, doğradığınız domatesleri ekleyin ve karıştırın.",
+      "Tüm malzemeleri karıştırın ve kapağı kapatın. Kısık ateşte yaklaşık 15-20 dakika pişirin. Sebzeler yumuşak ve tavuk tamamen pişmiş olmalı. Sıcak servis edin."
+    ],
+    "category": "ogleYemegi",
+    "prepTime": 20,
+    "cookTime": 25,
+    "servings": 4
+  },
+  {
+    "id": "ogle_13",
+    "name": "Etli Dolma",
+    "description": "Yaprak sarması",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "Asma yaprağı",
+      "300 gram kıyma",
+      "1 su bardağı pirinç",
+      "Soğan",
+      "Salça",
+      "Tuz, karabiber"
+    ],
+    "instructions": [
+      "Asma yapraklarını yıkayın. Taze yapraklar kullanıyorsanız, saplarını kesin. Konserve yaprak kullanıyorsanız, suda bekletip tuzunu çıkarın.",
+      "Yaprakları kaynar suda 2-3 dakika haşlayın. Yapraklar yumuşak ama dağılmamış olmalı. Haşlanan yaprakları soğuk suya alın.",
+      "300 gram kıymayı geniş bir kaseye alın. 1 su bardağı yıkanmış pirinç, 1 adet rendelenmiş soğan, salça, tuz ve karabiber ekleyin.",
+      "Tüm malzemeleri iyice karıştırın. İç hazır olmalı, çok sulu olmamalı.",
+      "Haşlanan yaprakları tezgaha serin. Her yaprağın sap kısmına küçük bir miktar iç koyun.",
+      "Yaprağın kenarlarını içe katlayın ve rulo yaparak sarın. Sarma sıkı olmalı ama çok sıkı olmamalı.",
+      "Sardığınız dolmaları geniş bir tencereye dizin. Üzerlerini geçecek kadar sıcak su ekleyin.",
+      "Tencereyi kapatın ve kısık ateşte yaklaşık 45-60 dakika pişirin. Yapraklar yumuşak ve iç pişmiş olmalı. Sıcak servis edin."
+    ],
+    "category": "ogleYemegi",
+    "prepTime": 60,
+    "cookTime": 60,
+    "servings": 6
+  },
+  {
+    "id": "ogle_14",
+    "name": "Köfte Ekmek",
+    "description": "Köfte ekmek",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "500 gram köfte",
+      "Ekmek",
+      "Soğan",
+      "Domates",
+      "Marul"
+    ],
+    "instructions": [
+      "500 gram köfteyi hazırlayın veya kendiniz yapın. Köfteleri ızgarada veya tavada pişirin.",
+      "Köfteleri her iki tarafını da pişirin, yaklaşık 8-10 dakika. Köfteler tamamen pişmiş ve dışı kızarmış olmalı.",
+      "Taze ekmekleri hazırlayın. Ekmekler taze olmalı, çok kuru olmamalı.",
+      "Soğanı ince halkalar halinde doğrayın. Domatesi ince dilimler halinde kesin. Marulu yıkayın ve doğrayın.",
+      "Pişmiş köfteleri ekmek arasına yerleştirin. Her ekmeğe 2-3 köfte koyabilirsiniz.",
+      "Doğradığınız soğan, domates ve marulu köftelerin üzerine ekleyin.",
+      "İsterseniz üzerine ketçap, mayonez veya acı sos ekleyin. Köfte ekmeği rulo yaparak sarın veya düz servis edin.",
+      "Hemen servis edin. Yanında turşu ve ayran ile harika olur."
+    ],
+    "category": "ogleYemegi",
+    "prepTime": 20,
+    "cookTime": 15,
+    "servings": 4
+  },
+  {
+    "id": "ogle_15",
+    "name": "Pide",
+    "description": "Klasik Türk pidesi",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "500 gram un",
+      "1 paket maya",
+      "300 gram kıyma",
+      "Soğan",
+      "Tuz"
+    ],
+    "instructions": [
+      "500 gram unu geniş bir kaba alın, ortasına 1 çay kaşığı tuz ekleyin. 1 paket maya ve 1 yemek kaşığı şekeri ılık suda eritin.",
+      "Maya karışımını unun ortasına dökün ve yavaşça karıştırmaya başlayın. Gerekirse biraz daha ılık su ekleyin.",
+      "Hamuru yaklaşık 10 dakika yoğurun. Hamur yumuşak ve elastik olmalı, ele yapışmamalı.",
+      "Hamuru bir kaseye koyun, üzerini nemli bezle örtün ve sıcak bir yerde 1 saat mayalanmaya bırakın.",
+      "300 gram kıymayı geniş bir kaseye alın. 1 adet rendelenmiş soğan, tuz ve karabiber ekleyin. İyice karıştırın.",
+      "Mayalanan hamuru 4 eşit parçaya bölün. Her parçayı oklava ile açın, yaklaşık 25-30 cm uzunluğunda oval şekil verin.",
+      "Açılan hamurun üzerine kıyma karışımını yayın. Kenarlardan 2 cm boşluk bırakın.",
+      "Pideleri yağlı kağıt serili fırın tepsisine yerleştirin. Üzerlerine yumurta sarısı sürün ve çörek otu serpiştirin.",
+      "Önceden ısıtılmış 200°C fırında yaklaşık 20-25 dakika pişirin. Üzerleri altın sarısı olana kadar. Sıcak servis edin."
+    ],
+    "category": "ogleYemegi",
+    "prepTime": 30,
+    "cookTime": 25,
+    "servings": 4
+  },
+  {
+    "id": "ogle_16",
+    "name": "Çiğ Köfte",
+    "description": "Klasik çiğ köfte",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "500 gram ince bulgur",
+      "200 gram domates salçası",
+      "Soğan",
+      "Maydanoz",
+      "Nar ekşisi",
+      "Tuz, karabiber, kimyon"
+    ],
+    "instructions": [
+      "500 gram ince bulguru geniş bir kaseye alın. Üzerine kaynar su dökün ve 10 dakika bekletin. Bulgur suyu çekmeli.",
+      "Bulgurun suyunu sıkın ve kaseye geri alın. 200 gram domates salçası ekleyin ve karıştırın.",
+      "Tuz, karabiber ve kimyon ekleyin. Tüm malzemeleri iyice karıştırın.",
+      "Bulgur karışımını yoğurmaya başlayın. Ellerinizle yaklaşık 15-20 dakika yoğurun. Bulgur yumuşak ve homojen olmalı.",
+      "Yoğurma sırasında gerekirse biraz su ekleyin. Bulgur karışımı köfte şekli verebilecek kıvamda olmalı.",
+      "1 adet soğanı rendeleyin veya çok ince doğrayın. Yarım demet maydanozu ince ince kıyın.",
+      "Rendelenmiş soğan ve kıyılmış maydanozu bulgur karışımına ekleyin. Nar ekşisi ekleyin ve tekrar karıştırın.",
+      "Çiğ köfteyi buzdolabında 30 dakika bekletin. Soğuk servis edin. Yanında marul, domates ve limon ile harika olur."
+    ],
+    "category": "ogleYemegi",
+    "prepTime": 60,
+    "cookTime": 0,
+    "servings": 6
+  },
+  {
+    "id": "ogle_17",
+    "name": "Mercimek Köftesi",
+    "description": "Mercimek köftesi",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "1 su bardağı kırmızı mercimek",
+      "1 su bardağı ince bulgur",
+      "Soğan",
+      "Maydanoz",
+      "Salça",
+      "Tuz, karabiber"
+    ],
+    "instructions": [
+      "1 su bardağı kırmızı mercimeği yıkayın ve süzün. Geniş bir tencereye alın ve üzerini 2 parmak geçecek kadar su ekleyin.",
+      "Mercimeği kaynatın ve yaklaşık 15-20 dakika haşlayın. Mercimekler yumuşayıp ezilebilir kıvama gelmeli.",
+      "Haşlanan mercimeği süzün ve bir kasede çatalla veya patates ezici ile ezın. Soğumaya bırakın.",
+      "Ezilmiş mercimeğe 1 su bardağı ince bulgur ekleyin ve karıştırın. Bulgur mercimeğin sıcaklığı ile yumuşamalı.",
+      "1 adet soğanı rendeleyin veya çok ince doğrayın. Yarım demet maydanozu ince ince kıyın.",
+      "Rendelenmiş soğan, kıyılmış maydanoz, salça, tuz ve karabiber ekleyin. Tüm malzemeleri iyice karıştırın.",
+      "Karışımdan ceviz büyüklüğünde parçalar alın ve elinizle köfte şekli verin. Köfteleri servis tabağına dizin.",
+      "Köfteleri buzdolabında 30 dakika bekletin. Soğuk servis edin. Yanında marul, domates ve limon ile harika olur."
+    ],
+    "category": "ogleYemegi",
+    "prepTime": 30,
+    "cookTime": 20,
+    "servings": 6
+  },
+  {
+    "id": "ogle_18",
+    "name": "Tavuk Döner",
+    "description": "Tavuk döner",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "500 gram tavuk göğsü",
+      "Lavaş ekmeği",
+      "Soğan",
+      "Domates",
+      "Marul",
+      "Yoğurt sosu"
+    ],
+    "instructions": [
+      "500 gram tavuk göğsünü ince dilimler halinde kesin. Eti bir kaseye alın ve üzerine tuz, karabiber, kimyon, kekik ve zeytinyağı ekleyin.",
+      "Tavuğu marine edin. Tüm baharatları iyice karıştırın ve buzdolabında en az 2 saat bekletin. Ne kadar uzun bekletirseniz o kadar lezzetli olur.",
+      "Marine edilmiş tavuğu döner makinesine yerleştirin veya şişe geçirin. Döner makinesinde yaklaşık 30 dakika pişirin, tavuğun dışı kızarmalı.",
+      "Pişen döner tavuğunu ince ince kesin. Tavuk sıcak olmalı.",
+      "Lavaş ekmeğini hafifçe ısıtın. Üzerine kesilmiş döner tavuğunu yayın.",
+      "Soğan, domates ve marul gibi sebzeleri doğrayın ve döner tavuğunun üzerine ekleyin.",
+      "Yoğurt sosu hazırlayın: Yoğurda sarımsak, tuz ve biraz limon suyu ekleyin. Sosu dönerin üzerine sürün.",
+      "Lavaş ekmeğini rulo yaparak sarın ve servis edin. Yanında turşu ve acı sos ile harika olur."
+    ],
+    "category": "ogleYemegi",
+    "prepTime": 60,
+    "cookTime": 30,
+    "servings": 4
+  },
+  {
+    "id": "ogle_19",
+    "name": "Et Sote",
+    "description": "Et sote",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "500 gram kuşbaşı et",
+      "2 adet biber",
+      "2 adet domates",
+      "1 adet soğan",
+      "Sarımsak",
+      "Salça"
+    ],
+    "instructions": [
+      "500 gram kuşbaşı eti geniş bir tavada kavurun. Etler suyunu çektikten sonra tuz ve karabiber ekleyin.",
+      "2 adet biberi yıkayın, çekirdeklerini çıkarın ve küp küp doğrayın. 2 adet domatesi küp küp doğrayın.",
+      "1 adet soğanı küp küp doğrayın. 2 diş sarımsağı ezin veya doğrayın.",
+      "Etler yarı piştiğinde, doğradığınız soğanı ekleyin ve 2 dakika kavurun. Soğanlar şeffaf görünmeye başlamalı.",
+      "Ezilmiş sarımsak ve salça ekleyin, 1 dakika daha kavurun. Sonra doğradığınız biberleri ekleyin.",
+      "Biberler yumuşamaya başladığında, doğradığınız domatesleri ekleyin ve karıştırın.",
+      "Tüm malzemeleri karıştırın ve kapağı kapatın. Kısık ateşte yaklaşık 20-30 dakika pişirin. Sebzeler yumuşak ve et tamamen pişmiş olmalı.",
+      "Et sote piştiğinde ocaktan alın ve sıcak servis edin. Yanında pilav ve salata ile harika olur."
+    ],
+    "category": "ogleYemegi",
+    "prepTime": 20,
+    "cookTime": 30,
+    "servings": 4
+  },
+  {
+    "id": "ogle_20",
+    "name": "Pilav Üstü Köfte",
+    "description": "Pilav üstü köfte",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "500 gram köfte",
+      "2 su bardağı pirinç",
+      "Salça",
+      "Tuz"
+    ],
+    "instructions": [
+      "500 gram köfteyi hazırlayın veya kendiniz yapın. Köfteleri ızgarada veya tavada pişirin.",
+      "Köfteleri her iki tarafını da pişirin, yaklaşık 8-10 dakika. Köfteler tamamen pişmiş ve dışı kızarmış olmalı.",
+      "2 su bardağı pirinci yıkayın ve süzün. Geniş bir tencereye 2 yemek kaşığı tereyağı koyun ve eritin.",
+      "Pirinci tereyağında kavurun. Pirinçler şeffaf görünmeye başladığında, 3 su bardağı kaynar su ve tuz ekleyin.",
+      "Pilavı kısık ateşte 15-20 dakika pişirin. Suyunu çekene kadar pişirmeye devam edin.",
+      "Pilav piştiğinde ocaktan alın ve 10 dakika dinlendirin. Kapağı açmadan bekleyin ki buhar çıkmasın.",
+      "Pilavı servis tabaklarına paylaştırın. Üzerine pişmiş köfteleri yerleştirin.",
+      "İsterseniz üzerine salça ve tereyağı ekleyin. Sıcak servis edin. Yanında salata ve yoğurt ile harika olur."
+    ],
+    "category": "ogleYemegi",
+    "prepTime": 30,
+    "cookTime": 30,
+    "servings": 4
+  }
+]

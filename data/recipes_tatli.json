@@ -1,0 +1,561 @@
+[
+  {
+    "id": "tatli_1",
+    "name": "Baklava",
+    "description": "Klasik baklava",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "20 yufka",
+      "500 gram ceviz",
+      "300 gram tereyağı",
+      "2 su bardağı şeker",
+      "1 su bardağı su"
+    ],
+    "instructions": [
+      "500 gram cevizi kırın veya hazır kırık ceviz kullanın. Cevizleri bir kaseye alın ve iri parçalar halinde bırakın.",
+      "20 yufkayı tezgaha serin. Yufkalar oda sıcaklığında olmalı ki kırılmasınlar.",
+      "Yufkaları 4 gruba ayırın. Her grubu 5 yufka olacak şekilde ayırın.",
+      "İlk 5 yufkayı tepsiye serin. Her yufkanın üzerine eritilmiş tereyağı sürün.",
+      "5. yufkanın üzerine kırılmış cevizleri yayın. Cevizleri eşit şekilde dağıtın.",
+      "Kalan 15 yufkayı üst üste serin. Her yufkanın üzerine eritilmiş tereyağı sürün.",
+      "Baklavayı kare veya baklava şeklinde kesin. Keserken çok derin kesmeyin, yufkaları delmeyin.",
+      "Önceden ısıtılmış 180°C fırında yaklaşık 40-45 dakika pişirin. Üzerleri altın sarısı olana kadar.",
+      "Şerbet yapın: 2 su bardağı şeker ve 1 su bardağı suyu kaynatın. 10 dakika kaynatın ve soğutun.",
+      "Baklava piştiğinde fırından çıkarın ve sıcakken şerbeti dökün. Şerbeti eşit şekilde dağıtın.",
+      "Baklavayı en az 2 saat dinlendirin ki şerbeti çeksin. Soğuk servis edin."
+    ],
+    "category": "tatli",
+    "prepTime": 60,
+    "cookTime": 45,
+    "servings": 20
+  },
+  {
+    "id": "tatli_2",
+    "name": "Sütlaç",
+    "description": "Klasik sütlaç",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "1 su bardağı pirinç",
+      "1 litre süt",
+      "1 su bardağı şeker",
+      "Vanilya"
+    ],
+    "instructions": [
+      "1 su bardağı pirinci yıkayın ve süzün. Geniş bir tencereye alın ve üzerini 2 parmak geçecek kadar su ekleyin.",
+      "Pirinci kaynatın ve yaklaşık 15-20 dakika haşlayın. Pirinçler yumuşak ama dağılmamış olmalı.",
+      "Haşlanan pirinci süzün ve tencereye geri alın. 1 litre sütü ekleyin ve karıştırın.",
+      "Sütü kaynatın ve kısık ateşte yaklaşık 15-20 dakika pişirin. Sürekli karıştırın ki yanmasın.",
+      "Sütlaç kıvamı koyulaşmaya başladığında, 1 su bardağı şekeri ekleyin ve karıştırın.",
+      "Şeker eridikten sonra, vanilya ekleyin ve karıştırın. 2-3 dakika daha pişirin.",
+      "Sütlaç kıvamı koyu ve kremamsı olmalı. Ocaktan alın ve kaselere paylaştırın.",
+      "Sütlaçları oda sıcaklığında soğutun. Sonra buzdolabında en az 2 saat bekletin. Soğuk servis edin."
+    ],
+    "category": "tatli",
+    "prepTime": 10,
+    "cookTime": 30,
+    "servings": 6
+  },
+  {
+    "id": "tatli_3",
+    "name": "Künefe",
+    "description": "Klasik künefe",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "500 gram tel kadayıf",
+      "300 gram tuzsuz peynir",
+      "200 gram tereyağı",
+      "2 su bardağı şeker",
+      "1 su bardağı su"
+    ],
+    "instructions": [
+      "500 gram tel kadayıfı geniş bir kaseye alın ve elle ayırın. Kadayıf telleri birbirinden ayrılmalı.",
+      "200 gram tereyağını eritin. Eriyen tereyağını kadayıfa ekleyin ve elle karıştırın. Tüm kadayıf telleri tereyağı ile kaplanmalı.",
+      "300 gram tuzsuz peyniri küp küp doğrayın veya rendeleyin. Peynir küpleri yaklaşık 1 cm boyutunda olmalı.",
+      "Kadayıfın yarısını künefe tepsisine yayın. Kadayıfı eşit şekilde dağıtın ve bastırın.",
+      "Doğradığınız peyniri kadayıfın üzerine yayın. Peyniri eşit şekilde dağıtın.",
+      "Kalan kadayıfı peynirin üzerine yayın ve bastırın. Kadayıfın üstü düz olmalı.",
+      "Şerbet yapın: 2 su bardağı şeker ve 1 su bardağı suyu kaynatın. 10 dakika kaynatın ve soğutun.",
+      "Önceden ısıtılmış 180°C fırında yaklaşık 25-30 dakika pişirin. Üzeri altın sarısı olana kadar.",
+      "Künefe piştiğinde fırından çıkarın ve sıcakken şerbeti dökün. Şerbeti eşit şekilde dağıtın.",
+      "Künefeyi 10 dakika dinlendirin ki şerbeti çeksin. Sıcak servis edin. Yanında kaymak ile harika olur."
+    ],
+    "category": "tatli",
+    "prepTime": 30,
+    "cookTime": 30,
+    "servings": 6
+  },
+  {
+    "id": "tatli_4",
+    "name": "Revani",
+    "description": "Klasik revani",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "4 yumurta",
+      "1 su bardağı şeker",
+      "1 su bardağı un",
+      "1 paket kabartma tozu",
+      "2 su bardağı şeker",
+      "2 su bardağı su"
+    ],
+    "instructions": [
+      "4 yumurtayı bir kaseye kırın ve 1 su bardağı şeker ile birlikte çırpın. Yumurtalar ve şeker köpüklü ve beyaz olmalı, yaklaşık 5 dakika çırpın.",
+      "1 su bardağı unu ve 1 paket kabartma tozunu elekten geçirerek yumurta karışımına ekleyin. Yavaşça karıştırın, topaklanma olmamalı.",
+      "Hamuru yağlanmış fırın tepsisine dökün. Hamuru eşit şekilde yayın.",
+      "Şerbet yapın: 2 su bardağı şeker ve 2 su bardağı suyu kaynatın. 10 dakika kaynatın ve soğutun.",
+      "Önceden ısıtılmış 180°C fırında yaklaşık 25-30 dakika pişirin. Kekin üzeri altın sarısı ve çatalla delince temiz çıkmalı.",
+      "Revani piştiğinde fırından çıkarın ve sıcakken şerbeti dökün. Şerbeti eşit şekilde dağıtın.",
+      "Revaniyi en az 1 saat dinlendirin ki şerbeti çeksin. Soğuk servis edin. Yanında kaymak ile harika olur."
+    ],
+    "category": "tatli",
+    "prepTime": 20,
+    "cookTime": 30,
+    "servings": 8
+  },
+  {
+    "id": "tatli_5",
+    "name": "Kazandibi",
+    "description": "Klasik kazandibi",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "1 litre süt",
+      "1 su bardağı şeker",
+      "3 yemek kaşığı nişasta",
+      "Vanilya"
+    ],
+    "instructions": [
+      "1 litre sütü geniş bir tencereye alın ve orta ateşte ısıtın. Süt kaynamaya başladığında ateşi kısın.",
+      "3 yemek kaşığı nişastayı bir kaseye alın ve biraz soğuk süt ile karıştırın. Nişasta topaklanmamalı.",
+      "Nişasta karışımını süte ekleyin ve sürekli karıştırın. Topaklanma olmamalı.",
+      "1 su bardağı şekeri ekleyin ve karıştırın. Şeker eridikten sonra vanilya ekleyin.",
+      "Sütlaç kıvamı koyulaşmaya başladığında, sürekli karıştırmaya devam edin. Kıvam kremamsı olmalı.",
+      "Geniş bir tavaya veya kazana sütlaç karışımını dökün. Tabanını yakmak için ocağı açın.",
+      "Tabanını yakın. Tabanın altını yakmak için tavayı ocağa koyun ve yüksek ateşte yaklaşık 2-3 dakika tutun.",
+      "Tabanı yandıktan sonra, kazandibini kaselere paylaştırın. Soğutun ve buzdolabında en az 2 saat bekletin. Soğuk servis edin."
+    ],
+    "category": "tatli",
+    "prepTime": 10,
+    "cookTime": 30,
+    "servings": 6
+  },
+  {
+    "id": "tatli_6",
+    "name": "Şekerpare",
+    "description": "Klasik şekerpare",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "250 gram margarin",
+      "1 su bardağı şeker",
+      "2 yumurta",
+      "3 su bardağı un",
+      "2 su bardağı şeker",
+      "2 su bardağı su"
+    ],
+    "instructions": [
+      "250 gram margarini oda sıcaklığında yumuşatın. Margarin yumuşak olmalı ama erimemeli.",
+      "Yumuşak margarin ve 1 su bardağı şekeri bir kaseye alın ve çatalla veya mikser ile karıştırın. Karışım köpüklü olmalı.",
+      "2 yumurtayı ekleyin ve karıştırın. Yumurtalar tamamen karışmalı.",
+      "3 su bardağı unu yavaş yavaş ekleyin ve karıştırın. Hamur yumuşak ama ele yapışmayacak kıvamda olmalı.",
+      "Hamuru buzdolabında 30 dakika bekletin. Bu süre hamurun daha iyi şekil almasını sağlar.",
+      "Hamurdan ceviz büyüklüğünde parçalar alın ve elinizle yuvarlak şekil verin. Şekerpareleri fırın tepsisine dizin.",
+      "Şerbet yapın: 2 su bardağı şeker ve 2 su bardağı suyu kaynatın. 10 dakika kaynatın ve soğutun.",
+      "Önceden ısıtılmış 180°C fırında yaklaşık 20-25 dakika pişirin. Üzerleri altın sarısı olana kadar.",
+      "Şekerpareler piştiğinde fırından çıkarın ve sıcakken şerbeti dökün. Şerbeti eşit şekilde dağıtın.",
+      "Şekerpareleri en az 1 saat dinlendirin ki şerbeti çeksin. Soğuk servis edin."
+    ],
+    "category": "tatli",
+    "prepTime": 30,
+    "cookTime": 25,
+    "servings": 20
+  },
+  {
+    "id": "tatli_7",
+    "name": "Lokma",
+    "description": "Klasik lokma",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "2 su bardağı un",
+      "1 paket maya",
+      "1 çay kaşığı tuz",
+      "2 su bardağı şeker",
+      "2 su bardağı su",
+      "Sıvı yağ"
+    ],
+    "instructions": [
+      "1 paket maya ve 1 çay kaşığı tuzu yarım su bardağı ılık suda eritin. Maya aktifleşince köpük oluşacak.",
+      "2 su bardağı unu geniş bir kaba alın. Maya karışımını ekleyin ve yavaşça karıştırmaya başlayın.",
+      "Gerekirse biraz daha ılık su ekleyin. Hamuru yaklaşık 10 dakika yoğurun. Hamur yumuşak ve elastik olmalı.",
+      "Hamuru bir kaseye koyun, üzerini nemli bezle örtün ve sıcak bir yerde 1 saat mayalanmaya bırakın.",
+      "Mayalanan hamurdan ceviz büyüklüğünde parçalar alın ve elinizle yuvarlak top şekli verin.",
+      "Şerbet yapın: 2 su bardağı şeker ve 2 su bardağı suyu kaynatın. 10 dakika kaynatın ve soğutun.",
+      "Geniş bir tavaya sıvı yağ koyun ve ısıtın. Yağ kızgın olmalı.",
+      "Hazırladığınız lokmaları yağa atın ve her iki tarafını da altın sarısı olana kadar kızartın, yaklaşık 3-4 dakika.",
+      "Kızartılan lokmaları kağıt havlu üzerine alın ve fazla yağını çıkarın.",
+      "Lokmaları şerbetin içine batırın veya üzerine şerbet dökün. Şerbeti eşit şekilde dağıtın. Soğuk servis edin."
+    ],
+    "category": "tatli",
+    "prepTime": 30,
+    "cookTime": 20,
+    "servings": 20
+  },
+  {
+    "id": "tatli_8",
+    "name": "Tulumba",
+    "description": "Klasik tulumba",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "2 su bardağı un",
+      "1 su bardağı su",
+      "100 gram margarin",
+      "3 yumurta",
+      "2 su bardağı şeker",
+      "2 su bardağı su",
+      "Sıvı yağ"
+    ],
+    "instructions": [
+      "1 su bardağı su ve 100 gram margarini geniş bir tencereye alın ve kaynatın. Margarin eridikten sonra kaynamaya başlayacak.",
+      "Kaynar suya 2 su bardağı unu ekleyin ve sürekli karıştırın. Un suyu çekmeli ve topaklanmamalı.",
+      "Un karışımını ocaktan alın ve soğumaya bırakın. Karışım ılık olmalı, çok sıcak olmamalı.",
+      "Ilık karışıma 3 yumurtayı tek tek ekleyin ve her yumurtayı iyice karıştırın. Hamur pürüzsüz ve koyu olmalı.",
+      "Hamuru sıkma torbasına koyun. Tulumba ucu takın ve hamuru hazırlayın.",
+      "Şerbet yapın: 2 su bardağı şeker ve 2 su bardağı suyu kaynatın. 10 dakika kaynatın ve soğutun.",
+      "Geniş bir tavaya sıvı yağ koyun ve ısıtın. Yağ kızgın olmalı.",
+      "Sıkma torbasından hamuru yağa sıkın. Tulumbaları yaklaşık 3-4 cm uzunluğunda kesin.",
+      "Tulumbaları her iki tarafını da altın sarısı olana kadar kızartın, yaklaşık 4-5 dakika.",
+      "Kızartılan tulumbaları kağıt havlu üzerine alın ve fazla yağını çıkarın. Şerbetin içine batırın veya üzerine şerbet dökün. Soğuk servis edin."
+    ],
+    "category": "tatli",
+    "prepTime": 30,
+    "cookTime": 25,
+    "servings": 20
+  },
+  {
+    "id": "tatli_9",
+    "name": "İrmik Helvası",
+    "description": "Klasik irmik helvası",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "2 su bardağı irmik",
+      "1 su bardağı şeker",
+      "1 su bardağı süt",
+      "100 gram tereyağı"
+    ],
+    "instructions": [
+      "100 gram tereyağını geniş bir tavada eritin. Tereyağı eridikten sonra 2 su bardağı irmiği ekleyin.",
+      "İrmiği sürekli karıştırarak kavurun. İrmikler altın sarısı ve kokusu çıkana kadar kavurun, yaklaşık 10-15 dakika.",
+      "İrmik kavrulduktan sonra, 1 su bardağı şekeri ekleyin ve karıştırın. Şeker eridikten sonra 1 su bardağı sütü ekleyin.",
+      "Sütü ekledikten sonra, kapağı kapatın ve kısık ateşte yaklaşık 10-15 dakika pişirin. İrmik sütü çekmeli.",
+      "İrmik helvası piştiğinde ocaktan alın ve 5 dakika dinlendirin. Kapağı açmadan bekleyin ki buhar çıkmasın.",
+      "İrmik helvasını servis tabaklarına paylaştırın. Sıcak servis edin. Yanında dondurma ile harika olur."
+    ],
+    "category": "tatli",
+    "prepTime": 10,
+    "cookTime": 20,
+    "servings": 6
+  },
+  {
+    "id": "tatli_10",
+    "name": "Aşure",
+    "description": "Klasik aşure",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "1 su bardağı buğday",
+      "Yarım su bardağı nohut",
+      "Yarım su bardağı fasulye",
+      "1 su bardağı şeker",
+      "Kuru üzüm",
+      "Fındık",
+      "Ceviz"
+    ],
+    "instructions": [
+      "1 su bardağı buğdayı akşamdan soğuk suda ıslatın. Buğday en az 8 saat suda beklemeli.",
+      "Yarım su bardağı nohut ve yarım su bardağı fasulyeyi akşamdan soğuk suda ıslatın. Nohut ve fasulye en az 8 saat suda beklemeli.",
+      "Islatılan buğdayı süzün ve geniş bir tencereye alın. Üzerini 2 parmak geçecek kadar su ekleyin ve kaynatın.",
+      "Buğdayı yaklaşık 30-40 dakika haşlayın. Buğdaylar yumuşak ama dağılmamış olmalı.",
+      "Islatılan nohut ve fasulyeyi süzün ve ayrı tencerelerde haşlayın. Her ikisini de yaklaşık 30-40 dakika haşlayın.",
+      "Haşlanan nohut ve fasulyeyi buğdaylı tencereye ekleyin. Üzerini geçecek kadar sıcak su ekleyin.",
+      "1 su bardağı şekeri ekleyin ve karıştırın. Şeker eridikten sonra kuru üzüm, fındık ve ceviz ekleyin.",
+      "Tüm malzemeleri karıştırın ve kısık ateşte yaklaşık 20-30 dakika pişirin. Kıvam koyu olmalı.",
+      "Aşure piştiğinde ocaktan alın ve kaselere paylaştırın. Soğutun ve buzdolabında en az 2 saat bekletin. Soğuk servis edin."
+    ],
+    "category": "tatli",
+    "prepTime": 480,
+    "cookTime": 60,
+    "servings": 10
+  },
+  {
+    "id": "tatli_11",
+    "name": "Kadayıf",
+    "description": "Klasik kadayıf",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "500 gram tel kadayıf",
+      "300 gram ceviz",
+      "200 gram tereyağı",
+      "2 su bardağı şeker",
+      "1 su bardağı su"
+    ],
+    "instructions": [
+      "500 gram tel kadayıfı geniş bir kaseye alın ve elle ayırın. Kadayıf telleri birbirinden ayrılmalı.",
+      "200 gram tereyağını eritin. Eriyen tereyağını kadayıfa ekleyin ve elle karıştırın. Tüm kadayıf telleri tereyağı ile kaplanmalı.",
+      "300 gram cevizi kırın veya hazır kırık ceviz kullanın. Cevizleri bir kaseye alın ve iri parçalar halinde bırakın.",
+      "Kadayıfın yarısını kadayıf tepsisine yayın. Kadayıfı eşit şekilde dağıtın ve bastırın.",
+      "Kırılmış cevizleri kadayıfın üzerine yayın. Cevizleri eşit şekilde dağıtın.",
+      "Kalan kadayıfı cevizin üzerine yayın ve bastırın. Kadayıfın üstü düz olmalı.",
+      "Şerbet yapın: 2 su bardağı şeker ve 1 su bardağı suyu kaynatın. 10 dakika kaynatın ve soğutun.",
+      "Önceden ısıtılmış 180°C fırında yaklaşık 25-30 dakika pişirin. Üzeri altın sarısı olana kadar.",
+      "Kadayıf piştiğinde fırından çıkarın ve sıcakken şerbeti dökün. Şerbeti eşit şekilde dağıtın.",
+      "Kadayıfı en az 1 saat dinlendirin ki şerbeti çeksin. Soğuk servis edin."
+    ],
+    "category": "tatli",
+    "prepTime": 30,
+    "cookTime": 30,
+    "servings": 8
+  },
+  {
+    "id": "tatli_12",
+    "name": "Zerde",
+    "description": "Klasik zerde",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "1 su bardağı pirinç",
+      "1 su bardağı şeker",
+      "Safran",
+      "Çam fıstığı"
+    ],
+    "instructions": [
+      "1 su bardağı pirinci yıkayın ve süzün. Geniş bir tencereye alın ve üzerini 2 parmak geçecek kadar su ekleyin.",
+      "Pirinci kaynatın ve yaklaşık 15-20 dakika haşlayın. Pirinçler yumuşak ama dağılmamış olmalı.",
+      "Haşlanan pirinci süzün ve tencereye geri alın. Üzerini geçecek kadar sıcak su ekleyin.",
+      "1 su bardağı şekeri ekleyin ve karıştırın. Şeker eridikten sonra safran ekleyin.",
+      "Safranı bir kaseye alın ve biraz sıcak su ile karıştırın. Safran karışımını tencereye ekleyin.",
+      "Zerdeyi kısık ateşte yaklaşık 15-20 dakika pişirin. Sürekli karıştırın ki yanmasın.",
+      "Zerde kıvamı koyu ve sarı renkli olmalı. Ocaktan alın ve kaselere paylaştırın.",
+      "Çam fıstıklarını kavurun. Kavrulmuş çam fıstıklarını zerde üzerine serpiştirin.",
+      "Zerdeyi oda sıcaklığında soğutun. Sonra buzdolabında en az 2 saat bekletin. Soğuk servis edin."
+    ],
+    "category": "tatli",
+    "prepTime": 10,
+    "cookTime": 30,
+    "servings": 6
+  },
+  {
+    "id": "tatli_13",
+    "name": "Güllaç",
+    "description": "Klasik güllaç",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "12 yaprak güllaç",
+      "1 litre süt",
+      "1 su bardağı şeker",
+      "Ceviz",
+      "Nar"
+    ],
+    "instructions": [
+      "1 litre sütü geniş bir tencereye alın ve orta ateşte ısıtın. Süt kaynamaya başladığında ateşi kapatın.",
+      "1 su bardağı şekeri süte ekleyin ve karıştırın. Şeker eridikten sonra sütü soğutun.",
+      "300 gram cevizi kırın veya hazır kırık ceviz kullanın. Cevizleri bir kaseye alın.",
+      "12 yaprak güllaç yaprağını hazırlayın. Her yaprağı sütün içine batırın ve ıslatın.",
+      "Islatılan güllaç yapraklarını servis tabağına serin. Her yaprağın üzerine kırılmış ceviz serpiştirin.",
+      "Tüm yaprakları üst üste serin. Her yaprağın üzerine ceviz serpiştirin.",
+      "Son yaprağı serdikten sonra, kalan sütü güllaçın üzerine dökün. Sütü eşit şekilde dağıtın.",
+      "Güllaçı buzdolabında en az 2 saat bekletin ki sütü çeksin. Soğuk servis edin.",
+      "Servis ederken üzerine nar taneleri serpiştirin. Güllaç Türk mutfağının en geleneksel tatlılarından biridir."
+    ],
+    "category": "tatli",
+    "prepTime": 20,
+    "cookTime": 0,
+    "servings": 8
+  },
+  {
+    "id": "tatli_14",
+    "name": "Höşmerim",
+    "description": "Klasik höşmerim",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "500 gram taze peynir",
+      "1 su bardağı un",
+      "1 su bardağı şeker",
+      "100 gram tereyağı"
+    ],
+    "instructions": [
+      "500 gram taze peyniri bir kaseye alın ve çatalla ezın. Peynir pürüzsüz bir kıvam almalı.",
+      "Ezilmiş peynire 1 su bardağı unu ekleyin ve karıştırın. Karışım homojen olmalı.",
+      "100 gram tereyağını geniş bir tavada eritin. Tereyağı eridikten sonra peynirli un karışımını ekleyin.",
+      "Peynirli un karışımını sürekli karıştırarak kavurun. Karışım koyu ve kremamsı olmalı, yaklaşık 10-15 dakika.",
+      "Karışım kavrulduktan sonra, 1 su bardağı şekeri ekleyin ve karıştırın. Şeker eridikten sonra 2-3 dakika daha pişirin.",
+      "Höşmerim kıvamı koyu ve kremamsı olmalı. Ocaktan alın ve servis tabaklarına paylaştırın.",
+      "Höşmerimi sıcak servis edin. Yanında bal veya pekmez ile harika olur."
+    ],
+    "category": "tatli",
+    "prepTime": 20,
+    "cookTime": 30,
+    "servings": 6
+  },
+  {
+    "id": "tatli_15",
+    "name": "Kemalpaşa",
+    "description": "Klasik kemalpaşa",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "500 gram un",
+      "2 yumurta",
+      "1 paket maya",
+      "2 su bardağı şeker",
+      "2 su bardağı su"
+    ],
+    "instructions": [
+      "1 paket maya ve 1 yemek kaşığı şekeri yarım su bardağı ılık suda eritin. Maya aktifleşince köpük oluşacak.",
+      "500 gram unu geniş bir kaba alın, ortasına 1 çay kaşığı tuz ekleyin. Maya karışımını ekleyin.",
+      "2 yumurtayı ekleyin ve yavaşça karıştırmaya başlayın. Gerekirse biraz daha ılık su ekleyin.",
+      "Hamuru yaklaşık 10 dakika yoğurun. Hamur yumuşak ve elastik olmalı, ele yapışmamalı.",
+      "Hamuru bir kaseye koyun, üzerini nemli bezle örtün ve sıcak bir yerde 1 saat mayalanmaya bırakın.",
+      "Mayalanan hamurdan ceviz büyüklüğünde parçalar alın ve elinizle yuvarlak top şekli verin.",
+      "Şerbet yapın: 2 su bardağı şeker ve 2 su bardağı suyu kaynatın. 10 dakika kaynatın ve soğutun.",
+      "Kemalpaşaları yağlı kağıt serili fırın tepsisine dizin. Önceden ısıtılmış 180°C fırında yaklaşık 20-25 dakika pişirin.",
+      "Kemalpaşalar piştiğinde fırından çıkarın ve sıcakken şerbeti dökün. Şerbeti eşit şekilde dağıtın.",
+      "Kemalpaşaları en az 1 saat dinlendirin ki şerbeti çeksin. Soğuk servis edin."
+    ],
+    "category": "tatli",
+    "prepTime": 30,
+    "cookTime": 25,
+    "servings": 20
+  },
+  {
+    "id": "tatli_16",
+    "name": "Şambali",
+    "description": "Klasik şambali",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "2 su bardağı un",
+      "1 su bardağı şeker",
+      "1 su bardağı süt",
+      "1 paket kabartma tozu",
+      "Badem"
+    ],
+    "instructions": [
+      "2 su bardağı unu geniş bir kaseye alın. 1 paket kabartma tozunu ekleyin ve karıştırın.",
+      "1 su bardağı şekeri ekleyin ve karıştırın. Şeker un ile karışmalı.",
+      "1 su bardağı sütü yavaş yavaş ekleyin ve karıştırın. Topaklanma olmamalı, pürüzsüz bir kıvam almalı.",
+      "Hamuru yağlanmış kalıba dökün. Hamuru eşit şekilde yayın.",
+      "Bademleri yıkayın ve kurulayın. Bademleri şambali hamurunun üzerine dizin.",
+      "Önceden ısıtılmış 180°C fırında yaklaşık 25-30 dakika pişirin. Şambalinin üzeri altın sarısı ve çatalla delince temiz çıkmalı.",
+      "Şambali piştiğinde fırından çıkarın ve 10 dakika soğumaya bırakın.",
+      "Şambaliyi kalıptan çıkarın ve dilimleyin. Soğuk servis edin."
+    ],
+    "category": "tatli",
+    "prepTime": 20,
+    "cookTime": 30,
+    "servings": 12
+  },
+  {
+    "id": "tatli_17",
+    "name": "Lokum",
+    "description": "Klasik lokum",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "2 su bardağı şeker",
+      "1 su bardağı su",
+      "3 yemek kaşığı nişasta",
+      "Limon suyu",
+      "Gül suyu"
+    ],
+    "instructions": [
+      "2 su bardağı şeker ve 1 su bardağı suyu geniş bir tencereye alın ve kaynatın. Şeker eridikten sonra kaynamaya başlayacak.",
+      "Şeker şerbetini yaklaşık 10 dakika kaynatın. Şerbet koyu ve kıvamlı olmalı.",
+      "3 yemek kaşığı nişastayı bir kaseye alın ve biraz soğuk su ile karıştırın. Nişasta topaklanmamalı.",
+      "Nişasta karışımını şeker şerbetine ekleyin ve sürekli karıştırın. Topaklanma olmamalı.",
+      "Limon suyu ekleyin ve karıştırın. Lokum karışımını kısık ateşte yaklaşık 20-30 dakika pişirin, sürekli karıştırın.",
+      "Lokum karışımı koyu ve kıvamlı olmalı. Ocaktan alın ve gül suyu ekleyin.",
+      "Gül suyu ekledikten sonra karıştırın. Lokum karışımını yağlanmış kalıba dökün.",
+      "Lokumu oda sıcaklığında soğutun. Sonra buzdolabında en az 2 saat bekletin.",
+      "Lokumu kalıptan çıkarın ve küp küp kesin. Üzerine pudra şekeri serpiştirin. Soğuk servis edin."
+    ],
+    "category": "tatli",
+    "prepTime": 20,
+    "cookTime": 30,
+    "servings": 20
+  },
+  {
+    "id": "tatli_18",
+    "name": "Kalburabastı",
+    "description": "Klasik kalburabastı",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "500 gram un",
+      "200 gram margarin",
+      "1 su bardağı şeker",
+      "Ceviz",
+      "2 su bardağı şeker",
+      "2 su bardağı su"
+    ],
+    "instructions": [
+      "200 gram margarini oda sıcaklığında yumuşatın. Margarin yumuşak olmalı ama erimemeli.",
+      "Yumuşak margarin ve 1 su bardağı şekeri bir kaseye alın ve çatalla veya mikser ile karıştırın. Karışım köpüklü olmalı.",
+      "500 gram unu yavaş yavaş ekleyin ve karıştırın. Hamur yumuşak ama ele yapışmayacak kıvamda olmalı.",
+      "Hamuru buzdolabında 30 dakika bekletin. Bu süre hamurun daha iyi şekil almasını sağlar.",
+      "300 gram cevizi kırın veya hazır kırık ceviz kullanın. Cevizleri bir kaseye alın ve iri parçalar halinde bırakın.",
+      "Mayalanan hamurdan ceviz büyüklüğünde parçalar alın ve elinizle açın. Ortasına ceviz koyun ve kapatın.",
+      "Kalburabastıları kalburabastı kalıbı ile şekillendirin veya elle yuvarlak şekil verin.",
+      "Şerbet yapın: 2 su bardağı şeker ve 2 su bardağı suyu kaynatın. 10 dakika kaynatın ve soğutun.",
+      "Kalburabastıları yağlı kağıt serili fırın tepsisine dizin. Önceden ısıtılmış 180°C fırında yaklaşık 25-30 dakika pişirin.",
+      "Kalburabastılar piştiğinde fırından çıkarın ve sıcakken şerbeti dökün. Şerbeti eşit şekilde dağıtın. En az 1 saat dinlendirin ki şerbeti çeksin. Soğuk servis edin."
+    ],
+    "category": "tatli",
+    "prepTime": 40,
+    "cookTime": 30,
+    "servings": 20
+  },
+  {
+    "id": "tatli_19",
+    "name": "Peynirli Tatlı",
+    "description": "Klasik peynirli tatlı",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "500 gram yufka",
+      "300 gram tuzsuz peynir",
+      "200 gram tereyağı",
+      "2 su bardağı şeker",
+      "2 su bardağı su"
+    ],
+    "instructions": [
+      "300 gram tuzsuz peyniri ufak ufak doğrayın veya çatalla ezın. Peynir küpleri yaklaşık 1 cm boyutunda olmalı.",
+      "500 gram yufkayı tezgaha serin. Yufkalar oda sıcaklığında olmalı ki kırılmasınlar.",
+      "Her yufkanın üzerine eşit miktarda peynir yayın. Kenarlardan 2 cm boşluk bırakın ki sararken taşmasın.",
+      "Yufkaları rulo şeklinde sıkıca sarın. Uçlarını içe katlayarak kapatın.",
+      "Peynirli tatlıları yağlanmış fırın tepsisine dizin. Üzerlerine eritilmiş tereyağı sürün.",
+      "Şerbet yapın: 2 su bardağı şeker ve 2 su bardağı suyu kaynatın. 10 dakika kaynatın ve soğutun.",
+      "Önceden ısıtılmış 180°C fırında yaklaşık 30 dakika pişirin. Üzerleri altın sarısı olana kadar.",
+      "Peynirli tatlılar piştiğinde fırından çıkarın ve sıcakken şerbeti dökün. Şerbeti eşit şekilde dağıtın.",
+      "Peynirli tatlıları en az 2 saat dinlendirin ki şerbeti çeksin. Soğuk servis edin."
+    ],
+    "category": "tatli",
+    "prepTime": 30,
+    "cookTime": 30,
+    "servings": 8
+  },
+  {
+    "id": "tatli_20",
+    "name": "Un Helvası",
+    "description": "Klasik un helvası",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "2 su bardağı un",
+      "1 su bardağı şeker",
+      "100 gram tereyağı",
+      "Çam fıstığı"
+    ],
+    "instructions": [
+      "100 gram tereyağını geniş bir tavada eritin. Tereyağı eridikten sonra 2 su bardağı unu ekleyin.",
+      "Unu sürekli karıştırarak kavurun. Unlar altın sarısı ve kokusu çıkana kadar kavurun, yaklaşık 15-20 dakika.",
+      "Un kavrulduktan sonra, 1 su bardağı şekeri ekleyin ve karıştırın. Şeker eridikten sonra 1 su bardağı sıcak su ekleyin.",
+      "Suyu ekledikten sonra, kapağı kapatın ve kısık ateşte yaklaşık 10-15 dakika pişirin. Un suyu çekmeli.",
+      "Un helvası piştiğinde ocaktan alın ve 5 dakika dinlendirin. Kapağı açmadan bekleyin ki buhar çıkmasın.",
+      "Çam fıstıklarını kavurun. Kavrulmuş çam fıstıklarını un helvasının üzerine serpiştirin.",
+      "Un helvasını servis tabaklarına paylaştırın. Sıcak servis edin. Yanında dondurma ile harika olur."
+    ],
+    "category": "tatli",
+    "prepTime": 10,
+    "cookTime": 20,
+    "servings": 6
+  }
+]

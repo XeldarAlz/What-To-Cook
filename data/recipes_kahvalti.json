@@ -1,0 +1,519 @@
+[
+  {
+    "id": "kahvalti_1",
+    "name": "Menemen",
+    "description": "Klasik Türk kahvaltısı",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "4 adet yumurta",
+      "2 adet domates",
+      "2 adet yeşil biber",
+      "1 adet soğan",
+      "2 yemek kaşığı zeytinyağı",
+      "Tuz, karabiber"
+    ],
+    "instructions": [
+      "Soğanı soyun ve küp küp doğrayın. Doğrarken gözlerinizin yanmaması için soğanı önce yarım saat buzdolabında bekletebilirsiniz.",
+      "Domatesleri yıkayın, sap kısımlarını çıkarın ve küp küp doğrayın. Domateslerin suyunu çıkarmak için bir süre bekletebilirsiniz.",
+      "Yeşil biberleri yıkayın, çekirdeklerini ve beyaz kısımlarını temizleyin, sonra ince ince doğrayın.",
+      "Geniş bir tavaya 2 yemek kaşığı zeytinyağını koyun ve orta ateşte ısıtın. Yağın ısındığını anlamak için bir damla su damlatabilirsiniz, cızırdıyorsa hazırdır.",
+      "Doğradığınız soğanları tavaya ekleyin ve 2-3 dakika kavurun. Soğanlar şeffaf görünmeye başladığında hazırdır.",
+      "Yeşil biberleri ekleyin ve 2 dakika daha kavurun. Biberlerin rengi biraz değişmeye başlamalı.",
+      "Domatesleri ekleyin ve karıştırın. Domateslerin suyunu çekene kadar orta ateşte pişirin, yaklaşık 5-7 dakika sürebilir.",
+      "Domatesler suyunu çektikten sonra, yumurtaları bir kasede çırpın ve tavaya ekleyin.",
+      "Yumurtaları sebzelerle karıştırın ve tuz ile karabiber ekleyin. Yumurtaların kıvamını beğendiğiniz gibi ayarlayın - daha akışkan istiyorsanız daha az, daha katı istiyorsanız daha fazla pişirin.",
+      "Menemeni sıcak servis edin. Yanında taze ekmek ve çay ile harika olur."
+    ],
+    "category": "kahvalti",
+    "prepTime": 10,
+    "cookTime": 15,
+    "servings": 2
+  },
+  {
+    "id": "kahvalti_2",
+    "name": "Sucuklu Yumurta",
+    "description": "Lezzetli kahvaltı seçeneği",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "4 adet yumurta",
+      "100 gram sucuk",
+      "1 yemek kaşığı tereyağı",
+      "Tuz, karabiber"
+    ],
+    "instructions": [
+      "Sucuğu ince ince dilimleyin. Dilimler yaklaşık 0.5 cm kalınlığında olmalı. Sucuğun zarını çıkarmayı unutmayın.",
+      "Geniş bir tavaya 1 yemek kaşığı tereyağını koyun ve orta ateşte eritin. Tereyağı erirken köpürmeye başlayacaktır.",
+      "Dilimlediğiniz sucukları tavaya ekleyin ve her iki tarafını da kızartın. Sucukların kendi yağı da çıkacak, bu normaldir.",
+      "Sucuklar kızardıktan sonra (yaklaşık 2-3 dakika), yumurtaları doğrudan tavaya kırın. Yumurtaları sucukların etrafına dağıtın.",
+      "Yumurtaların beyazı pişmeye başladığında, tuz ve karabiber ekleyin. Yumurtaların sarısını istediğiniz kıvamda pişirin - akışkan veya katı.",
+      "Yumurtalar piştiğinde, tavayı ocaktan alın ve sıcak servis edin. Yanında taze ekmek ve çay ile harika olur."
+    ],
+    "category": "kahvalti",
+    "prepTime": 5,
+    "cookTime": 10,
+    "servings": 2
+  },
+  {
+    "id": "kahvalti_3",
+    "name": "Peynirli Omlet",
+    "description": "Kahvaltı için pratik omlet",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "3 adet yumurta",
+      "50 gram beyaz peynir",
+      "1 yemek kaşığı tereyağı",
+      "Tuz, karabiber",
+      "Maydanoz"
+    ],
+    "instructions": [
+      "3 adet yumurtayı bir kaseye kırın ve çatalla veya çırpıcı ile iyice çırpın. Yumurtaların sarısı ve beyazı tamamen karışmalı.",
+      "50 gram beyaz peyniri küp küp doğrayın. Peynir küpleri yaklaşık 1 cm boyutunda olmalı.",
+      "Geniş bir tavaya 1 yemek kaşığı tereyağını koyun ve orta-düşük ateşte eritin. Tereyağı erirken köpürmeye başlayacaktır.",
+      "Çırptığınız yumurtaları tavaya dökün. Yumurtalar tavaya yayıldıktan sonra, doğradığınız peynir küplerini üzerine serpiştirin.",
+      "Yumurtaların altı pişmeye başladığında, tuz ve karabiber ekleyin. Omleti spatula ile kenarlarından kaldırarak pişirin.",
+      "Omletin altı tamamen piştiğinde, spatula ile yarısını katlayın veya tamamen çevirin. İki tarafını da pişirin.",
+      "Omlet piştiğinde, tavayı ocaktan alın ve tabağa alın. Üzerine ince kıyılmış maydanoz serpiştirin ve sıcak servis edin."
+    ],
+    "category": "kahvalti",
+    "prepTime": 5,
+    "cookTime": 8,
+    "servings": 2
+  },
+  {
+    "id": "kahvalti_4",
+    "name": "Kaşarlı Tost",
+    "description": "Klasik Türk tostu",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "4 dilim ekmek",
+      "100 gram kaşar peyniri",
+      "2 yemek kaşığı tereyağı"
+    ],
+    "instructions": [
+      "4 dilim ekmeği hazırlayın. Ekmekler taze olmalı, çok kuru olmamalı.",
+      "100 gram kaşar peynirini rendeleyin veya ince dilimler halinde kesin. Peynir oda sıcaklığında olmalı ki erimesi kolay olsun.",
+      "Ekmeklerin bir yüzüne tereyağını sürün. Tereyağı oda sıcaklığında olmalı ki kolay sürülsün.",
+      "Tereyağı sürülmüş yüzler dışarı bakacak şekilde, ekmeklerin arasına kaşar peynirini yerleştirin.",
+      "Tost makinesini ısıtın. Makine hazır olduğunda, hazırladığınız tostları yerleştirin.",
+      "Tostları 3-5 dakika kızartın veya peynir eriyene ve ekmek altın sarısı rengini alana kadar pişirin.",
+      "Tostlar hazır olduğunda, makineden çıkarın ve hemen sıcak servis edin. Yanında domates ve salatalık ile harika olur."
+    ],
+    "category": "kahvalti",
+    "prepTime": 5,
+    "cookTime": 5,
+    "servings": 2
+  },
+  {
+    "id": "kahvalti_5",
+    "name": "Beyaz Peynirli Börek",
+    "description": "Kahvaltı için börek",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "4 yufka",
+      "300 gram beyaz peynir",
+      "2 yumurta",
+      "100 gram tereyağı",
+      "Çörek otu"
+    ],
+    "instructions": [
+      "300 gram beyaz peyniri ufak ufak doğrayın veya çatalla ezın. Peynir çok tuzluysa suda bekletebilirsiniz.",
+      "4 yufkayı tezgaha serin. Yufkalar oda sıcaklığında olmalı ki kırılmasınlar.",
+      "Her yufkanın üzerine eşit miktarda peynir yayın. Kenarlardan 2 cm boşluk bırakın ki sararken taşmasın.",
+      "Yufkaları rulo şeklinde sıkıca sarın. Uçlarını içe katlayarak kapatın.",
+      "Börekleri yağlanmış fırın tepsisine dizin. Üzerlerine eritilmiş tereyağı sürün ve çörek otu serpiştirin.",
+      "Önceden ısıtılmış 180°C fırında yaklaşık 30 dakika pişirin. Üzerleri altın sarısı olana kadar.",
+      "Börekler piştiğinde fırından çıkarın ve 5 dakika dinlendirin. Sıcak servis edin."
+    ],
+    "category": "kahvalti",
+    "prepTime": 20,
+    "cookTime": 30,
+    "servings": 4
+  },
+  {
+    "id": "kahvalti_6",
+    "name": "Simit",
+    "description": "Klasik Türk simidi",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "500 gram un",
+      "1 paket maya",
+      "1 çay kaşığı tuz",
+      "1 yemek kaşığı şeker",
+      "Susam"
+    ],
+    "instructions": [
+      "1 paket maya ve 1 yemek kaşığı şekeri yarım su bardağı ılık suda (40°C civarı) eritin. Maya aktifleşince üzerinde köpük oluşacak.",
+      "500 gram unu geniş bir kaba alın, ortasına 1 çay kaşığı tuz ekleyin ve karıştırın.",
+      "Maya karışımını unun ortasına dökün ve yavaşça karıştırmaya başlayın. Gerekirse biraz daha ılık su ekleyin.",
+      "Hamuru yaklaşık 10 dakika yoğurun. Hamur yumuşak ve elastik olmalı, ele yapışmamalı.",
+      "Hamuru bir kaseye koyun, üzerini nemli bir bezle örtün ve sıcak bir yerde 1 saat mayalanmaya bırakın.",
+      "Mayalanan hamuru 8 eşit parçaya bölün. Her parçayı uzun bir çubuk şeklinde açın ve halka yapın.",
+      "Her simidi önce kaynar suya batırın (5 saniye), sonra susama bulayın. Susamların iyi yapışması için hafifçe bastırın.",
+      "Simitleri yağlı kağıt serili fırın tepsisine dizin ve önceden ısıtılmış 200°C fırında yaklaşık 20 dakika pişirin. Altın sarısı olana kadar."
+    ],
+    "category": "kahvalti",
+    "prepTime": 30,
+    "cookTime": 20,
+    "servings": 8
+  },
+  {
+    "id": "kahvalti_7",
+    "name": "Peynirli Poğaça",
+    "description": "Kahvaltı için poğaça",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "500 gram un",
+      "1 paket maya",
+      "200 gram beyaz peynir",
+      "100 gram margarin",
+      "1 yumurta"
+    ],
+    "instructions": [
+      "1 paket maya ve 1 yemek kaşığı şekeri yarım su bardağı ılık suda eritin. Maya aktifleşince köpük oluşacak.",
+      "500 gram unu geniş bir kaba alın, ortasına 100 gram yumuşak margarin ve 1 yumurtayı ekleyin.",
+      "Maya karışımını ekleyin ve tüm malzemeleri karıştırın. Hamur yumuşak ve pürüzsüz olana kadar yoğurun.",
+      "Hamuru bir kaseye koyun, üzerini örtün ve sıcak bir yerde 1 saat mayalanmaya bırakın. Hamur iki katına çıkmalı.",
+      "200 gram beyaz peyniri ufak ufak doğrayın veya çatalla ezın. Tuzluysa suda bekletebilirsiniz.",
+      "Mayalanan hamuru 12 eşit parçaya bölün. Her parçayı açın, ortasına peynir koyun ve yuvarlak şekil verin.",
+      "Poğaçaları yağlı kağıt serili fırın tepsisine dizin, üzerlerine yumurta sarısı sürün ve çörek otu serpiştirin.",
+      "Önceden ısıtılmış 180°C fırında yaklaşık 25 dakika pişirin. Üzerleri kızarana kadar."
+    ],
+    "category": "kahvalti",
+    "prepTime": 30,
+    "cookTime": 25,
+    "servings": 12
+  },
+  {
+    "id": "kahvalti_8",
+    "name": "Zeytinli Ekmek",
+    "description": "Kahvaltı için zeytinli ekmek",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "500 gram un",
+      "1 paket maya",
+      "200 gram siyah zeytin",
+      "1 çay kaşığı tuz",
+      "Zeytinyağı"
+    ],
+    "instructions": [
+      "1 paket maya ve 1 yemek kaşığı şekeri yarım su bardağı ılık suda eritin. Maya aktifleşince köpük oluşacak.",
+      "500 gram unu geniş bir kaba alın, ortasına 1 çay kaşığı tuz ekleyin ve karıştırın.",
+      "200 gram siyah zeytini çekirdeklerinden ayırın ve küp küp doğrayın. Zeytinler çok tuzluysa suda bekletebilirsiniz.",
+      "Maya karışımını unun ortasına dökün ve karıştırmaya başlayın. Gerekirse biraz daha ılık su ekleyin.",
+      "Doğradığınız zeytinleri hamura ekleyin ve yaklaşık 10 dakika yoğurun. Hamur yumuşak ve elastik olmalı.",
+      "Hamuru bir kaseye koyun, üzerini nemli bezle örtün ve sıcak bir yerde 1 saat mayalanmaya bırakın.",
+      "Mayalanan hamuru şekillendirin ve yağlı kağıt serili fırın tepsisine yerleştirin. Üzerine zeytinyağı sürün.",
+      "Önceden ısıtılmış 200°C fırında yaklaşık 30 dakika pişirin. Üzeri altın sarısı olana kadar."
+    ],
+    "category": "kahvalti",
+    "prepTime": 30,
+    "cookTime": 30,
+    "servings": 8
+  },
+  {
+    "id": "kahvalti_9",
+    "name": "Bal Kaymak",
+    "description": "Klasik Türk kahvaltısı",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "200 gram kaymak",
+      "100 gram bal",
+      "Ekmek"
+    ],
+    "instructions": [
+      "200 gram kaymağı servis tabağına veya küçük kaselere alın. Kaymak buzdolabından çıkarıldıktan sonra 10 dakika oda sıcaklığında bekletilirse daha yumuşak olur.",
+      "Kaymağın üzerine 100 gram balı dökün. Balı kaymağın üzerine güzel bir şekilde yayın.",
+      "Taze ekmek dilimlerini hazırlayın. Ekmekler çok sıcak olmamalı, ılık olmalı.",
+      "Ekmek dilimlerini kaymak ve balın yanına koyun. İsterseniz kaymağı ekmeğin üzerine sürüp balı da üzerine dökebilirsiniz.",
+      "Hemen servis edin. Yanında çay ile harika olur."
+    ],
+    "category": "kahvalti",
+    "prepTime": 2,
+    "cookTime": 0,
+    "servings": 2
+  },
+  {
+    "id": "kahvalti_10",
+    "name": "Çılbır",
+    "description": "Yoğurtlu yumurta",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "4 adet yumurta",
+      "200 gram yoğurt",
+      "2 diş sarımsak",
+      "2 yemek kaşığı tereyağı",
+      "Kırmızı biber",
+      "Tuz"
+    ],
+    "instructions": [
+      "200 gram yoğurdu bir kaseye alın. 2 diş sarımsağı ezin veya rendeleyin ve yoğurda ekleyin.",
+      "Yoğurda tuz ekleyin ve iyice karıştırın. Sarımsaklı yoğurt hazır olana kadar bekleyin.",
+      "4 adet yumurtayı kaynar suya koyun ve 6-7 dakika haşlayın. Yumurtaların sarısı hafif akışkan kalmalı.",
+      "Haşlanan yumurtaları soğuk suya alın ve soğutun. Sonra kabuklarını soyun.",
+      "Geniş bir tavada 2 yemek kaşığı tereyağını eritin. Tereyağı eridikten sonra kırmızı biber ekleyin ve 30 saniye kavurun.",
+      "Yoğurdu servis tabaklarına paylaştırın. Her tabağa 2 yumurta yerleştirin.",
+      "Tereyağlı kırmızı biberi yumurtaların üzerine dökün. Sıcak servis edin. Yanında taze ekmek ile harika olur."
+    ],
+    "category": "kahvalti",
+    "prepTime": 10,
+    "cookTime": 10,
+    "servings": 2
+  },
+  {
+    "id": "kahvalti_11",
+    "name": "Patatesli Börek",
+    "description": "Kahvaltı için patatesli börek",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "4 yufka",
+      "3 adet patates",
+      "1 adet soğan",
+      "100 gram tereyağı",
+      "Tuz, karabiber"
+    ],
+    "instructions": [
+      "3 adet patatesi yıkayın, kabuklarını soyun ve büyük parçalar halinde doğrayın. Kaynar suda yaklaşık 20 dakika haşlayın, çatalla delinince yumuşak olmalı.",
+      "Haşlanan patatesleri süzün ve bir kasede çatalla veya patates ezici ile ezın. Pürüzsüz bir kıvam almalı.",
+      "1 adet soğanı küp küp doğrayın. Geniş bir tavada biraz yağ ile kavurun, şeffaf görünmeye başladığında hazırdır.",
+      "Ezilmiş patates ve kavrulmuş soğanı bir kasede karıştırın. Tuz ve karabiber ekleyin, iyice karıştırın.",
+      "4 yufkayı tezgaha serin. Her yufkanın üzerine eşit miktarda patates karışımını yayın. Kenarlardan 2 cm boşluk bırakın.",
+      "Yufkaları rulo şeklinde sıkıca sarın. Uçlarını içe katlayarak kapatın.",
+      "Börekleri yağlanmış fırın tepsisine dizin. Üzerlerine eritilmiş tereyağı sürün ve çörek otu serpiştirin.",
+      "Önceden ısıtılmış 180°C fırında yaklaşık 30 dakika pişirin. Üzerleri altın sarısı olana kadar. Sıcak servis edin."
+    ],
+    "category": "kahvalti",
+    "prepTime": 30,
+    "cookTime": 30,
+    "servings": 4
+  },
+  {
+    "id": "kahvalti_12",
+    "name": "Krep",
+    "description": "Kahvaltı için krep",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "2 su bardağı un",
+      "2 yumurta",
+      "2 su bardağı süt",
+      "1 çay kaşığı tuz",
+      "Tereyağı"
+    ],
+    "instructions": [
+      "2 su bardağı unu geniş bir kaseye alın. Ortasına 2 yumurta kırın ve çatalla karıştırmaya başlayın.",
+      "Yavaş yavaş 2 su bardağı sütü ekleyin ve sürekli karıştırın. Topaklanma olmamalı, pürüzsüz bir kıvam almalı.",
+      "1 çay kaşığı tuz ekleyin ve tekrar karıştırın. Krep hamuru hazır olmalı, kıvamı akışkan ama çok sıvı olmamalı.",
+      "Hamuru 15-20 dakika dinlendirin. Bu süre hamurun daha iyi pişmesini sağlar.",
+      "Geniş bir tavaya biraz tereyağı koyun ve orta ateşte eritin. Tereyağı eridikten sonra bir kepçe hamur dökün.",
+      "Tavayı hafifçe sallayarak hamurun eşit yayılmasını sağlayın. Altı pişmeye başladığında (yaklaşık 1-2 dakika) çevirin.",
+      "Diğer tarafını da pişirin (yaklaşık 1 dakika). Her iki tarafı da altın sarısı olmalı.",
+      "Krep piştiğinde tabağa alın. Kalan hamur için işlemi tekrarlayın. Sıcak servis edin, isterseniz bal, reçel veya peynir ile."
+    ],
+    "category": "kahvalti",
+    "prepTime": 10,
+    "cookTime": 15,
+    "servings": 4
+  },
+  {
+    "id": "kahvalti_13",
+    "name": "Peynirli Gözleme",
+    "description": "Klasik gözleme",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "500 gram un",
+      "200 gram beyaz peynir",
+      "1 çay kaşığı tuz",
+      "Su"
+    ],
+    "instructions": [
+      "500 gram unu geniş bir kaba alın, ortasına 1 çay kaşığı tuz ekleyin ve karıştırın.",
+      "Yavaş yavaş ılık su ekleyerek hamur yoğurun. Hamur yumuşak ama ele yapışmayacak kıvamda olmalı, yaklaşık 10 dakika yoğurun.",
+      "Hamuru bir kaseye koyun, üzerini nemli bezle örtün ve 30 dakika dinlendirin. Bu süre hamurun daha kolay açılmasını sağlar.",
+      "200 gram beyaz peyniri ufak ufak doğrayın veya çatalla ezın. Tuzluysa suda bekletebilirsiniz.",
+      "Dinlenen hamuru 4 eşit parçaya bölün. Her parçayı oklava ile ince açın, yaklaşık 25-30 cm çapında olmalı.",
+      "Açılan hamurun yarısına peyniri yayın, diğer yarısını üzerine katlayın ve kenarlarını sıkıca kapatın.",
+      "Sacı veya geniş tavayı ısıtın. Gözleme hamurunu saca koyun ve her iki tarafını da pişirin, altın sarısı olana kadar.",
+      "Gözlemeleri piştiğinde tabağa alın ve sıcak servis edin. İsterseniz üzerine tereyağı sürün."
+    ],
+    "category": "kahvalti",
+    "prepTime": 20,
+    "cookTime": 10,
+    "servings": 4
+  },
+  {
+    "id": "kahvalti_14",
+    "name": "Sucuklu Börek",
+    "description": "Kahvaltı için sucuklu börek",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "4 yufka",
+      "200 gram sucuk",
+      "100 gram tereyağı",
+      "Yumurta"
+    ],
+    "instructions": [
+      "200 gram sucuğu ince ince dilimleyin. Dilimler yaklaşık 0.5 cm kalınlığında olmalı. Sucuğun zarını çıkarmayı unutmayın.",
+      "4 yufkayı tezgaha serin. Yufkalar oda sıcaklığında olmalı ki kırılmasınlar.",
+      "Her yufkanın üzerine eşit miktarda sucuk dilimlerini yayın. Kenarlardan 2 cm boşluk bırakın ki sararken taşmasın.",
+      "Yufkaları rulo şeklinde sıkıca sarın. Uçlarını içe katlayarak kapatın.",
+      "Börekleri yağlanmış fırın tepsisine dizin. Bir yumurtayı çırpın ve böreklerin üzerine sürün.",
+      "Üzerlerine çörek otu serpiştirin ve önceden ısıtılmış 180°C fırında yaklaşık 25 dakika pişirin.",
+      "Börekler piştiğinde fırından çıkarın ve 5 dakika dinlendirin. Sıcak servis edin. Yanında yoğurt ile harika olur."
+    ],
+    "category": "kahvalti",
+    "prepTime": 20,
+    "cookTime": 25,
+    "servings": 4
+  },
+  {
+    "id": "kahvalti_15",
+    "name": "Mercimek Köftesi",
+    "description": "Kahvaltı için mercimek köftesi",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "1 su bardağı kırmızı mercimek",
+      "1 adet soğan",
+      "Yarım demet maydanoz",
+      "2 yemek kaşığı salça",
+      "Tuz, karabiber"
+    ],
+    "instructions": [
+      "1 su bardağı kırmızı mercimeği yıkayın ve süzün. Geniş bir tencereye alın ve üzerini 2 parmak geçecek kadar su ekleyin.",
+      "Mercimeği kaynatın ve yaklaşık 15-20 dakika haşlayın. Mercimekler yumuşayıp ezilebilir kıvama gelmeli.",
+      "Haşlanan mercimeği süzün ve bir kasede çatalla veya patates ezici ile ezın. Soğumaya bırakın.",
+      "1 adet soğanı rendeleyin veya çok ince doğrayın. Yarım demet maydanozu ince ince kıyın.",
+      "Ezilmiş mercimeğe rendelenmiş soğan, kıyılmış maydanoz, 2 yemek kaşığı salça, tuz ve karabiber ekleyin.",
+      "Tüm malzemeleri iyice karıştırın. Karışım köfte şekli verebilecek kıvamda olmalı, çok suluysa biraz un ekleyebilirsiniz.",
+      "Karışımdan ceviz büyüklüğünde parçalar alın ve elinizle köfte şekli verin. Köfteleri servis tabağına dizin.",
+      "Köfteleri buzdolabında 30 dakika bekletin. Soğuk servis edin. Yanında marul, domates ve limon ile harika olur."
+    ],
+    "category": "kahvalti",
+    "prepTime": 30,
+    "cookTime": 20,
+    "servings": 6
+  },
+  {
+    "id": "kahvalti_16",
+    "name": "Peynirli Muffin",
+    "description": "Kahvaltı için peynirli muffin",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "2 su bardağı un",
+      "2 yumurta",
+      "200 gram beyaz peynir",
+      "1 su bardağı süt",
+      "1 paket kabartma tozu"
+    ],
+    "instructions": [
+      "2 su bardağı unu geniş bir kaseye alın. 1 paket kabartma tozunu ekleyin ve karıştırın.",
+      "2 yumurtayı bir kaseye kırın ve çatalla çırpın. 1 su bardağı sütü ekleyin ve karıştırın.",
+      "Yumurta ve süt karışımını unun üzerine dökün ve yavaşça karıştırın. Topaklanma olmamalı, pürüzsüz bir kıvam almalı.",
+      "200 gram beyaz peyniri küp küp doğrayın. Peynir küpleri yaklaşık 1 cm boyutunda olmalı.",
+      "Doğradığınız peynirleri hamura ekleyin ve hafifçe karıştırın. Peynirler hamurun içinde dağılmalı.",
+      "Muffin kalıplarını yağlayın veya kağıt muffin kapları kullanın. Hamuru kalıplara paylaştırın, her kalıp 3/4 dolu olmalı.",
+      "Önceden ısıtılmış 180°C fırında yaklaşık 20 dakika pişirin. Muffinlerin üzerleri altın sarısı ve çatalla delince temiz çıkmalı.",
+      "Muffinler piştiğinde fırından çıkarın ve 5 dakika soğumaya bırakın. Sıcak veya soğuk servis edin."
+    ],
+    "category": "kahvalti",
+    "prepTime": 15,
+    "cookTime": 20,
+    "servings": 12
+  },
+  {
+    "id": "kahvalti_17",
+    "name": "Zeytin Ezmesi",
+    "description": "Kahvaltı için zeytin ezmesi",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "200 gram siyah zeytin",
+      "2 diş sarımsak",
+      "1 yemek kaşığı zeytinyağı",
+      "Limon suyu"
+    ],
+    "instructions": [
+      "200 gram siyah zeytini çekirdeklerinden ayırın. Zeytinleri bir kaseye alın ve çekirdeklerini çıkarın.",
+      "2 diş sarımsağı soyun ve doğrayın. Sarımsakları zeytinlerin üzerine ekleyin.",
+      "1 yemek kaşığı zeytinyağı ve yarım limonun suyunu ekleyin. İsterseniz biraz taze kekik de ekleyebilirsiniz.",
+      "Tüm malzemeleri blender veya mutfak robotuna koyun ve pürüzsüz bir kıvam alana kadar çekin. İsterseniz biraz daha kıvamlı bırakabilirsiniz.",
+      "Zeytin ezmesini bir kaseye alın ve buzdolabında en az 1 saat bekletin. Soğuk servis edin.",
+      "Yanında taze ekmek, peynir ve domates ile harika olur. Kahvaltı sofrasında mükemmel bir lezzet."
+    ],
+    "category": "kahvalti",
+    "prepTime": 10,
+    "cookTime": 0,
+    "servings": 4
+  },
+  {
+    "id": "kahvalti_18",
+    "name": "Peynirli Omlet Sandviç",
+    "description": "Kahvaltı için omlet sandviç",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "4 dilim ekmek",
+      "3 yumurta",
+      "100 gram kaşar peyniri",
+      "Tereyağı"
+    ],
+    "instructions": [
+      "3 adet yumurtayı bir kaseye kırın ve çatalla veya çırpıcı ile iyice çırpın. Yumurtaların sarısı ve beyazı tamamen karışmalı.",
+      "100 gram kaşar peynirini rendeleyin veya küp küp doğrayın. Peyniri çırptığınız yumurtalara ekleyin ve karıştırın.",
+      "Tuz ve karabiber ekleyin. İsterseniz biraz maydanoz da ekleyebilirsiniz.",
+      "Geniş bir tavaya biraz tereyağı koyun ve orta ateşte eritin. Tereyağı eridikten sonra yumurta karışımını dökün.",
+      "Omleti pişirin. Altı pişmeye başladığında spatula ile kenarlarından kaldırarak pişirin. İsterseniz çevirebilirsiniz.",
+      "Omlet piştiğinde tavadan çıkarın ve 4 dilim ekmeğin arasına yerleştirin. Ekmekleri hafifçe kızartabilirsiniz.",
+      "Sandviçleri kesin ve sıcak servis edin. Yanında domates ve salatalık ile harika olur."
+    ],
+    "category": "kahvalti",
+    "prepTime": 5,
+    "cookTime": 10,
+    "servings": 2
+  },
+  {
+    "id": "kahvalti_19",
+    "name": "Tereyağlı Yumurta",
+    "description": "Klasik tereyağlı yumurta",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "4 adet yumurta",
+      "2 yemek kaşığı tereyağı",
+      "Tuz, karabiber"
+    ],
+    "instructions": [
+      "Geniş bir tavaya 2 yemek kaşığı tereyağını koyun ve orta-düşük ateşte eritin. Tereyağı erirken köpürmeye başlayacaktır.",
+      "4 adet yumurtayı bir kaseye kırın. Yumurtaları çırpmadan doğrudan tavaya kırabilirsiniz veya önce kaseye kırıp sonra tavaya dökebilirsiniz.",
+      "Yumurtaları tavaya kırın. Yumurtaların sarısının dağılmamasına dikkat edin. Tereyağı yumurtaların etrafına yayılmalı.",
+      "Yumurtaların beyazı pişmeye başladığında, tuz ve karabiber ekleyin. Yumurtaların sarısını istediğiniz kıvamda pişirin - akışkan veya katı.",
+      "Yumurtalar piştiğinde, tavayı ocaktan alın ve tabağa alın. Sıcak servis edin. Yanında taze ekmek ve çay ile harika olur."
+    ],
+    "category": "kahvalti",
+    "prepTime": 3,
+    "cookTime": 5,
+    "servings": 2
+  },
+  {
+    "id": "kahvalti_20",
+    "name": "Peynirli Krep",
+    "description": "Kahvaltı için peynirli krep",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "2 su bardağı un",
+      "2 yumurta",
+      "2 su bardağı süt",
+      "200 gram beyaz peynir",
+      "Tereyağı"
+    ],
+    "instructions": [
+      "2 su bardağı unu geniş bir kaseye alın. Ortasına 2 yumurta kırın ve çatalla karıştırmaya başlayın.",
+      "Yavaş yavaş 2 su bardağı sütü ekleyin ve sürekli karıştırın. Topaklanma olmamalı, pürüzsüz bir kıvam almalı.",
+      "Hamuru 15-20 dakika dinlendirin. Bu süre hamurun daha iyi pişmesini sağlar.",
+      "200 gram beyaz peyniri küp küp doğrayın veya çatalla ezın. Peynir küpleri yaklaşık 1 cm boyutunda olmalı.",
+      "Geniş bir tavaya biraz tereyağı koyun ve orta ateşte eritin. Bir kepçe hamur dökün ve tavayı sallayarak eşit yayın.",
+      "Krepin altı pişmeye başladığında (yaklaşık 1-2 dakika) çevirin. Diğer tarafını da pişirin (yaklaşık 1 dakika).",
+      "Krep piştiğinde tavadan çıkarın. Üzerine peynir küplerini yayın ve katlayın veya rulo yapın.",
+      "Krepin her iki tarafını da hafifçe kızartın ki peynir erisin. Sıcak servis edin. İsterseniz bal veya reçel ile de servis edebilirsiniz."
+    ],
+    "category": "kahvalti",
+    "prepTime": 10,
+    "cookTime": 15,
+    "servings": 4
+  }
+]

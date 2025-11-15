@@ -1,0 +1,547 @@
+[
+  {
+    "id": "aksam_1",
+    "name": "Kebap",
+    "description": "Adana kebap",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "500 gram kıyma",
+      "Kırmızı biber",
+      "Tuz, karabiber, kimyon",
+      "Soğan"
+    ],
+    "instructions": [
+      "500 gram kıymayı geniş bir kaseye alın. Kıyma yağlı olmalı, çok yağsız olmamalı.",
+      "Kırmızı biberi toz haline getirin veya hazır kırmızı biber tozu kullanın. Kıymaya ekleyin.",
+      "Tuz, karabiber ve kimyon ekleyin. Tüm baharatları iyice karıştırın.",
+      "Kıyma karışımını yaklaşık 10 dakika yoğurun. Ellerinizle sürekli yoğurun ki kıyma sıkı ve homojen olsun.",
+      "Kıyma hamurunu buzdolabında 1 saat bekletin. Bu süre köftelerin daha iyi şekil almasını sağlar.",
+      "Kıyma hamurundan uzun şeritler yapın ve şişe geçirin. Şeritler yaklaşık 15-20 cm uzunluğunda olmalı.",
+      "Izgarayı veya mangalı ısıtın. Şişleri ızgaraya yerleştirin ve her iki tarafını da pişirin, yaklaşık 10-12 dakika.",
+      "Kebaplar piştiğinde şişlerden çıkarın ve sıcak servis edin. Yanında soğan, domates ve pilav ile harika olur."
+    ],
+    "category": "aksamYemegi",
+    "prepTime": 30,
+    "cookTime": 20,
+    "servings": 4
+  },
+  {
+    "id": "aksam_2",
+    "name": "Güveç",
+    "description": "Etli güveç",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "500 gram kuşbaşı et",
+      "2 adet patlıcan",
+      "2 adet biber",
+      "2 adet domates",
+      "Soğan",
+      "Sarımsak"
+    ],
+    "instructions": [
+      "500 gram kuşbaşı eti geniş bir tavada kavurun. Etler suyunu çektikten sonra tuz ve karabiber ekleyin.",
+      "2 adet patlıcanı yıkayın ve küp küp doğrayın. 2 adet biberi yıkayın, çekirdeklerini çıkarın ve küp küp doğrayın.",
+      "2 adet domatesi küp küp doğrayın. 1 adet soğanı küp küp doğrayın. 2 diş sarımsağı ezin.",
+      "Etler yarı piştiğinde, doğradığınız soğanı ekleyin ve 2 dakika kavurun. Soğanlar şeffaf görünmeye başlamalı.",
+      "Ezilmiş sarımsak ekleyin ve 1 dakika daha kavurun. Sonra doğradığınız patlıcanları ekleyin.",
+      "Patlıcanlar yumuşamaya başladığında, doğradığınız biberleri ekleyin. Son olarak doğradığınız domatesleri ekleyin.",
+      "Tüm malzemeleri karıştırın ve güveç kabına koyun. Üzerini kapatın.",
+      "Önceden ısıtılmış 180°C fırında yaklaşık 45-60 dakika pişirin. Sebzeler yumuşak ve et tamamen pişmiş olmalı. Sıcak servis edin."
+    ],
+    "category": "aksamYemegi",
+    "prepTime": 30,
+    "cookTime": 60,
+    "servings": 4
+  },
+  {
+    "id": "aksam_3",
+    "name": "Hünkar Beğendi",
+    "description": "Hünkar beğendi",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "500 gram kuşbaşı et",
+      "4 adet patlıcan",
+      "Kaşar peyniri",
+      "Süt",
+      "Tereyağı",
+      "Un"
+    ],
+    "instructions": [
+      "500 gram kuşbaşı eti geniş bir tavada kavurun. Etler suyunu çektikten sonra tuz ve karabiber ekleyin.",
+      "Etleri yaklaşık 30-40 dakika pişirin. Etler yumuşak ve suyu koyu olmalı. Et hazır olunca ocaktan alın.",
+      "4 adet patlıcanı yıkayın ve közleyin. Patlıcanları doğrudan ocak üzerinde veya fırında közleyin, kabukları yanmalı.",
+      "Közlenen patlıcanları soğuk suya alın ve kabuklarını soyun. Patlıcanları bir kasede çatalla veya patates ezici ile ezın.",
+      "Beyaz sos yapın: Bir tavada 2 yemek kaşığı tereyağını eritin. 2 yemek kaşığı unu ekleyin ve kavurun.",
+      "Un kavrulduktan sonra, yavaş yavaş 1 su bardağı sütü ekleyin ve sürekli karıştırın. Topaklanma olmamalı.",
+      "Ezilmiş patlıcanları beyaz sosa ekleyin. Rendelemiş kaşar peyniri ekleyin ve karıştırın. Tuz ve karabiber ekleyin.",
+      "Patlıcanlı beğendiyi servis tabaklarına paylaştırın. Üzerine pişmiş eti yerleştirin ve sıcak servis edin."
+    ],
+    "category": "aksamYemegi",
+    "prepTime": 30,
+    "cookTime": 60,
+    "servings": 4
+  },
+  {
+    "id": "aksam_4",
+    "name": "Etli Kuru Fasulye",
+    "description": "Etli kuru fasulye",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "2 su bardağı kuru fasulye",
+      "300 gram kuşbaşı et",
+      "1 adet soğan",
+      "Salça",
+      "Tuz, karabiber"
+    ],
+    "instructions": [
+      "2 su bardağı kuru fasulyeyi akşamdan soğuk suda ıslatın. Fasulyeler en az 8 saat suda beklemeli, suyunu çekmeli.",
+      "Islatılan fasulyeyi süzün ve yeni su ile yıkayın. Geniş bir tencereye alın ve üzerini 2 parmak geçecek kadar su ekleyin.",
+      "Fasulyeyi kaynatın ve yaklaşık 30-40 dakika haşlayın. Fasulyeler yumuşak ama dağılmamış olmalı.",
+      "300 gram kuşbaşı eti geniş bir tavada kavurun. Etler suyunu çektikten sonra 1 adet rendelenmiş soğan ekleyin.",
+      "Soğanlar şeffaf görünmeye başladığında, salça ekleyin ve 2 dakika daha kavurun. Salça kokusu çıkmalı.",
+      "Haşlanan fasulyeyi süzün ve etli soğana ekleyin. Üzerini geçecek kadar sıcak su ekleyin.",
+      "Tuz ve karabiber ekleyin. Kapağı kapatın ve kısık ateşte yaklaşık 45-60 dakika pişirin. Fasulyeler yumuşak ve suyu koyu olmalı.",
+      "Fasulye piştiğinde ocaktan alın ve 10 dakika dinlendirin. Sıcak servis edin. Yanında pilav ve turşu ile harika olur."
+    ],
+    "category": "aksamYemegi",
+    "prepTime": 480,
+    "cookTime": 90,
+    "servings": 6
+  },
+  {
+    "id": "aksam_5",
+    "name": "Tavuk Güveç",
+    "description": "Tavuklu güveç",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "1 adet tavuk",
+      "2 adet patlıcan",
+      "2 adet biber",
+      "2 adet domates",
+      "Soğan",
+      "Sarımsak"
+    ],
+    "instructions": [
+      "1 adet tavuğu parçalara ayırın. Tavuğu but, göğüs ve kanat olarak ayırın. Her parçayı yıkayın ve kurulayın.",
+      "Tavuk parçalarını geniş bir tavada kavurun. Tavuklar pişmeye başladığında tuz ve karabiber ekleyin.",
+      "2 adet patlıcanı yıkayın ve küp küp doğrayın. 2 adet biberi yıkayın, çekirdeklerini çıkarın ve küp küp doğrayın.",
+      "2 adet domatesi küp küp doğrayın. 1 adet soğanı küp küp doğrayın. 2 diş sarımsağı ezin.",
+      "Tavuklar yarı piştiğinde, doğradığınız soğanı ekleyin ve 2 dakika kavurun. Soğanlar şeffaf görünmeye başlamalı.",
+      "Ezilmiş sarımsak ekleyin ve 1 dakika daha kavurun. Sonra doğradığınız patlıcanları ekleyin.",
+      "Patlıcanlar yumuşamaya başladığında, doğradığınız biberleri ekleyin. Son olarak doğradığınız domatesleri ekleyin.",
+      "Tüm malzemeleri karıştırın ve güveç kabına koyun. Üzerini kapatın ve önceden ısıtılmış 180°C fırında yaklaşık 45-60 dakika pişirin. Sebzeler yumuşak ve tavuk tamamen pişmiş olmalı. Sıcak servis edin."
+    ],
+    "category": "aksamYemegi",
+    "prepTime": 30,
+    "cookTime": 60,
+    "servings": 4
+  },
+  {
+    "id": "aksam_6",
+    "name": "Etli Pilav",
+    "description": "Etli pilav",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "500 gram kuşbaşı et",
+      "2 su bardağı pirinç",
+      "Soğan",
+      "Salça",
+      "Tuz, karabiber"
+    ],
+    "instructions": [
+      "500 gram kuşbaşı eti geniş bir tencereye alın ve kavurun. Etler suyunu çektikten sonra tuz ve karabiber ekleyin.",
+      "1 adet soğanı küp küp doğrayın. Etler yarı piştiğinde, doğradığınız soğanı ekleyin ve 2 dakika kavurun.",
+      "Soğanlar şeffaf görünmeye başladığında, salça ekleyin ve 2 dakika daha kavurun. Salça kokusu çıkmalı.",
+      "2 su bardağı pirinci yıkayın ve süzün. Yıkanan pirinci 30 dakika suda bekletin.",
+      "Süzülmüş pirinci etli soğana ekleyin ve kavurun. Pirinçler şeffaf görünmeye başladığında hazırdır, yaklaşık 5 dakika.",
+      "Üzerini geçecek kadar sıcak su ekleyin. Tuz ekleyin ve karıştırın. Kaynamaya başladığında kapağı kapatın.",
+      "Ateşi kısık seviyeye alın ve 15-20 dakika pişirin. Suyunu çekene kadar pişirmeye devam edin.",
+      "Pilav piştiğinde ocaktan alın ve 10 dakika dinlendirin. Kapağı açmadan bekleyin ki buhar çıkmasın. Sıcak servis edin."
+    ],
+    "category": "aksamYemegi",
+    "prepTime": 20,
+    "cookTime": 40,
+    "servings": 4
+  },
+  {
+    "id": "aksam_7",
+    "name": "Kuzu Tandır",
+    "description": "Kuzu tandır",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "1 kg kuzu eti",
+      "Soğan",
+      "Sarımsak",
+      "Tuz, karabiber",
+      "Kekik"
+    ],
+    "instructions": [
+      "1 kg kuzu etini yıkayın ve kurulayın. Eti büyük parçalar halinde kesin.",
+      "Eti bir kaseye alın ve üzerine tuz, karabiber, kekik ve zeytinyağı ekleyin. Tüm baharatları iyice karıştırın.",
+      "Eti marine edin. Tüm baharatları iyice karıştırın ve buzdolabında en az 4 saat bekletin. Ne kadar uzun bekletirseniz o kadar lezzetli olur.",
+      "Marine edilmiş eti tandıra yerleştirin veya fırında düşük sıcaklıkta pişirin. Tandırda yaklaşık 2-3 saat pişirin.",
+      "Et pişerken ara sıra çevirin ki her tarafı eşit pişsin. Etin dışı kızarmalı ve içi yumuşak olmalı.",
+      "Et piştiğinde tandırdan çıkarın ve 10 dakika dinlendirin. Etin suyunu çıkarmamak için hemen kesmeyin.",
+      "Dinlenen eti ince ince kesin veya parçalara ayırın. Sıcak servis edin.",
+      "Yanında pilav, salata ve turşu ile harika olur. Tandır eti Türk mutfağının en lezzetli yemeklerinden biridir."
+    ],
+    "category": "aksamYemegi",
+    "prepTime": 120,
+    "cookTime": 180,
+    "servings": 6
+  },
+  {
+    "id": "aksam_8",
+    "name": "Etli Bamya",
+    "description": "Etli bamya",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "500 gram bamya",
+      "300 gram kuşbaşı et",
+      "1 adet soğan",
+      "Salça",
+      "Limon",
+      "Tuz"
+    ],
+    "instructions": [
+      "500 gram bamyayı yıkayın ve saplarını kesin. Bamyayı temizlerken çok dikkatli olun, zarar vermeyin.",
+      "Bamyayı bir kaseye alın ve üzerine limon suyu dökün. Bu bamyayı yumuşatır ve rengini korur.",
+      "300 gram kuşbaşı eti geniş bir tavada kavurun. Etler suyunu çektikten sonra 1 adet rendelenmiş soğan ekleyin.",
+      "Soğanlar şeffaf görünmeye başladığında, salça ekleyin ve 2 dakika daha kavurun. Salça kokusu çıkmalı.",
+      "Temizlenmiş bamyayı etli soğana ekleyin. Üzerini geçecek kadar sıcak su ekleyin.",
+      "Tuz ekleyin ve kapağı kapatın. Kısık ateşte yaklaşık 30-45 dakika pişirin. Bamyalar yumuşak olmalı.",
+      "Bamya piştiğinde ocaktan alın. Üzerine limon suyu ekleyin ve karıştırın.",
+      "Bamyayı sıcak servis edin. Yanında pilav ve turşu ile harika olur."
+    ],
+    "category": "aksamYemegi",
+    "prepTime": 30,
+    "cookTime": 45,
+    "servings": 4
+  },
+  {
+    "id": "aksam_9",
+    "name": "Köfte Yahnisi",
+    "description": "Köfte yahnisi",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "500 gram köfte",
+      "2 adet domates",
+      "1 adet soğan",
+      "Salça",
+      "Tuz, karabiber"
+    ],
+    "instructions": [
+      "500 gram köfteyi hazırlayın veya kendiniz yapın. Köfteleri ızgarada veya tavada kızartın.",
+      "Köfteleri her iki tarafını da kızartın, yaklaşık 5-7 dakika. Köfteler yarı pişmiş olmalı, tamamen pişmemeli.",
+      "1 adet soğanı küp küp doğrayın. Geniş bir tavada biraz yağ ile kavurun, şeffaf görünmeye başladığında hazırdır.",
+      "Kavrulmuş soğana salça ekleyin ve 2 dakika daha kavurun. Salça kokusu çıkmalı.",
+      "2 adet domatesi küp küp doğrayın. Domatesleri salçalı soğana ekleyin ve karıştırın.",
+      "Domatesler yumuşamaya başladığında, kızartılmış köfteleri ekleyin ve karıştırın.",
+      "Üzerini geçecek kadar sıcak su ekleyin. Tuz ve karabiber ekleyin. Kapağı kapatın ve kısık ateşte yaklaşık 20-30 dakika pişirin.",
+      "Köfte yahnisi piştiğinde ocaktan alın ve sıcak servis edin. Yanında pilav ve salata ile harika olur."
+    ],
+    "category": "aksamYemegi",
+    "prepTime": 30,
+    "cookTime": 30,
+    "servings": 4
+  },
+  {
+    "id": "aksam_10",
+    "name": "Tavuk Şiş",
+    "description": "Tavuk şiş",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "500 gram tavuk göğsü",
+      "Biber",
+      "Soğan",
+      "Yoğurt",
+      "Sarımsak",
+      "Tuz, karabiber"
+    ],
+    "instructions": [
+      "500 gram tavuk göğsünü küp küp doğrayın. Parçalar yaklaşık 2x2 cm boyutunda olmalı.",
+      "Eti bir kaseye alın ve üzerine yoğurt, ezilmiş sarımsak, tuz ve karabiber ekleyin. Tüm malzemeleri iyice karıştırın.",
+      "Tavuğu marine edin. Tüm baharatları iyice karıştırın ve buzdolabında en az 2 saat bekletin. Ne kadar uzun bekletirseniz o kadar lezzetli olur.",
+      "Biberleri yıkayın, çekirdeklerini çıkarın ve küp küp doğrayın. Soğanı küp küp doğrayın.",
+      "Marine edilmiş tavuğu şişe geçirin. Tavuk parçalarının arasına biber ve soğan parçaları ekleyin.",
+      "Şişleri hazırladıktan sonra, buzdolabında 30 dakika daha bekletin. Bu süre tavuğun daha iyi pişmesini sağlar.",
+      "Izgarayı veya mangalı ısıtın. Şişleri ızgaraya yerleştirin ve her iki tarafını da pişirin, yaklaşık 15-20 dakika.",
+      "Tavuk şişler piştiğinde şişlerden çıkarın ve sıcak servis edin. Yanında pilav ve salata ile harika olur."
+    ],
+    "category": "aksamYemegi",
+    "prepTime": 60,
+    "cookTime": 20,
+    "servings": 4
+  },
+  {
+    "id": "aksam_11",
+    "name": "Etli Patlıcan",
+    "description": "Etli patlıcan",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "4 adet patlıcan",
+      "300 gram kıyma",
+      "1 adet soğan",
+      "Domates",
+      "Salça",
+      "Tuz, karabiber"
+    ],
+    "instructions": [
+      "4 adet patlıcanı yıkayın ve saplarını kesin. Patlıcanları uzunlamasına çizgiler halinde soyun veya alacalı soyun.",
+      "Patlıcanları geniş bir tavada kızartın. Her iki tarafını da altın sarısı olana kadar kızartın, yaklaşık 5-7 dakika.",
+      "Kızartılan patlıcanları kağıt havlu üzerine alın ve fazla yağını çıkarın.",
+      "300 gram kıymayı geniş bir tavada kavurun. Kıyma suyunu çektikten sonra 1 adet rendelenmiş soğan ekleyin.",
+      "Soğanlar şeffaf görünmeye başladığında, salça ekleyin ve 2 dakika daha kavurun. Tuz ve karabiber ekleyin.",
+      "Kızartılan patlıcanları uzunlamasına yarın. İçlerine kıyma karışımını doldurun ve dikkatli bir şekilde kapatın.",
+      "Doldurulmuş patlıcanları fırın tepsisine dizin. Üzerlerine doğranmış domates ve biraz daha salça ekleyin.",
+      "Önceden ısıtılmış 180°C fırında yaklaşık 30-40 dakika pişirin. Patlıcanlar yumuşak ve üzerleri kızarmış olmalı. Sıcak servis edin."
+    ],
+    "category": "aksamYemegi",
+    "prepTime": 30,
+    "cookTime": 40,
+    "servings": 4
+  },
+  {
+    "id": "aksam_12",
+    "name": "Tavuk Kapama",
+    "description": "Tavuk kapama",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "1 adet tavuk",
+      "2 adet patates",
+      "1 adet soğan",
+      "Salça",
+      "Tuz, karabiber"
+    ],
+    "instructions": [
+      "1 adet tavuğu parçalara ayırın. Tavuğu but, göğüs ve kanat olarak ayırın. Her parçayı yıkayın ve kurulayın.",
+      "Tavuk parçalarını geniş bir tencereye alın ve kavurun. Tavuklar pişmeye başladığında tuz ve karabiber ekleyin.",
+      "2 adet patatesi yıkayın, kabuklarını soyun ve küp küp doğrayın. 1 adet soğanı küp küp doğrayın.",
+      "Tavuklar yarı piştiğinde, doğradığınız soğanı ekleyin ve 2 dakika kavurun. Soğanlar şeffaf görünmeye başlamalı.",
+      "Salça ekleyin ve 2 dakika daha kavurun. Salça kokusu çıkmalı.",
+      "Doğradığınız patatesleri ekleyin ve karıştırın. Üzerini geçecek kadar sıcak su ekleyin.",
+      "Tuz ve karabiber ekleyin. Kapağı kapatın ve kısık ateşte yaklaşık 45-60 dakika pişirin. Patatesler yumuşak ve tavuk tamamen pişmiş olmalı.",
+      "Tavuk kapama piştiğinde ocaktan alın ve sıcak servis edin. Yanında pilav ve salata ile harika olur."
+    ],
+    "category": "aksamYemegi",
+    "prepTime": 20,
+    "cookTime": 60,
+    "servings": 4
+  },
+  {
+    "id": "aksam_13",
+    "name": "Etli Kereviz",
+    "description": "Etli kereviz",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "2 adet kereviz",
+      "300 gram kuşbaşı et",
+      "1 adet soğan",
+      "Limon",
+      "Tuz"
+    ],
+    "instructions": [
+      "2 adet kerevizi yıkayın ve kabuklarını soyun. Kerevizleri küp küp doğrayın ve limon suyuna batırın ki kararmasın.",
+      "300 gram kuşbaşı eti geniş bir tavada kavurun. Etler suyunu çektikten sonra 1 adet rendelenmiş soğan ekleyin.",
+      "Soğanlar şeffaf görünmeye başladığında, doğradığınız kerevizleri ekleyin ve karıştırın.",
+      "Üzerini geçecek kadar sıcak su ekleyin. Tuz ekleyin ve kapağı kapatın.",
+      "Kısık ateşte yaklaşık 30-45 dakika pişirin. Kerevizler yumuşak ve et tamamen pişmiş olmalı.",
+      "Kereviz piştiğinde ocaktan alın. Üzerine limon suyu ekleyin ve karıştırın.",
+      "Etli kerevizi sıcak servis edin. Yanında pilav ve turşu ile harika olur."
+    ],
+    "category": "aksamYemegi",
+    "prepTime": 30,
+    "cookTime": 45,
+    "servings": 4
+  },
+  {
+    "id": "aksam_14",
+    "name": "Kuzu Kapama",
+    "description": "Kuzu kapama",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "500 gram kuzu eti",
+      "2 adet patates",
+      "1 adet soğan",
+      "Salça",
+      "Tuz, karabiber"
+    ],
+    "instructions": [
+      "500 gram kuzu etini kuşbaşı doğrayın. Eti geniş bir tencereye alın ve kavurun.",
+      "Etler suyunu çektikten sonra tuz ve karabiber ekleyin. Etler yarı pişmeye başladığında 1 adet rendelenmiş soğan ekleyin.",
+      "Soğanlar şeffaf görünmeye başladığında, salça ekleyin ve 2 dakika daha kavurun. Salça kokusu çıkmalı.",
+      "2 adet patatesi yıkayın, kabuklarını soyun ve küp küp doğrayın. Doğradığınız patatesleri etli soğana ekleyin.",
+      "Üzerini geçecek kadar sıcak su ekleyin. Kapağı kapatın ve kısık ateşte yaklaşık 45-60 dakika pişirin.",
+      "Patatesler yumuşak ve et tamamen pişmiş olmalı. Suyu koyu ve kıvamlı olmalı.",
+      "Kuzu kapama piştiğinde ocaktan alın ve sıcak servis edin. Yanında pilav ve salata ile harika olur."
+    ],
+    "category": "aksamYemegi",
+    "prepTime": 20,
+    "cookTime": 60,
+    "servings": 4
+  },
+  {
+    "id": "aksam_15",
+    "name": "Tavuk Sote",
+    "description": "Tavuk sote",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "500 gram tavuk göğsü",
+      "2 adet biber",
+      "2 adet domates",
+      "1 adet soğan",
+      "Sarımsak",
+      "Salça"
+    ],
+    "instructions": [
+      "500 gram tavuk göğsünü küp küp doğrayın. Parçalar yaklaşık 2x2 cm boyutunda olmalı.",
+      "2 adet biberi yıkayın, çekirdeklerini çıkarın ve küp küp doğrayın. 2 adet domatesi küp küp doğrayın.",
+      "1 adet soğanı küp küp doğrayın. 2 diş sarımsağı ezin veya doğrayın.",
+      "Geniş bir tavada biraz yağ ile tavuğu kavurun. Tavuklar pişmeye başladığında tuz ve karabiber ekleyin.",
+      "Tavuklar yarı piştiğinde, doğradığınız soğanı ekleyin ve 2 dakika kavurun. Soğanlar şeffaf görünmeye başlamalı.",
+      "Ezilmiş sarımsak ve salça ekleyin, 1 dakika daha kavurun. Sonra doğradığınız biberleri ekleyin.",
+      "Biberler yumuşamaya başladığında, doğradığınız domatesleri ekleyin ve karıştırın.",
+      "Tüm malzemeleri karıştırın ve kapağı kapatın. Kısık ateşte yaklaşık 15-20 dakika pişirin. Sebzeler yumuşak ve tavuk tamamen pişmiş olmalı. Sıcak servis edin."
+    ],
+    "category": "aksamYemegi",
+    "prepTime": 20,
+    "cookTime": 25,
+    "servings": 4
+  },
+  {
+    "id": "aksam_16",
+    "name": "Et Sote",
+    "description": "Et sote",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "500 gram kuşbaşı et",
+      "2 adet biber",
+      "2 adet domates",
+      "1 adet soğan",
+      "Sarımsak",
+      "Salça"
+    ],
+    "instructions": [
+      "500 gram kuşbaşı eti geniş bir tavada kavurun. Etler suyunu çektikten sonra tuz ve karabiber ekleyin.",
+      "2 adet biberi yıkayın, çekirdeklerini çıkarın ve küp küp doğrayın. 2 adet domatesi küp küp doğrayın.",
+      "1 adet soğanı küp küp doğrayın. 2 diş sarımsağı ezin veya doğrayın.",
+      "Etler yarı piştiğinde, doğradığınız soğanı ekleyin ve 2 dakika kavurun. Soğanlar şeffaf görünmeye başlamalı.",
+      "Ezilmiş sarımsak ve salça ekleyin, 1 dakika daha kavurun. Sonra doğradığınız biberleri ekleyin.",
+      "Biberler yumuşamaya başladığında, doğradığınız domatesleri ekleyin ve karıştırın.",
+      "Tüm malzemeleri karıştırın ve kapağı kapatın. Kısık ateşte yaklaşık 20-30 dakika pişirin. Sebzeler yumuşak ve et tamamen pişmiş olmalı.",
+      "Et sote piştiğinde ocaktan alın ve sıcak servis edin. Yanında pilav ve salata ile harika olur."
+    ],
+    "category": "aksamYemegi",
+    "prepTime": 20,
+    "cookTime": 30,
+    "servings": 4
+  },
+  {
+    "id": "aksam_17",
+    "name": "Tavuk Yahnisi",
+    "description": "Tavuk yahnisi",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "1 adet tavuk",
+      "2 adet domates",
+      "1 adet soğan",
+      "Salça",
+      "Tuz, karabiber"
+    ],
+    "instructions": [
+      "1 adet tavuğu parçalara ayırın. Tavuğu but, göğüs ve kanat olarak ayırın. Her parçayı yıkayın ve kurulayın.",
+      "1 adet soğanı küp küp doğrayın. Geniş bir tavada biraz yağ ile kavurun, şeffaf görünmeye başladığında hazırdır.",
+      "Kavrulmuş soğana salça ekleyin ve 2 dakika daha kavurun. Salça kokusu çıkmalı.",
+      "2 adet domatesi küp küp doğrayın. Domatesleri salçalı soğana ekleyin ve karıştırın.",
+      "Domatesler yumuşamaya başladığında, tavuk parçalarını ekleyin ve karıştırın.",
+      "Üzerini geçecek kadar sıcak su ekleyin. Tuz ve karabiber ekleyin. Kapağı kapatın.",
+      "Kısık ateşte yaklaşık 40-45 dakika pişirin. Tavuk tamamen pişmiş ve yumuşak olmalı.",
+      "Tavuk yahnisi piştiğinde ocaktan alın ve sıcak servis edin. Yanında pilav ve salata ile harika olur."
+    ],
+    "category": "aksamYemegi",
+    "prepTime": 20,
+    "cookTime": 45,
+    "servings": 4
+  },
+  {
+    "id": "aksam_18",
+    "name": "Etli Nohut",
+    "description": "Etli nohut",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "2 su bardağı nohut",
+      "300 gram kuşbaşı et",
+      "1 adet soğan",
+      "Salça",
+      "Tuz, karabiber"
+    ],
+    "instructions": [
+      "2 su bardağı nohutu akşamdan soğuk suda ıslatın. Nohutlar en az 8 saat suda beklemeli, suyunu çekmeli.",
+      "Islatılan nohutu süzün ve yeni su ile yıkayın. Geniş bir tencereye alın ve üzerini 2 parmak geçecek kadar su ekleyin.",
+      "Nohutu kaynatın ve yaklaşık 30-40 dakika haşlayın. Nohutlar yumuşak ama dağılmamış olmalı.",
+      "300 gram kuşbaşı eti geniş bir tavada kavurun. Etler suyunu çektikten sonra 1 adet rendelenmiş soğan ekleyin.",
+      "Soğanlar şeffaf görünmeye başladığında, salça ekleyin ve 2 dakika daha kavurun. Salça kokusu çıkmalı.",
+      "Haşlanan nohutu süzün ve etli soğana ekleyin. Üzerini geçecek kadar sıcak su ekleyin.",
+      "Tuz ve karabiber ekleyin. Kapağı kapatın ve kısık ateşte yaklaşık 45-60 dakika pişirin. Nohutlar yumuşak ve suyu koyu olmalı.",
+      "Nohut piştiğinde ocaktan alın ve 10 dakika dinlendirin. Sıcak servis edin. Yanında pilav ve turşu ile harika olur."
+    ],
+    "category": "aksamYemegi",
+    "prepTime": 480,
+    "cookTime": 90,
+    "servings": 6
+  },
+  {
+    "id": "aksam_19",
+    "name": "Köfte Yemeği",
+    "description": "Köfte yemeği",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "500 gram köfte",
+      "2 adet domates",
+      "1 adet soğan",
+      "Salça",
+      "Tuz, karabiber"
+    ],
+    "instructions": [
+      "500 gram köfteyi hazırlayın veya kendiniz yapın. Köfteleri ızgarada veya tavada kızartın.",
+      "Köfteleri her iki tarafını da kızartın, yaklaşık 5-7 dakika. Köfteler yarı pişmiş olmalı, tamamen pişmemeli.",
+      "1 adet soğanı küp küp doğrayın. Geniş bir tavada biraz yağ ile kavurun, şeffaf görünmeye başladığında hazırdır.",
+      "Kavrulmuş soğana salça ekleyin ve 2 dakika daha kavurun. Salça kokusu çıkmalı.",
+      "2 adet domatesi küp küp doğrayın. Domatesleri salçalı soğana ekleyin ve karıştırın.",
+      "Domatesler yumuşamaya başladığında, kızartılmış köfteleri ekleyin ve karıştırın.",
+      "Üzerini geçecek kadar sıcak su ekleyin. Tuz ve karabiber ekleyin. Kapağı kapatın ve kısık ateşte yaklaşık 20-30 dakika pişirin.",
+      "Köfte yemeği piştiğinde ocaktan alın ve sıcak servis edin. Yanında pilav ve salata ile harika olur."
+    ],
+    "category": "aksamYemegi",
+    "prepTime": 30,
+    "cookTime": 30,
+    "servings": 4
+  },
+  {
+    "id": "aksam_20",
+    "name": "Tavuklu Pilav",
+    "description": "Tavuklu pilav",
+    "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
+    "ingredients": [
+      "500 gram tavuk göğsü",
+      "2 su bardağı pirinç",
+      "Soğan",
+      "Salça",
+      "Tuz"
+    ],
+    "instructions": [
+      "500 gram tavuk göğsünü küp küp doğrayın. Eti bir kaseye alın ve üzerine tuz, karabiber, zeytinyağı ve biraz limon suyu ekleyin.",
+      "Tavuğu marine edin. Tüm baharatları iyice karıştırın ve buzdolabında en az 30 dakika bekletin.",
+      "Geniş bir tavada biraz yağ ile marine edilmiş tavuğu kavurun. Tavuklar pişmeye başladığında 1 adet rendelenmiş soğan ekleyin.",
+      "Soğanlar şeffaf görünmeye başladığında, salça ekleyin ve 2 dakika daha kavurun. Tavuklar tamamen pişmeli.",
+      "2 su bardağı pirinci yıkayın ve süzün. Geniş bir tencereye 2 yemek kaşığı tereyağı koyun ve eritin.",
+      "Pirinci tereyağında kavurun. Pirinçler şeffaf görünmeye başladığında, 3 su bardağı kaynar su ve tuz ekleyin.",
+      "Pilavı kısık ateşte 15-20 dakika pişirin. Suyunu çekene kadar pişirmeye devam edin.",
+      "Pilav piştiğinde ocaktan alın ve 10 dakika dinlendirin. Pişmiş tavuğu pilavın üzerine koyun ve sıcak servis edin."
+    ],
+    "category": "aksamYemegi",
+    "prepTime": 30,
+    "cookTime": 30,
+    "servings": 4
+  }
+]
