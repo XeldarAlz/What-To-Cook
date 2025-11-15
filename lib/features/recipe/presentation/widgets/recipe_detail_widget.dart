@@ -134,33 +134,69 @@ class _RecipeDetailWidgetState extends State<RecipeDetailWidget> {
             ),
           ),
 
-          // Recipe Info (Time, Servings)
+          // Recipe Info (Time, Servings) - Centered and Modern
           if (widget.recipe.prepTime != null || widget.recipe.cookTime != null || widget.recipe.servings != null)
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: isSmallScreen ? 12.0 : 16.0),
-              child: Wrap(
-                spacing: 8,
-                runSpacing: 8,
-                children: [
-                  if (widget.recipe.prepTime != null)
-                    _buildInfoChip(
-                      context,
-                      Icons.timer_outlined,
-                      '${widget.recipe.prepTime} dk',
-                    ),
-                  if (widget.recipe.cookTime != null)
-                    _buildInfoChip(
-                      context,
-                      Icons.restaurant,
-                      '${widget.recipe.cookTime} dk',
-                    ),
-                  if (widget.recipe.servings != null)
-                    _buildInfoChip(
-                      context,
-                      Icons.people_outline,
-                      '${widget.recipe.servings} kişi',
-                    ),
-                ],
+              padding: EdgeInsets.symmetric(horizontal: isSmallScreen ? 12.0 : 16.0, vertical: isSmallScreen ? 12 : 16),
+              child: Container(
+                padding: EdgeInsets.all(isSmallScreen ? 16 : 20),
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.surfaceContainerHighest.withValues(alpha: 0.5),
+                  borderRadius: BorderRadius.circular(16),
+                  border: Border.all(
+                    color: Theme.of(context).colorScheme.outline.withValues(alpha: 0.1),
+                    width: 1,
+                  ),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    if (widget.recipe.prepTime != null) ...[
+                      _buildModernInfoChip(
+                        context,
+                        Icons.timer_outlined,
+                        '${widget.recipe.prepTime}',
+                        'dk',
+                        isSmallScreen,
+                      ),
+                      if (widget.recipe.cookTime != null || widget.recipe.servings != null)
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 12),
+                          child: Container(
+                            width: 1,
+                            height: 30,
+                            color: Theme.of(context).colorScheme.outline.withValues(alpha: 0.2),
+                          ),
+                        ),
+                    ],
+                    if (widget.recipe.cookTime != null) ...[
+                      _buildModernInfoChip(
+                        context,
+                        Icons.restaurant,
+                        '${widget.recipe.cookTime}',
+                        'dk',
+                        isSmallScreen,
+                      ),
+                      if (widget.recipe.servings != null)
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 12),
+                          child: Container(
+                            width: 1,
+                            height: 30,
+                            color: Theme.of(context).colorScheme.outline.withValues(alpha: 0.2),
+                          ),
+                        ),
+                    ],
+                    if (widget.recipe.servings != null)
+                      _buildModernInfoChip(
+                        context,
+                        Icons.people_outline,
+                        '${widget.recipe.servings}',
+                        'kişi',
+                        isSmallScreen,
+                      ),
+                  ],
+                ),
               ),
             ),
 
@@ -372,11 +408,44 @@ class _RecipeDetailWidgetState extends State<RecipeDetailWidget> {
     );
   }
 
-  Widget _buildInfoChip(BuildContext context, IconData icon, String text) {
-    return Chip(
-      avatar: Icon(icon, size: 18),
-      label: Text(text),
-      backgroundColor: Theme.of(context).colorScheme.surfaceContainerHighest,
+  Widget _buildModernInfoChip(
+    BuildContext context,
+    IconData icon,
+    String value,
+    String unit,
+    bool isSmallScreen,
+  ) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Icon(
+          icon,
+          size: isSmallScreen ? 20 : 24,
+          color: Theme.of(context).colorScheme.primary,
+        ),
+        const SizedBox(width: 8),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              value,
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    fontSize: isSmallScreen ? 18 : 22,
+                    color: Theme.of(context).colorScheme.onSurface,
+                  ),
+            ),
+            Text(
+              unit,
+              style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                    fontSize: isSmallScreen ? 11 : 12,
+                    color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
+                  ),
+            ),
+          ],
+        ),
+      ],
     );
   }
 }
