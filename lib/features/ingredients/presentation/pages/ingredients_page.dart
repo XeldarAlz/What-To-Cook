@@ -147,7 +147,14 @@ class IngredientsPage extends StatelessWidget {
         // Content area (recipe, error, or ingredients list)
         Expanded(
           child: recipe != null
-              ? RecipeDetailWidget(recipe: recipe)
+              ? RecipeDetailWidget(
+                  recipe: recipe,
+                  onRefresh: () {
+                    context.read<IngredientsBloc>().add(
+                          const IngredientsEvent.getRecipeByIngredients(),
+                        );
+                  },
+                )
               : error != null
                   ? _buildErrorView(context, error)
                   : Container(
