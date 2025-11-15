@@ -79,6 +79,12 @@ class RecipeRepositoryImpl implements RecipeRepository {
         return const Left(ValidationFailure('En az bir malzeme seçmelisiniz'));
       }
 
+      // Add fake delay for better UX (1-2 seconds) - same as random recipe
+      await Future.delayed(Duration(
+        milliseconds: AppConstants.recipeFetchBaseDelayMs +
+            (DateTime.now().millisecond % AppConstants.recipeFetchRandomDelayMs),
+      ));
+
       List<RecipeModel> recipes;
       if (category != null) {
         recipes = localDataSource.getRecipesByCategory(category);
@@ -86,13 +92,23 @@ class RecipeRepositoryImpl implements RecipeRepository {
         recipes = localDataSource.getAllRecipes();
       }
 
-      // Filter recipes that contain at least one of the selected ingredients
+      // Normalize selected ingredients (lowercase, trim)
+      final normalizedSelectedIngredients = ingredients
+          .map((ing) => ing.toLowerCase().trim())
+          .toList();
+
+      // Filter recipes that contain ALL selected ingredients
       final filteredRecipes = recipes.where((recipe) {
-        final recipeIngredients = recipe.ingredients
-            .map((ing) => ing.toLowerCase())
+        // Normalize recipe ingredients and join them
+        final recipeIngredientsText = recipe.ingredients
+            .map((ing) => ing.toLowerCase().trim())
             .join(' ');
-        return ingredients.any((selectedIng) =>
-            recipeIngredients.contains(selectedIng.toLowerCase()));
+        
+        // Check if ALL selected ingredients are present in the recipe
+        return normalizedSelectedIngredients.every((selectedIng) {
+          // Check if the ingredient name appears in any of the recipe ingredients
+          return recipeIngredientsText.contains(selectedIng);
+        });
       }).toList();
       
       if (filteredRecipes.isEmpty) {
