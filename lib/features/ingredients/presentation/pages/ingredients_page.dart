@@ -34,27 +34,64 @@ class _IngredientsPageState extends State<IngredientsPage> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => getIt<IngredientsBloc>(),
-      child: Scaffold(
-        body: SafeArea(
-          child: BlocListener<IngredientsBloc, IngredientsState>(
-            listener: (context, state) {
-              // When a new recipe is loaded, scroll to top smoothly
-              state.maybeWhen(
-                loaded: (_, __, ___, ____) {
-                  if (_scrollController.hasClients) {
-                    _scrollController.animateTo(
-                      0,
-                      duration: const Duration(milliseconds: 300),
-                      curve: Curves.easeInOut,
-                    );
-                  }
+      child: BlocBuilder<IngredientsBloc, IngredientsState>(
+        builder: (context, state) {
+          return Scaffold(
+            appBar: state.maybeWhen(
+              loaded: (_, __, ___, ____) => AppBar(
+                leading: IconButton(
+                  icon: const Icon(Icons.arrow_back),
+                  onPressed: () {
+                    final bloc = context.read<IngredientsBloc>();
+                    // Set flag to indicate we're going back
+                    setState(() {
+                      _isGoingBack = true;
+                    });
+                    // Scroll to top first for smooth transition
+                    if (_scrollController.hasClients) {
+                      _scrollController.animateTo(
+                        0,
+                        duration: AppConstants.scrollAnimationDuration,
+                        curve: Curves.easeInOut,
+                      );
+                    }
+                    // Then reset after a short delay for smooth animation
+                    Future.delayed(AppConstants.resetAfterScrollDelay, () {
+                      if (mounted) {
+                        bloc.add(
+                          const IngredientsEvent.clearSelection(),
+                        );
+                      }
+                    });
+                  },
+                  tooltip: 'Geri',
+                ),
+                title: const Text('Tarif'),
+                elevation: 0,
+              ),
+              orElse: () => AppBar(
+                elevation: 0,
+                automaticallyImplyLeading: false,
+              ),
+            ),
+            body: SafeArea(
+              child: BlocListener<IngredientsBloc, IngredientsState>(
+                listener: (context, state) {
+                  // When a new recipe is loaded, scroll to top smoothly
+                  state.maybeWhen(
+                    loaded: (_, __, ___, ____) {
+                      if (_scrollController.hasClients) {
+                        _scrollController.animateTo(
+                          0,
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.easeInOut,
+                        );
+                      }
+                    },
+                    orElse: () {},
+                  );
                 },
-                orElse: () {},
-              );
-            },
-            child: BlocBuilder<IngredientsBloc, IngredientsState>(
-              builder: (context, state) {
-                return AnimatedSwitcher(
+                child: AnimatedSwitcher(
                   duration: AppConstants.stateTransitionDuration,
                   switchInCurve: Curves.easeOut,
                   switchOutCurve: Curves.easeIn,
@@ -137,11 +174,11 @@ class _IngredientsPageState extends State<IngredientsPage> {
                       key: const ValueKey('initial'),
                     ),
                   ),
-                );
-              },
+                ),
+              ),
             ),
-          ),
-        ),
+          );
+        },
       ),
     );
   }
