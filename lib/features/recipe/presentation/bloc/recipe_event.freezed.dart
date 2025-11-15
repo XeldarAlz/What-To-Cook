@@ -19,17 +19,17 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$RecipeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getRandomRecipe,
+    required TResult Function(RecipeCategory? category) getRandomRecipe,
     required TResult Function(String name) getRecipeByName,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getRandomRecipe,
+    TResult? Function(RecipeCategory? category)? getRandomRecipe,
     TResult? Function(String name)? getRecipeByName,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getRandomRecipe,
+    TResult Function(RecipeCategory? category)? getRandomRecipe,
     TResult Function(String name)? getRecipeByName,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
@@ -79,6 +79,8 @@ abstract class _$$GetRandomRecipeImplCopyWith<$Res> {
     _$GetRandomRecipeImpl value,
     $Res Function(_$GetRandomRecipeImpl) then,
   ) = __$$GetRandomRecipeImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({RecipeCategory? category});
 }
 
 /// @nodoc
@@ -92,54 +94,83 @@ class __$$GetRandomRecipeImplCopyWithImpl<$Res>
 
   /// Create a copy of RecipeEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? category = freezed}) {
+    return _then(
+      _$GetRandomRecipeImpl(
+        freezed == category
+            ? _value.category
+            : category // ignore: cast_nullable_to_non_nullable
+                  as RecipeCategory?,
+      ),
+    );
+  }
 }
 
 /// @nodoc
 
 class _$GetRandomRecipeImpl implements _GetRandomRecipe {
-  const _$GetRandomRecipeImpl();
+  const _$GetRandomRecipeImpl(this.category);
+
+  @override
+  final RecipeCategory? category;
 
   @override
   String toString() {
-    return 'RecipeEvent.getRandomRecipe()';
+    return 'RecipeEvent.getRandomRecipe(category: $category)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GetRandomRecipeImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$GetRandomRecipeImpl &&
+            (identical(other.category, category) ||
+                other.category == category));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, category);
+
+  /// Create a copy of RecipeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetRandomRecipeImplCopyWith<_$GetRandomRecipeImpl> get copyWith =>
+      __$$GetRandomRecipeImplCopyWithImpl<_$GetRandomRecipeImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getRandomRecipe,
+    required TResult Function(RecipeCategory? category) getRandomRecipe,
     required TResult Function(String name) getRecipeByName,
   }) {
-    return getRandomRecipe();
+    return getRandomRecipe(category);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getRandomRecipe,
+    TResult? Function(RecipeCategory? category)? getRandomRecipe,
     TResult? Function(String name)? getRecipeByName,
   }) {
-    return getRandomRecipe?.call();
+    return getRandomRecipe?.call(category);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getRandomRecipe,
+    TResult Function(RecipeCategory? category)? getRandomRecipe,
     TResult Function(String name)? getRecipeByName,
     required TResult orElse(),
   }) {
     if (getRandomRecipe != null) {
-      return getRandomRecipe();
+      return getRandomRecipe(category);
     }
     return orElse();
   }
@@ -177,7 +208,16 @@ class _$GetRandomRecipeImpl implements _GetRandomRecipe {
 }
 
 abstract class _GetRandomRecipe implements RecipeEvent {
-  const factory _GetRandomRecipe() = _$GetRandomRecipeImpl;
+  const factory _GetRandomRecipe(final RecipeCategory? category) =
+      _$GetRandomRecipeImpl;
+
+  RecipeCategory? get category;
+
+  /// Create a copy of RecipeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$GetRandomRecipeImplCopyWith<_$GetRandomRecipeImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -253,7 +293,7 @@ class _$GetRecipeByNameImpl implements _GetRecipeByName {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getRandomRecipe,
+    required TResult Function(RecipeCategory? category) getRandomRecipe,
     required TResult Function(String name) getRecipeByName,
   }) {
     return getRecipeByName(name);
@@ -262,7 +302,7 @@ class _$GetRecipeByNameImpl implements _GetRecipeByName {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getRandomRecipe,
+    TResult? Function(RecipeCategory? category)? getRandomRecipe,
     TResult? Function(String name)? getRecipeByName,
   }) {
     return getRecipeByName?.call(name);
@@ -271,7 +311,7 @@ class _$GetRecipeByNameImpl implements _GetRecipeByName {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getRandomRecipe,
+    TResult Function(RecipeCategory? category)? getRandomRecipe,
     TResult Function(String name)? getRecipeByName,
     required TResult orElse(),
   }) {

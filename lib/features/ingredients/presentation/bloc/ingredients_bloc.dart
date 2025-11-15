@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/error/failures.dart';
 import '../../../recipe/domain/usecases/get_recipes_by_ingredients.dart';
+import '../../../recipe/domain/entities/recipe.dart';
 import '../../data/datasources/ingredients_data_source.dart';
 import 'ingredients_event.dart';
 import 'ingredients_state.dart';
@@ -23,6 +24,7 @@ class IngredientsBloc extends Bloc<IngredientsEvent, IngredientsState> {
     on<IngredientsEvent>((event, emit) async {
       await event.map(
         toggleIngredient: (e) async => _onToggleIngredient(e.ingredient, emit),
+        selectCategory: (e) async => _onSelectCategory(e.category, emit),
         getRecipeByIngredients: (_) async =>
             await _onGetRecipeByIngredients(emit),
         clearSelection: (_) async => _onClearSelection(emit),
@@ -46,6 +48,13 @@ class IngredientsBloc extends Bloc<IngredientsEvent, IngredientsState> {
       error: (s) => s.availableIngredients,
       orElse: () => _availableIngredients,
     );
+    final selectedCategory = currentState.maybeMap(
+      initial: (s) => s.selectedCategory,
+      loading: (s) => s.selectedCategory,
+      loaded: (s) => s.selectedCategory,
+      error: (s) => s.selectedCategory,
+      orElse: () => null,
+    );
 
     List<String> newSelected;
     if (currentSelected.contains(ingredient)) {
@@ -63,6 +72,39 @@ class IngredientsBloc extends Bloc<IngredientsEvent, IngredientsState> {
         orElse: () => IngredientsState.initial(
           selectedIngredients: newSelected,
           availableIngredients: availableIngredients,
+          selectedCategory: selectedCategory,
+        ),
+      ),
+    );
+  }
+
+  void _onSelectCategory(RecipeCategory? category, Emitter<IngredientsState> emit) {
+    final currentState = state;
+    final selected = currentState.maybeMap(
+      initial: (s) => s.selectedIngredients,
+      loading: (s) => s.selectedIngredients,
+      loaded: (s) => s.selectedIngredients,
+      error: (s) => s.selectedIngredients,
+      orElse: () => <String>[],
+    );
+    final availableIngredients = currentState.maybeMap(
+      initial: (s) => s.availableIngredients,
+      loading: (s) => s.availableIngredients,
+      loaded: (s) => s.availableIngredients,
+      error: (s) => s.availableIngredients,
+      orElse: () => _availableIngredients,
+    );
+
+    emit(
+      currentState.maybeMap(
+        initial: (s) => s.copyWith(selectedCategory: category),
+        loading: (s) => s.copyWith(selectedCategory: category),
+        loaded: (s) => s.copyWith(selectedCategory: category),
+        error: (s) => s.copyWith(selectedCategory: category),
+        orElse: () => IngredientsState.initial(
+          selectedIngredients: selected,
+          availableIngredients: availableIngredients,
+          selectedCategory: category,
         ),
       ),
     );
@@ -84,6 +126,13 @@ class IngredientsBloc extends Bloc<IngredientsEvent, IngredientsState> {
       error: (s) => s.availableIngredients,
       orElse: () => _availableIngredients,
     );
+    final selectedCategory = currentState.maybeMap(
+      initial: (s) => s.selectedCategory,
+      loading: (s) => s.selectedCategory,
+      loaded: (s) => s.selectedCategory,
+      error: (s) => s.selectedCategory,
+      orElse: () => null,
+    );
 
     if (selected.isEmpty) {
       emit(
@@ -91,6 +140,7 @@ class IngredientsBloc extends Bloc<IngredientsEvent, IngredientsState> {
           failure: const ValidationFailure('Lütfen en az bir malzeme seçin'),
           selectedIngredients: selected,
           availableIngredients: availableIngredients,
+          selectedCategory: selectedCategory,
         ),
       );
       return;
@@ -100,32 +150,19 @@ class IngredientsBloc extends Bloc<IngredientsEvent, IngredientsState> {
       IngredientsState.loading(
         selectedIngredients: selected,
         availableIngredients: availableIngredients,
+        selectedCategory: selectedCategory,
       ),
     );
 
-    // Convert Turkish ingredient names to English for TheMealDB API
-    final englishIngredients = IngredientsDataSource.getEnglishNames(selected);
-    
-    if (englishIngredients.isEmpty) {
-      emit(
-        IngredientsState.error(
-          failure: const ValidationFailure(
-            'Seçilen malzemeler API\'de bulunamadı. Lütfen farklı malzemeler seçin.',
-          ),
-          selectedIngredients: selected,
-          availableIngredients: availableIngredients,
-        ),
-      );
-      return;
-    }
-
-    final result = await getRecipesByIngredients(englishIngredients);
+    // Use Turkish ingredient names directly (no API conversion needed)
+    final result = await getRecipesByIngredients(selected, selectedCategory);
     result.fold(
       (failure) => emit(
         IngredientsState.error(
           failure: failure,
           selectedIngredients: selected,
           availableIngredients: availableIngredients,
+          selectedCategory: selectedCategory,
         ),
       ),
       (recipes) {
@@ -137,6 +174,7 @@ class IngredientsBloc extends Bloc<IngredientsEvent, IngredientsState> {
               ),
               selectedIngredients: selected,
               availableIngredients: availableIngredients,
+              selectedCategory: selectedCategory,
             ),
           );
         } else {
@@ -147,6 +185,7 @@ class IngredientsBloc extends Bloc<IngredientsEvent, IngredientsState> {
               recipe: selectedRecipe,
               selectedIngredients: selected,
               availableIngredients: availableIngredients,
+              selectedCategory: selectedCategory,
             ),
           );
         }
@@ -155,9 +194,18 @@ class IngredientsBloc extends Bloc<IngredientsEvent, IngredientsState> {
   }
 
   void _onClearSelection(Emitter<IngredientsState> emit) {
+    final currentState = state;
+    final selectedCategory = currentState.maybeMap(
+      initial: (s) => s.selectedCategory,
+      loading: (s) => s.selectedCategory,
+      loaded: (s) => s.selectedCategory,
+      error: (s) => s.selectedCategory,
+      orElse: () => null,
+    );
     emit(
       IngredientsState.initial(
         availableIngredients: _availableIngredients,
+        selectedCategory: selectedCategory,
       ),
     );
   }

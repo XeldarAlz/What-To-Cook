@@ -19,28 +19,33 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$IngredientsState {
   List<String> get selectedIngredients => throw _privateConstructorUsedError;
   List<String> get availableIngredients => throw _privateConstructorUsedError;
+  RecipeCategory? get selectedCategory => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )
     initial,
     required TResult Function(
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )
     loading,
     required TResult Function(
       Recipe recipe,
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )
     loaded,
     required TResult Function(
       Failure failure,
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )
     error,
   }) => throw _privateConstructorUsedError;
@@ -49,23 +54,27 @@ mixin _$IngredientsState {
     TResult? Function(
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )?
     initial,
     TResult? Function(
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )?
     loading,
     TResult? Function(
       Recipe recipe,
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )?
     loaded,
     TResult? Function(
       Failure failure,
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )?
     error,
   }) => throw _privateConstructorUsedError;
@@ -74,23 +83,27 @@ mixin _$IngredientsState {
     TResult Function(
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )?
     initial,
     TResult Function(
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )?
     loading,
     TResult Function(
       Recipe recipe,
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )?
     loaded,
     TResult Function(
       Failure failure,
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )?
     error,
     required TResult orElse(),
@@ -135,6 +148,7 @@ abstract class $IngredientsStateCopyWith<$Res> {
   $Res call({
     List<String> selectedIngredients,
     List<String> availableIngredients,
+    RecipeCategory? selectedCategory,
   });
 }
 
@@ -155,6 +169,7 @@ class _$IngredientsStateCopyWithImpl<$Res, $Val extends IngredientsState>
   $Res call({
     Object? selectedIngredients = null,
     Object? availableIngredients = null,
+    Object? selectedCategory = freezed,
   }) {
     return _then(
       _value.copyWith(
@@ -166,6 +181,10 @@ class _$IngredientsStateCopyWithImpl<$Res, $Val extends IngredientsState>
                 ? _value.availableIngredients
                 : availableIngredients // ignore: cast_nullable_to_non_nullable
                       as List<String>,
+            selectedCategory: freezed == selectedCategory
+                ? _value.selectedCategory
+                : selectedCategory // ignore: cast_nullable_to_non_nullable
+                      as RecipeCategory?,
           )
           as $Val,
     );
@@ -184,6 +203,7 @@ abstract class _$$InitialImplCopyWith<$Res>
   $Res call({
     List<String> selectedIngredients,
     List<String> availableIngredients,
+    RecipeCategory? selectedCategory,
   });
 }
 
@@ -203,6 +223,7 @@ class __$$InitialImplCopyWithImpl<$Res>
   $Res call({
     Object? selectedIngredients = null,
     Object? availableIngredients = null,
+    Object? selectedCategory = freezed,
   }) {
     return _then(
       _$InitialImpl(
@@ -214,6 +235,10 @@ class __$$InitialImplCopyWithImpl<$Res>
             ? _value._availableIngredients
             : availableIngredients // ignore: cast_nullable_to_non_nullable
                   as List<String>,
+        selectedCategory: freezed == selectedCategory
+            ? _value.selectedCategory
+            : selectedCategory // ignore: cast_nullable_to_non_nullable
+                  as RecipeCategory?,
       ),
     );
   }
@@ -225,6 +250,7 @@ class _$InitialImpl implements _Initial {
   const _$InitialImpl({
     final List<String> selectedIngredients = const <String>[],
     final List<String> availableIngredients = const <String>[],
+    this.selectedCategory,
   }) : _selectedIngredients = selectedIngredients,
        _availableIngredients = availableIngredients;
 
@@ -249,8 +275,11 @@ class _$InitialImpl implements _Initial {
   }
 
   @override
+  final RecipeCategory? selectedCategory;
+
+  @override
   String toString() {
-    return 'IngredientsState.initial(selectedIngredients: $selectedIngredients, availableIngredients: $availableIngredients)';
+    return 'IngredientsState.initial(selectedIngredients: $selectedIngredients, availableIngredients: $availableIngredients, selectedCategory: $selectedCategory)';
   }
 
   @override
@@ -265,7 +294,9 @@ class _$InitialImpl implements _Initial {
             const DeepCollectionEquality().equals(
               other._availableIngredients,
               _availableIngredients,
-            ));
+            ) &&
+            (identical(other.selectedCategory, selectedCategory) ||
+                other.selectedCategory == selectedCategory));
   }
 
   @override
@@ -273,6 +304,7 @@ class _$InitialImpl implements _Initial {
     runtimeType,
     const DeepCollectionEquality().hash(_selectedIngredients),
     const DeepCollectionEquality().hash(_availableIngredients),
+    selectedCategory,
   );
 
   /// Create a copy of IngredientsState
@@ -289,27 +321,31 @@ class _$InitialImpl implements _Initial {
     required TResult Function(
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )
     initial,
     required TResult Function(
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )
     loading,
     required TResult Function(
       Recipe recipe,
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )
     loaded,
     required TResult Function(
       Failure failure,
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )
     error,
   }) {
-    return initial(selectedIngredients, availableIngredients);
+    return initial(selectedIngredients, availableIngredients, selectedCategory);
   }
 
   @override
@@ -318,27 +354,35 @@ class _$InitialImpl implements _Initial {
     TResult? Function(
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )?
     initial,
     TResult? Function(
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )?
     loading,
     TResult? Function(
       Recipe recipe,
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )?
     loaded,
     TResult? Function(
       Failure failure,
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )?
     error,
   }) {
-    return initial?.call(selectedIngredients, availableIngredients);
+    return initial?.call(
+      selectedIngredients,
+      availableIngredients,
+      selectedCategory,
+    );
   }
 
   @override
@@ -347,29 +391,37 @@ class _$InitialImpl implements _Initial {
     TResult Function(
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )?
     initial,
     TResult Function(
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )?
     loading,
     TResult Function(
       Recipe recipe,
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )?
     loaded,
     TResult Function(
       Failure failure,
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )?
     error,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(selectedIngredients, availableIngredients);
+      return initial(
+        selectedIngredients,
+        availableIngredients,
+        selectedCategory,
+      );
     }
     return orElse();
   }
@@ -416,12 +468,15 @@ abstract class _Initial implements IngredientsState {
   const factory _Initial({
     final List<String> selectedIngredients,
     final List<String> availableIngredients,
+    final RecipeCategory? selectedCategory,
   }) = _$InitialImpl;
 
   @override
   List<String> get selectedIngredients;
   @override
   List<String> get availableIngredients;
+  @override
+  RecipeCategory? get selectedCategory;
 
   /// Create a copy of IngredientsState
   /// with the given fields replaced by the non-null parameter values.
@@ -443,6 +498,7 @@ abstract class _$$LoadingImplCopyWith<$Res>
   $Res call({
     List<String> selectedIngredients,
     List<String> availableIngredients,
+    RecipeCategory? selectedCategory,
   });
 }
 
@@ -462,6 +518,7 @@ class __$$LoadingImplCopyWithImpl<$Res>
   $Res call({
     Object? selectedIngredients = null,
     Object? availableIngredients = null,
+    Object? selectedCategory = freezed,
   }) {
     return _then(
       _$LoadingImpl(
@@ -473,6 +530,10 @@ class __$$LoadingImplCopyWithImpl<$Res>
             ? _value._availableIngredients
             : availableIngredients // ignore: cast_nullable_to_non_nullable
                   as List<String>,
+        selectedCategory: freezed == selectedCategory
+            ? _value.selectedCategory
+            : selectedCategory // ignore: cast_nullable_to_non_nullable
+                  as RecipeCategory?,
       ),
     );
   }
@@ -484,6 +545,7 @@ class _$LoadingImpl implements _Loading {
   const _$LoadingImpl({
     required final List<String> selectedIngredients,
     required final List<String> availableIngredients,
+    this.selectedCategory,
   }) : _selectedIngredients = selectedIngredients,
        _availableIngredients = availableIngredients;
 
@@ -506,8 +568,11 @@ class _$LoadingImpl implements _Loading {
   }
 
   @override
+  final RecipeCategory? selectedCategory;
+
+  @override
   String toString() {
-    return 'IngredientsState.loading(selectedIngredients: $selectedIngredients, availableIngredients: $availableIngredients)';
+    return 'IngredientsState.loading(selectedIngredients: $selectedIngredients, availableIngredients: $availableIngredients, selectedCategory: $selectedCategory)';
   }
 
   @override
@@ -522,7 +587,9 @@ class _$LoadingImpl implements _Loading {
             const DeepCollectionEquality().equals(
               other._availableIngredients,
               _availableIngredients,
-            ));
+            ) &&
+            (identical(other.selectedCategory, selectedCategory) ||
+                other.selectedCategory == selectedCategory));
   }
 
   @override
@@ -530,6 +597,7 @@ class _$LoadingImpl implements _Loading {
     runtimeType,
     const DeepCollectionEquality().hash(_selectedIngredients),
     const DeepCollectionEquality().hash(_availableIngredients),
+    selectedCategory,
   );
 
   /// Create a copy of IngredientsState
@@ -546,27 +614,31 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )
     initial,
     required TResult Function(
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )
     loading,
     required TResult Function(
       Recipe recipe,
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )
     loaded,
     required TResult Function(
       Failure failure,
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )
     error,
   }) {
-    return loading(selectedIngredients, availableIngredients);
+    return loading(selectedIngredients, availableIngredients, selectedCategory);
   }
 
   @override
@@ -575,27 +647,35 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )?
     initial,
     TResult? Function(
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )?
     loading,
     TResult? Function(
       Recipe recipe,
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )?
     loaded,
     TResult? Function(
       Failure failure,
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )?
     error,
   }) {
-    return loading?.call(selectedIngredients, availableIngredients);
+    return loading?.call(
+      selectedIngredients,
+      availableIngredients,
+      selectedCategory,
+    );
   }
 
   @override
@@ -604,29 +684,37 @@ class _$LoadingImpl implements _Loading {
     TResult Function(
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )?
     initial,
     TResult Function(
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )?
     loading,
     TResult Function(
       Recipe recipe,
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )?
     loaded,
     TResult Function(
       Failure failure,
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )?
     error,
     required TResult orElse(),
   }) {
     if (loading != null) {
-      return loading(selectedIngredients, availableIngredients);
+      return loading(
+        selectedIngredients,
+        availableIngredients,
+        selectedCategory,
+      );
     }
     return orElse();
   }
@@ -673,12 +761,15 @@ abstract class _Loading implements IngredientsState {
   const factory _Loading({
     required final List<String> selectedIngredients,
     required final List<String> availableIngredients,
+    final RecipeCategory? selectedCategory,
   }) = _$LoadingImpl;
 
   @override
   List<String> get selectedIngredients;
   @override
   List<String> get availableIngredients;
+  @override
+  RecipeCategory? get selectedCategory;
 
   /// Create a copy of IngredientsState
   /// with the given fields replaced by the non-null parameter values.
@@ -701,6 +792,7 @@ abstract class _$$LoadedImplCopyWith<$Res>
     Recipe recipe,
     List<String> selectedIngredients,
     List<String> availableIngredients,
+    RecipeCategory? selectedCategory,
   });
 }
 
@@ -721,6 +813,7 @@ class __$$LoadedImplCopyWithImpl<$Res>
     Object? recipe = null,
     Object? selectedIngredients = null,
     Object? availableIngredients = null,
+    Object? selectedCategory = freezed,
   }) {
     return _then(
       _$LoadedImpl(
@@ -736,6 +829,10 @@ class __$$LoadedImplCopyWithImpl<$Res>
             ? _value._availableIngredients
             : availableIngredients // ignore: cast_nullable_to_non_nullable
                   as List<String>,
+        selectedCategory: freezed == selectedCategory
+            ? _value.selectedCategory
+            : selectedCategory // ignore: cast_nullable_to_non_nullable
+                  as RecipeCategory?,
       ),
     );
   }
@@ -748,6 +845,7 @@ class _$LoadedImpl implements _Loaded {
     required this.recipe,
     required final List<String> selectedIngredients,
     required final List<String> availableIngredients,
+    this.selectedCategory,
   }) : _selectedIngredients = selectedIngredients,
        _availableIngredients = availableIngredients;
 
@@ -772,8 +870,11 @@ class _$LoadedImpl implements _Loaded {
   }
 
   @override
+  final RecipeCategory? selectedCategory;
+
+  @override
   String toString() {
-    return 'IngredientsState.loaded(recipe: $recipe, selectedIngredients: $selectedIngredients, availableIngredients: $availableIngredients)';
+    return 'IngredientsState.loaded(recipe: $recipe, selectedIngredients: $selectedIngredients, availableIngredients: $availableIngredients, selectedCategory: $selectedCategory)';
   }
 
   @override
@@ -789,7 +890,9 @@ class _$LoadedImpl implements _Loaded {
             const DeepCollectionEquality().equals(
               other._availableIngredients,
               _availableIngredients,
-            ));
+            ) &&
+            (identical(other.selectedCategory, selectedCategory) ||
+                other.selectedCategory == selectedCategory));
   }
 
   @override
@@ -798,6 +901,7 @@ class _$LoadedImpl implements _Loaded {
     recipe,
     const DeepCollectionEquality().hash(_selectedIngredients),
     const DeepCollectionEquality().hash(_availableIngredients),
+    selectedCategory,
   );
 
   /// Create a copy of IngredientsState
@@ -814,27 +918,36 @@ class _$LoadedImpl implements _Loaded {
     required TResult Function(
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )
     initial,
     required TResult Function(
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )
     loading,
     required TResult Function(
       Recipe recipe,
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )
     loaded,
     required TResult Function(
       Failure failure,
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )
     error,
   }) {
-    return loaded(recipe, selectedIngredients, availableIngredients);
+    return loaded(
+      recipe,
+      selectedIngredients,
+      availableIngredients,
+      selectedCategory,
+    );
   }
 
   @override
@@ -843,27 +956,36 @@ class _$LoadedImpl implements _Loaded {
     TResult? Function(
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )?
     initial,
     TResult? Function(
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )?
     loading,
     TResult? Function(
       Recipe recipe,
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )?
     loaded,
     TResult? Function(
       Failure failure,
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )?
     error,
   }) {
-    return loaded?.call(recipe, selectedIngredients, availableIngredients);
+    return loaded?.call(
+      recipe,
+      selectedIngredients,
+      availableIngredients,
+      selectedCategory,
+    );
   }
 
   @override
@@ -872,29 +994,38 @@ class _$LoadedImpl implements _Loaded {
     TResult Function(
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )?
     initial,
     TResult Function(
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )?
     loading,
     TResult Function(
       Recipe recipe,
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )?
     loaded,
     TResult Function(
       Failure failure,
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )?
     error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(recipe, selectedIngredients, availableIngredients);
+      return loaded(
+        recipe,
+        selectedIngredients,
+        availableIngredients,
+        selectedCategory,
+      );
     }
     return orElse();
   }
@@ -942,6 +1073,7 @@ abstract class _Loaded implements IngredientsState {
     required final Recipe recipe,
     required final List<String> selectedIngredients,
     required final List<String> availableIngredients,
+    final RecipeCategory? selectedCategory,
   }) = _$LoadedImpl;
 
   Recipe get recipe;
@@ -949,6 +1081,8 @@ abstract class _Loaded implements IngredientsState {
   List<String> get selectedIngredients;
   @override
   List<String> get availableIngredients;
+  @override
+  RecipeCategory? get selectedCategory;
 
   /// Create a copy of IngredientsState
   /// with the given fields replaced by the non-null parameter values.
@@ -971,6 +1105,7 @@ abstract class _$$ErrorImplCopyWith<$Res>
     Failure failure,
     List<String> selectedIngredients,
     List<String> availableIngredients,
+    RecipeCategory? selectedCategory,
   });
 }
 
@@ -991,6 +1126,7 @@ class __$$ErrorImplCopyWithImpl<$Res>
     Object? failure = null,
     Object? selectedIngredients = null,
     Object? availableIngredients = null,
+    Object? selectedCategory = freezed,
   }) {
     return _then(
       _$ErrorImpl(
@@ -1006,6 +1142,10 @@ class __$$ErrorImplCopyWithImpl<$Res>
             ? _value._availableIngredients
             : availableIngredients // ignore: cast_nullable_to_non_nullable
                   as List<String>,
+        selectedCategory: freezed == selectedCategory
+            ? _value.selectedCategory
+            : selectedCategory // ignore: cast_nullable_to_non_nullable
+                  as RecipeCategory?,
       ),
     );
   }
@@ -1018,6 +1158,7 @@ class _$ErrorImpl implements _Error {
     required this.failure,
     required final List<String> selectedIngredients,
     required final List<String> availableIngredients,
+    this.selectedCategory,
   }) : _selectedIngredients = selectedIngredients,
        _availableIngredients = availableIngredients;
 
@@ -1042,8 +1183,11 @@ class _$ErrorImpl implements _Error {
   }
 
   @override
+  final RecipeCategory? selectedCategory;
+
+  @override
   String toString() {
-    return 'IngredientsState.error(failure: $failure, selectedIngredients: $selectedIngredients, availableIngredients: $availableIngredients)';
+    return 'IngredientsState.error(failure: $failure, selectedIngredients: $selectedIngredients, availableIngredients: $availableIngredients, selectedCategory: $selectedCategory)';
   }
 
   @override
@@ -1059,7 +1203,9 @@ class _$ErrorImpl implements _Error {
             const DeepCollectionEquality().equals(
               other._availableIngredients,
               _availableIngredients,
-            ));
+            ) &&
+            (identical(other.selectedCategory, selectedCategory) ||
+                other.selectedCategory == selectedCategory));
   }
 
   @override
@@ -1068,6 +1214,7 @@ class _$ErrorImpl implements _Error {
     failure,
     const DeepCollectionEquality().hash(_selectedIngredients),
     const DeepCollectionEquality().hash(_availableIngredients),
+    selectedCategory,
   );
 
   /// Create a copy of IngredientsState
@@ -1084,27 +1231,36 @@ class _$ErrorImpl implements _Error {
     required TResult Function(
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )
     initial,
     required TResult Function(
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )
     loading,
     required TResult Function(
       Recipe recipe,
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )
     loaded,
     required TResult Function(
       Failure failure,
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )
     error,
   }) {
-    return error(failure, selectedIngredients, availableIngredients);
+    return error(
+      failure,
+      selectedIngredients,
+      availableIngredients,
+      selectedCategory,
+    );
   }
 
   @override
@@ -1113,27 +1269,36 @@ class _$ErrorImpl implements _Error {
     TResult? Function(
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )?
     initial,
     TResult? Function(
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )?
     loading,
     TResult? Function(
       Recipe recipe,
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )?
     loaded,
     TResult? Function(
       Failure failure,
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )?
     error,
   }) {
-    return error?.call(failure, selectedIngredients, availableIngredients);
+    return error?.call(
+      failure,
+      selectedIngredients,
+      availableIngredients,
+      selectedCategory,
+    );
   }
 
   @override
@@ -1142,29 +1307,38 @@ class _$ErrorImpl implements _Error {
     TResult Function(
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )?
     initial,
     TResult Function(
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )?
     loading,
     TResult Function(
       Recipe recipe,
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )?
     loaded,
     TResult Function(
       Failure failure,
       List<String> selectedIngredients,
       List<String> availableIngredients,
+      RecipeCategory? selectedCategory,
     )?
     error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(failure, selectedIngredients, availableIngredients);
+      return error(
+        failure,
+        selectedIngredients,
+        availableIngredients,
+        selectedCategory,
+      );
     }
     return orElse();
   }
@@ -1212,6 +1386,7 @@ abstract class _Error implements IngredientsState {
     required final Failure failure,
     required final List<String> selectedIngredients,
     required final List<String> availableIngredients,
+    final RecipeCategory? selectedCategory,
   }) = _$ErrorImpl;
 
   Failure get failure;
@@ -1219,6 +1394,8 @@ abstract class _Error implements IngredientsState {
   List<String> get selectedIngredients;
   @override
   List<String> get availableIngredients;
+  @override
+  RecipeCategory? get selectedCategory;
 
   /// Create a copy of IngredientsState
   /// with the given fields replaced by the non-null parameter values.

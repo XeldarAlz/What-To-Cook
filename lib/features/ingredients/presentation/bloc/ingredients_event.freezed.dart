@@ -20,18 +20,21 @@ mixin _$IngredientsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String ingredient) toggleIngredient,
+    required TResult Function(RecipeCategory? category) selectCategory,
     required TResult Function() getRecipeByIngredients,
     required TResult Function() clearSelection,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String ingredient)? toggleIngredient,
+    TResult? Function(RecipeCategory? category)? selectCategory,
     TResult? Function()? getRecipeByIngredients,
     TResult? Function()? clearSelection,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String ingredient)? toggleIngredient,
+    TResult Function(RecipeCategory? category)? selectCategory,
     TResult Function()? getRecipeByIngredients,
     TResult Function()? clearSelection,
     required TResult orElse(),
@@ -39,6 +42,7 @@ mixin _$IngredientsEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_ToggleIngredient value) toggleIngredient,
+    required TResult Function(_SelectCategory value) selectCategory,
     required TResult Function(_GetRecipeByIngredients value)
     getRecipeByIngredients,
     required TResult Function(_ClearSelection value) clearSelection,
@@ -46,12 +50,14 @@ mixin _$IngredientsEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_ToggleIngredient value)? toggleIngredient,
+    TResult? Function(_SelectCategory value)? selectCategory,
     TResult? Function(_GetRecipeByIngredients value)? getRecipeByIngredients,
     TResult? Function(_ClearSelection value)? clearSelection,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ToggleIngredient value)? toggleIngredient,
+    TResult Function(_SelectCategory value)? selectCategory,
     TResult Function(_GetRecipeByIngredients value)? getRecipeByIngredients,
     TResult Function(_ClearSelection value)? clearSelection,
     required TResult orElse(),
@@ -155,6 +161,7 @@ class _$ToggleIngredientImpl implements _ToggleIngredient {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String ingredient) toggleIngredient,
+    required TResult Function(RecipeCategory? category) selectCategory,
     required TResult Function() getRecipeByIngredients,
     required TResult Function() clearSelection,
   }) {
@@ -165,6 +172,7 @@ class _$ToggleIngredientImpl implements _ToggleIngredient {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String ingredient)? toggleIngredient,
+    TResult? Function(RecipeCategory? category)? selectCategory,
     TResult? Function()? getRecipeByIngredients,
     TResult? Function()? clearSelection,
   }) {
@@ -175,6 +183,7 @@ class _$ToggleIngredientImpl implements _ToggleIngredient {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String ingredient)? toggleIngredient,
+    TResult Function(RecipeCategory? category)? selectCategory,
     TResult Function()? getRecipeByIngredients,
     TResult Function()? clearSelection,
     required TResult orElse(),
@@ -189,6 +198,7 @@ class _$ToggleIngredientImpl implements _ToggleIngredient {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_ToggleIngredient value) toggleIngredient,
+    required TResult Function(_SelectCategory value) selectCategory,
     required TResult Function(_GetRecipeByIngredients value)
     getRecipeByIngredients,
     required TResult Function(_ClearSelection value) clearSelection,
@@ -200,6 +210,7 @@ class _$ToggleIngredientImpl implements _ToggleIngredient {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_ToggleIngredient value)? toggleIngredient,
+    TResult? Function(_SelectCategory value)? selectCategory,
     TResult? Function(_GetRecipeByIngredients value)? getRecipeByIngredients,
     TResult? Function(_ClearSelection value)? clearSelection,
   }) {
@@ -210,6 +221,7 @@ class _$ToggleIngredientImpl implements _ToggleIngredient {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ToggleIngredient value)? toggleIngredient,
+    TResult Function(_SelectCategory value)? selectCategory,
     TResult Function(_GetRecipeByIngredients value)? getRecipeByIngredients,
     TResult Function(_ClearSelection value)? clearSelection,
     required TResult orElse(),
@@ -231,6 +243,166 @@ abstract class _ToggleIngredient implements IngredientsEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ToggleIngredientImplCopyWith<_$ToggleIngredientImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SelectCategoryImplCopyWith<$Res> {
+  factory _$$SelectCategoryImplCopyWith(
+    _$SelectCategoryImpl value,
+    $Res Function(_$SelectCategoryImpl) then,
+  ) = __$$SelectCategoryImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({RecipeCategory? category});
+}
+
+/// @nodoc
+class __$$SelectCategoryImplCopyWithImpl<$Res>
+    extends _$IngredientsEventCopyWithImpl<$Res, _$SelectCategoryImpl>
+    implements _$$SelectCategoryImplCopyWith<$Res> {
+  __$$SelectCategoryImplCopyWithImpl(
+    _$SelectCategoryImpl _value,
+    $Res Function(_$SelectCategoryImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of IngredientsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? category = freezed}) {
+    return _then(
+      _$SelectCategoryImpl(
+        freezed == category
+            ? _value.category
+            : category // ignore: cast_nullable_to_non_nullable
+                  as RecipeCategory?,
+      ),
+    );
+  }
+}
+
+/// @nodoc
+
+class _$SelectCategoryImpl implements _SelectCategory {
+  const _$SelectCategoryImpl(this.category);
+
+  @override
+  final RecipeCategory? category;
+
+  @override
+  String toString() {
+    return 'IngredientsEvent.selectCategory(category: $category)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SelectCategoryImpl &&
+            (identical(other.category, category) ||
+                other.category == category));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, category);
+
+  /// Create a copy of IngredientsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SelectCategoryImplCopyWith<_$SelectCategoryImpl> get copyWith =>
+      __$$SelectCategoryImplCopyWithImpl<_$SelectCategoryImpl>(
+        this,
+        _$identity,
+      );
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String ingredient) toggleIngredient,
+    required TResult Function(RecipeCategory? category) selectCategory,
+    required TResult Function() getRecipeByIngredients,
+    required TResult Function() clearSelection,
+  }) {
+    return selectCategory(category);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String ingredient)? toggleIngredient,
+    TResult? Function(RecipeCategory? category)? selectCategory,
+    TResult? Function()? getRecipeByIngredients,
+    TResult? Function()? clearSelection,
+  }) {
+    return selectCategory?.call(category);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String ingredient)? toggleIngredient,
+    TResult Function(RecipeCategory? category)? selectCategory,
+    TResult Function()? getRecipeByIngredients,
+    TResult Function()? clearSelection,
+    required TResult orElse(),
+  }) {
+    if (selectCategory != null) {
+      return selectCategory(category);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ToggleIngredient value) toggleIngredient,
+    required TResult Function(_SelectCategory value) selectCategory,
+    required TResult Function(_GetRecipeByIngredients value)
+    getRecipeByIngredients,
+    required TResult Function(_ClearSelection value) clearSelection,
+  }) {
+    return selectCategory(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ToggleIngredient value)? toggleIngredient,
+    TResult? Function(_SelectCategory value)? selectCategory,
+    TResult? Function(_GetRecipeByIngredients value)? getRecipeByIngredients,
+    TResult? Function(_ClearSelection value)? clearSelection,
+  }) {
+    return selectCategory?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ToggleIngredient value)? toggleIngredient,
+    TResult Function(_SelectCategory value)? selectCategory,
+    TResult Function(_GetRecipeByIngredients value)? getRecipeByIngredients,
+    TResult Function(_ClearSelection value)? clearSelection,
+    required TResult orElse(),
+  }) {
+    if (selectCategory != null) {
+      return selectCategory(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SelectCategory implements IngredientsEvent {
+  const factory _SelectCategory(final RecipeCategory? category) =
+      _$SelectCategoryImpl;
+
+  RecipeCategory? get category;
+
+  /// Create a copy of IngredientsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SelectCategoryImplCopyWith<_$SelectCategoryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -279,6 +451,7 @@ class _$GetRecipeByIngredientsImpl implements _GetRecipeByIngredients {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String ingredient) toggleIngredient,
+    required TResult Function(RecipeCategory? category) selectCategory,
     required TResult Function() getRecipeByIngredients,
     required TResult Function() clearSelection,
   }) {
@@ -289,6 +462,7 @@ class _$GetRecipeByIngredientsImpl implements _GetRecipeByIngredients {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String ingredient)? toggleIngredient,
+    TResult? Function(RecipeCategory? category)? selectCategory,
     TResult? Function()? getRecipeByIngredients,
     TResult? Function()? clearSelection,
   }) {
@@ -299,6 +473,7 @@ class _$GetRecipeByIngredientsImpl implements _GetRecipeByIngredients {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String ingredient)? toggleIngredient,
+    TResult Function(RecipeCategory? category)? selectCategory,
     TResult Function()? getRecipeByIngredients,
     TResult Function()? clearSelection,
     required TResult orElse(),
@@ -313,6 +488,7 @@ class _$GetRecipeByIngredientsImpl implements _GetRecipeByIngredients {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_ToggleIngredient value) toggleIngredient,
+    required TResult Function(_SelectCategory value) selectCategory,
     required TResult Function(_GetRecipeByIngredients value)
     getRecipeByIngredients,
     required TResult Function(_ClearSelection value) clearSelection,
@@ -324,6 +500,7 @@ class _$GetRecipeByIngredientsImpl implements _GetRecipeByIngredients {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_ToggleIngredient value)? toggleIngredient,
+    TResult? Function(_SelectCategory value)? selectCategory,
     TResult? Function(_GetRecipeByIngredients value)? getRecipeByIngredients,
     TResult? Function(_ClearSelection value)? clearSelection,
   }) {
@@ -334,6 +511,7 @@ class _$GetRecipeByIngredientsImpl implements _GetRecipeByIngredients {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ToggleIngredient value)? toggleIngredient,
+    TResult Function(_SelectCategory value)? selectCategory,
     TResult Function(_GetRecipeByIngredients value)? getRecipeByIngredients,
     TResult Function(_ClearSelection value)? clearSelection,
     required TResult orElse(),
@@ -393,6 +571,7 @@ class _$ClearSelectionImpl implements _ClearSelection {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String ingredient) toggleIngredient,
+    required TResult Function(RecipeCategory? category) selectCategory,
     required TResult Function() getRecipeByIngredients,
     required TResult Function() clearSelection,
   }) {
@@ -403,6 +582,7 @@ class _$ClearSelectionImpl implements _ClearSelection {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String ingredient)? toggleIngredient,
+    TResult? Function(RecipeCategory? category)? selectCategory,
     TResult? Function()? getRecipeByIngredients,
     TResult? Function()? clearSelection,
   }) {
@@ -413,6 +593,7 @@ class _$ClearSelectionImpl implements _ClearSelection {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String ingredient)? toggleIngredient,
+    TResult Function(RecipeCategory? category)? selectCategory,
     TResult Function()? getRecipeByIngredients,
     TResult Function()? clearSelection,
     required TResult orElse(),
@@ -427,6 +608,7 @@ class _$ClearSelectionImpl implements _ClearSelection {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_ToggleIngredient value) toggleIngredient,
+    required TResult Function(_SelectCategory value) selectCategory,
     required TResult Function(_GetRecipeByIngredients value)
     getRecipeByIngredients,
     required TResult Function(_ClearSelection value) clearSelection,
@@ -438,6 +620,7 @@ class _$ClearSelectionImpl implements _ClearSelection {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_ToggleIngredient value)? toggleIngredient,
+    TResult? Function(_SelectCategory value)? selectCategory,
     TResult? Function(_GetRecipeByIngredients value)? getRecipeByIngredients,
     TResult? Function(_ClearSelection value)? clearSelection,
   }) {
@@ -448,6 +631,7 @@ class _$ClearSelectionImpl implements _ClearSelection {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ToggleIngredient value)? toggleIngredient,
+    TResult Function(_SelectCategory value)? selectCategory,
     TResult Function(_GetRecipeByIngredients value)? getRecipeByIngredients,
     TResult Function(_ClearSelection value)? clearSelection,
     required TResult orElse(),
