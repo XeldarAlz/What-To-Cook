@@ -53,5 +53,5 @@ class AppConstants {
   ];
   static const String recipesCacheKey = 'recipes_cache';
   static const String recipesCacheTimestampKey = 'recipes_cache_timestamp';
-  static const Duration recipesCacheDuration = Duration(hours: 24);
+  static const Duration recipesCacheDuration = Duration(hours: 1);
 }

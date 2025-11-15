@@ -2,10 +2,15 @@ import 'package:flutter/material.dart';
 import 'core/injection/injection.dart' as di;
 import 'features/recipe/presentation/pages/random_recipe_page.dart';
 import 'features/ingredients/presentation/pages/ingredients_page.dart';
+import 'features/recipe/domain/repositories/recipe_repository.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await di.initDependencies();
+
+  final recipeRepository = di.getIt<RecipeRepository>();
+  await recipeRepository.refreshRecipes();
+
   runApp(const MyApp());
 }
 
@@ -23,10 +28,7 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.light,
         ),
         useMaterial3: true,
-        appBarTheme: const AppBarTheme(
-          centerTitle: true,
-          elevation: 0,
-        ),
+        appBarTheme: const AppBarTheme(centerTitle: true, elevation: 0),
       ),
       home: const MainPage(),
     );
@@ -43,18 +45,12 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   int _currentIndex = 0;
 
-  final List<Widget> _pages = const [
-    RandomRecipePage(),
-    IngredientsPage(),
-  ];
+  final List<Widget> _pages = const [RandomRecipePage(), IngredientsPage()];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IndexedStack(
-        index: _currentIndex,
-        children: _pages,
-      ),
+      body: IndexedStack(index: _currentIndex, children: _pages),
       bottomNavigationBar: NavigationBar(
         selectedIndex: _currentIndex,
         onDestinationSelected: (index) {

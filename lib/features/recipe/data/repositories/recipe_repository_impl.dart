@@ -37,7 +37,7 @@ class RecipeRepositoryImpl implements RecipeRepository {
     } catch (e) {
     }
 
-    if (_cachedRecipes != null) {
+    if (_cachedRecipes != null && !forceRefresh) {
       return _cachedRecipes!;
     }
 
@@ -71,7 +71,7 @@ class RecipeRepositoryImpl implements RecipeRepository {
             (DateTime.now().millisecond % AppConstants.recipeFetchRandomDelayMs),
       ));
 
-      final allRecipes = await _getAllRecipes();
+      final allRecipes = await _getAllRecipes(forceRefresh: true);
       final categoryRecipes = allRecipes.where((r) => r.category == category).toList();
       
       final shownIds = _shownRecipeIds[category] ?? [];
@@ -107,7 +107,7 @@ class RecipeRepositoryImpl implements RecipeRepository {
   @override
   Future<Either<Failure, Recipe>> getRecipeByName(String name) async {
     try {
-      final allRecipes = await _getAllRecipes();
+      final allRecipes = await _getAllRecipes(forceRefresh: true);
       final recipe = allRecipes.firstWhere(
         (r) => r.name.toLowerCase().contains(name.toLowerCase()),
         orElse: () => allRecipes.first,
@@ -136,7 +136,7 @@ class RecipeRepositoryImpl implements RecipeRepository {
             (DateTime.now().millisecond % AppConstants.recipeFetchRandomDelayMs),
       ));
 
-      final allRecipes = await _getAllRecipes();
+      final allRecipes = await _getAllRecipes(forceRefresh: true);
       List<RecipeModel> recipes;
       if (category != null) {
         recipes = allRecipes.where((r) => r.category == category).toList();
