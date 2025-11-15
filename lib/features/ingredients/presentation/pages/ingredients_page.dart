@@ -36,43 +36,43 @@ class _IngredientsPageState extends State<IngredientsPage> {
       create: (context) => getIt<IngredientsBloc>(),
       child: BlocBuilder<IngredientsBloc, IngredientsState>(
         builder: (context, state) {
+          final showAppBar = state.maybeWhen(
+            loaded: (_, __, ___, ____) => true,
+            orElse: () => false,
+          );
+          
           return Scaffold(
-            appBar: state.maybeWhen(
-              loaded: (_, __, ___, ____) => AppBar(
-                leading: IconButton(
-                  icon: const Icon(Icons.arrow_back),
-                  onPressed: () {
-                    final bloc = context.read<IngredientsBloc>();
-                    setState(() {
-                      _isGoingBack = true;
-                    });
-                    if (_scrollController.hasClients) {
-                      _scrollController.animateTo(
-                        0,
-                        duration: AppConstants.scrollAnimationDuration,
-                        curve: Curves.easeInOut,
+            appBar: showAppBar ? AppBar(
+              leading: IconButton(
+                icon: const Icon(Icons.arrow_back),
+                onPressed: () {
+                  final bloc = context.read<IngredientsBloc>();
+                  setState(() {
+                    _isGoingBack = true;
+                  });
+                  if (_scrollController.hasClients) {
+                    _scrollController.animateTo(
+                      0,
+                      duration: AppConstants.scrollAnimationDuration,
+                      curve: Curves.easeInOut,
+                    );
+                  }
+                  Future.delayed(AppConstants.resetAfterScrollDelay, () {
+                    if (mounted) {
+                      bloc.add(
+                        const IngredientsEvent.clearSelection(),
                       );
                     }
-                    Future.delayed(AppConstants.resetAfterScrollDelay, () {
-                      if (mounted) {
-                        bloc.add(
-                          const IngredientsEvent.clearSelection(),
-                        );
-                      }
-                    });
-                  },
-                  tooltip: 'Geri',
-                ),
-                title: const Text('Tarif'),
-                elevation: 0,
+                  });
+                },
+                tooltip: 'Geri',
               ),
-              orElse: () => AppBar(
-                elevation: 0,
-                automaticallyImplyLeading: false,
-              ),
-            ),
-            body: SafeArea(
-              child: BlocListener<IngredientsBloc, IngredientsState>(
+              title: const Text('Tarif'),
+              elevation: 0,
+              scrolledUnderElevation: 1,
+              surfaceTintColor: Theme.of(context).colorScheme.surfaceContainerHighest,
+            ) : null,
+            body: BlocListener<IngredientsBloc, IngredientsState>(
                 listener: (context, state) {
                   state.maybeWhen(
                     loaded: (_, __, ___, ____) {
@@ -169,7 +169,6 @@ class _IngredientsPageState extends State<IngredientsPage> {
                     ),
                   ),
                 ),
-              ),
             ),
           );
         },
@@ -192,7 +191,78 @@ class _IngredientsPageState extends State<IngredientsPage> {
     return Column(
       key: key,
       children: [
-        if (selectedIngredients.isNotEmpty)
+        if (recipe == null)
+          Container(
+            padding: EdgeInsets.fromLTRB(
+              16.0,
+              MediaQuery.of(context).padding.top + 8.0,
+              16.0,
+              16.0,
+            ),
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.surface,
+              border: Border(
+                bottom: BorderSide(
+                  color: Theme.of(context).colorScheme.outline.withValues(alpha: 0.1),
+                  width: 0.5,
+                ),
+              ),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Icon(
+                      Icons.category,
+                      size: 20,
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+                    const SizedBox(width: 8),
+                    Text(
+                      'Kategori Seçin',
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                            fontWeight: FontWeight.w600,
+                          ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 12),
+                Wrap(
+                  spacing: 8,
+                  runSpacing: 8,
+                  children: [
+                    FilterChip(
+                      selected: selectedCategory == null,
+                      label: const Text('Tümü'),
+                      onSelected: (selected) {
+                        context.read<IngredientsBloc>().add(
+                          IngredientsEvent.selectCategory(null),
+                        );
+                      },
+                      selectedColor: Theme.of(context).colorScheme.primaryContainer,
+                      checkmarkColor: Theme.of(context).colorScheme.onPrimaryContainer,
+                    ),
+                    ...RecipeCategory.values.map((category) {
+                      final isSelected = selectedCategory == category;
+                      return FilterChip(
+                        selected: isSelected,
+                        label: Text(CategoryUtils.getCategoryName(category)),
+                        onSelected: (selected) {
+                          context.read<IngredientsBloc>().add(
+                            IngredientsEvent.selectCategory(selected ? category : null),
+                          );
+                        },
+                        selectedColor: Theme.of(context).colorScheme.primaryContainer,
+                        checkmarkColor: Theme.of(context).colorScheme.onPrimaryContainer,
+                      );
+                    }),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        if (recipe == null && selectedIngredients.isNotEmpty)
           Container(
             padding: const EdgeInsets.all(16.0),
             decoration: BoxDecoration(
@@ -267,7 +337,6 @@ class _IngredientsPageState extends State<IngredientsPage> {
               ],
             ),
           ),
-
         Expanded(
           child: recipe != null
               ? RecipeDetailWidget(
@@ -293,103 +362,76 @@ class _IngredientsPageState extends State<IngredientsPage> {
               : error != null
                   ? _buildErrorView(context, error)
                   : Container(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Kategori Seçin',
-                                style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                              ),
-                              const SizedBox(height: 12),
-                              Wrap(
-                                spacing: 8,
-                                runSpacing: 8,
-                                children: [
-                                  FilterChip(
-                                    selected: selectedCategory == null,
-                                    label: const Text('Tümü'),
-                                    onSelected: (selected) {
-                                      context.read<IngredientsBloc>().add(
-                                        IngredientsEvent.selectCategory(null),
-                                      );
-                                    },
-                                    selectedColor: Theme.of(context).colorScheme.primaryContainer,
-                                    checkmarkColor: Theme.of(context).colorScheme.onPrimaryContainer,
-                                  ),
-                                  ...RecipeCategory.values.map((category) {
-                                    final isSelected = selectedCategory == category;
-                                    return FilterChip(
-                                      selected: isSelected,
-                                      label: Text(CategoryUtils.getCategoryName(category)),
-                                      onSelected: (selected) {
-                                        context.read<IngredientsBloc>().add(
-                                          IngredientsEvent.selectCategory(selected ? category : null),
-                                        );
-                                      },
-                                      selectedColor: Theme.of(context).colorScheme.primaryContainer,
-                                      checkmarkColor: Theme.of(context).colorScheme.onPrimaryContainer,
-                                    );
-                                  }),
-                                ],
-                              ),
-                              const SizedBox(height: 24),
-                              Text(
-                                'Malzemeleri Seçin',
-                                style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                              ),
-                              const SizedBox(height: 16),
-                              Expanded(
-                                child: ListView.builder(
-                                  itemCount: categories.length,
-                                  itemBuilder: (context, index) {
-                                    final category = categories[index];
-                                    return _buildCategoryCard(
-                                      context,
-                                      category,
-                                      selectedIngredients,
-                                    );
-                                  },
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Malzemeleri Seçin',
+                            style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                                  fontWeight: FontWeight.bold,
                                 ),
-                              ),
-                              const SizedBox(height: 16),
-                              SizedBox(
-                                width: double.infinity,
-                                child: ElevatedButton.icon(
-                                  onPressed: selectedIngredients.isEmpty
-                                      ? null
-                                      : () {
-                                          context.read<IngredientsBloc>().add(
-                                                const IngredientsEvent.getRecipeByIngredients(),
-                                              );
-                                        },
-                                  icon: const Icon(Icons.search, size: 24),
-                                  label: Text(
-                                    selectedIngredients.isEmpty
-                                        ? 'Malzeme Seçin'
-                                        : 'Ne Pişirsem? (${selectedIngredients.length})',
-                                    style: const TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  style: ElevatedButton.styleFrom(
-                                    padding: const EdgeInsets.symmetric(vertical: 18),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(16),
-                                    ),
-                                    elevation: 2,
-                                  ),
-                                ),
-                              ),
-                            ],
                           ),
-                        ),
+                          const SizedBox(height: 16),
+                          Expanded(
+                            child: ListView.builder(
+                              itemCount: categories.length,
+                              itemBuilder: (context, index) {
+                                final category = categories[index];
+                                return _buildCategoryCard(
+                                  context,
+                                  category,
+                                  selectedIngredients,
+                                );
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
         ),
+        if (recipe == null && error == null)
+          Container(
+            padding: const EdgeInsets.all(16.0),
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.surface,
+              border: Border(
+                top: BorderSide(
+                  color: Theme.of(context).colorScheme.outline.withValues(alpha: 0.1),
+                  width: 0.5,
+                ),
+              ),
+            ),
+            child: SizedBox(
+              width: double.infinity,
+              child: ElevatedButton.icon(
+                onPressed: selectedIngredients.isEmpty
+                    ? null
+                    : () {
+                        context.read<IngredientsBloc>().add(
+                              const IngredientsEvent.getRecipeByIngredients(),
+                            );
+                      },
+                icon: const Icon(Icons.search, size: 24),
+                label: Text(
+                  selectedIngredients.isEmpty
+                      ? 'Malzeme Seçin'
+                      : 'Ne Pişirsem? (${selectedIngredients.length})',
+                  style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(vertical: 18),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  elevation: 2,
+                ),
+              ),
+            ),
+          ),
       ],
     );
   }
