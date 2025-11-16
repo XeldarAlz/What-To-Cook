@@ -1,10 +1,11 @@
-## What-To-Cook (Ne Pişirsem?)
+## Ne Pişirsek?
 
-Flutter ile geliştirilmiş, elinizdeki malzemelere ve yemek kategorilerine göre tarif öneren bir mobil uygulama.
+<img src="docs/screenshots/app_ui_1.png" alt="Ne Pişirsek arayüzü 1" width="300" /> <img src="docs/screenshots/app_ui_2.png" alt="Ne Pişirsek arayüzü 2" width="300" /> <img src="docs/screenshots/app_ui_3.png" alt="Ne Pişirsek arayüzü 2" width="300" />
+
+
+Ne Pişirsek?, elinizdeki malzemelere ve yemek kategorilerine göre tarif öneren bir mobil uygulama basit bir Flutter uygulaması.
 
 Uygulama, **Clean Architecture** ve **feature-first** yaklaşımı ile yapılandırılmıştır ve tarif verilerini **harici (GitHub)** üzerinden dinamik olarak alır. 
-
----
 
 ## Özellikler
 
@@ -15,8 +16,6 @@ Uygulama, **Clean Architecture** ve **feature-first** yaklaşımı ile yapıland
   - Tarifler GitHub üzerindeki JSON dosyalarından okunur
   - Uygulama içi cache ile performanslı ve kontrollü veri kullanımı
 - **Görsel destek**: Her tarif için uzaktan yüklenen görseller
-
----
 
 ## Mimarinin Genel Yapısı
 
@@ -59,7 +58,6 @@ Proje, `lib/` altında **feature-first + Clean Architecture** yapısını takip 
   - Uygulama başlarken tarif cache'ini temizleme / yenileme
   - Alt gezinme (tabs) yönetimi
 
----
 
 ## Tarif Verilerinin Yönetimi
 
@@ -85,8 +83,6 @@ Detaylı veri yönetimi ve görsel ayarları için:
 
 dosyalarına göz atabilirsiniz.
 
----
-
 ## Teknolojiler
 
 - **Flutter** (Material 3)
@@ -96,10 +92,6 @@ dosyalarına göz atabilirsiniz.
 - **http**: Uzak JSON dosyalarından veri çekme
 - **shared_preferences**: Basit cache mekanizması
 
----
-
 ## Lisans
 
 Bu proje, `LICENSE` dosyasında belirtilen şartlar altında **MIT License** ile lisanslanmıştır.
-
----
