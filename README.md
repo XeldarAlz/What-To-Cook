@@ -1,6 +1,6 @@
 ## Ne Pişirsek?
 
-<img src="docs/screenshots/app_ui_1.png" alt="Ne Pişirsek arayüzü 1" width="300" /> <img src="docs/screenshots/app_ui_2.png" alt="Ne Pişirsek arayüzü 2" width="300" /> <img src="docs/screenshots/app_ui_3.png" alt="Ne Pişirsek arayüzü 2" width="300" />
+<img src="docs/screenshots/app_ui_1.png" alt="Ne Pişirsek arayüzü 1" width="250" /> <img src="docs/screenshots/app_ui_2.png" alt="Ne Pişirsek arayüzü 2" width="250" /> <img src="docs/screenshots/app_ui_3.png" alt="Ne Pişirsek arayüzü 2" width="250" />
 
 
 Ne Pişirsek?, elinizdeki malzemelere ve yemek kategorilerine göre tarif öneren bir mobil uygulama basit bir Flutter uygulaması.
