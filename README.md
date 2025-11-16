@@ -95,3 +95,11 @@ dosyalarına göz atabilirsiniz.
 - **dartz**: `Either` tabanlı fonksiyonel hata yönetimi
 - **http**: Uzak JSON dosyalarından veri çekme
 - **shared_preferences**: Basit cache mekanizması
+
+---
+
+## Lisans
+
+Bu proje, `LICENSE` dosyasında belirtilen şartlar altında **MIT License** ile lisanslanmıştır.
+
+---
